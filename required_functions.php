@@ -35,43 +35,37 @@ function emailValidation($param1){
     }
 }
 
-function displayCaptcha(){
-    $opr1 = rand(0,9);
-    $opr2 = rand(0,9);
-    $str = chooseOperation(randomCharacter());
-    echo "Captcha: $opr1 $str $opr2";
-}
-
-
-
 function randomCharacter(){
     return rand(0,3);
 }
 
-function chooseOperation($param1){
-    $chr = $param1;
+function displayCaptcha(){
+    $opr1 = rand(1,9);
+    $opr2 = rand(1,9);
+    $temp = randomCharacter();
     $str = "";
-    switch ($param1) {
+    $result = 0;
+    switch($temp){
         case 0:
+            $result = $opr1 + $opr2;
             $str = "+";
-            return $str;
             break;
         case 1:
+            $result = $opr1 - $opr2;
             $str = "-";
-            return $str;
             break;
         case 2:
+            $result = $opr1 * $opr2;
             $str = "*";
-            return $str;
             break;
         case 3:
+            $result = $opr1 / $opr2;
             $str = "/";
-            return $str;
             break;
     }
+    echo "Captcha: $opr1 $str $opr2";
+    return $result;
+
 }
-
-
-
 ?>
 

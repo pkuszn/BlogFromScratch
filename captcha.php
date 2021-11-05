@@ -17,7 +17,7 @@
 <div class="frame" style="horiz-align: center">
     <div class="random">
         <?php
-            displayCaptcha();
+            $userInput = displayCaptcha();
 
         ?>
     </div>
