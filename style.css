@@ -1,0 +1,162 @@
+* {
+    font-family: "Consolas" !important;/* <-- fonts */
+    border-radius: 10px; !important
+}
+
+h1 {
+    color: red;
+}
+
+.date {
+    font-size:14px;
+    text-align: right;
+}
+
+
+.header {
+    text-align: center;
+    padding: 30px;
+    font-size: 40px;
+    background: white;
+}
+
+
+body {
+    background-color: gainsboro;
+}
+
+.left-column{
+    border-radius: 10px;
+    background-color: darkseagreen;
+    float: left;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    width: 75%;
+}
+
+.right-column {
+    float: right;
+    width: 20%;
+    padding-right: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 10px;
+    margin-top: 20px;
+    margin-right:20px;
+}
+
+.right-card {
+    background-color: white;
+    padding: 10px;
+    margin-top: 20px;
+    width: auto;
+    min-height: 300px;
+    height: auto;
+
+}
+
+.article-headers {
+    text-align: left;
+    color: dimgrey;
+}
+
+.row:after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background: snow;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 800px) {
+    .left-column, .right-column {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+hr {
+	color: black;
+}
+
+ol,ul {
+    list-style: none;
+
+}
+
+#menu {
+    display: inline-block;
+    margin:20px;
+    width:900px;
+    float: left
+}
+
+#button-row {
+    float: right;
+    margin-top: 2px;
+}
+
+#navigation {
+    margin:auto;
+    text-align: center;
+    display: grid;
+    float: left;
+
+}
+
+
+#button-row {
+    background-color: #b3d4fc;
+}
+
+#menu li {
+    text-align: center;
+    display: grid;
+    text-decoration-color: #b3d4fc;
+    float: left;
+    padding: 5px;
+    width: 18%;
+}
+
+#menu a {
+    display: block;
+    padding-bottom: 5px;
+    text-decoration: none;
+    background-color: #fff;
+    border-radius: 5px;
+    color: #009;
+}
+
+#menu a:hover {
+    background-color: #009;
+    color: #fff;
+}
+
+#image {
+    width: 100%;
+    height: 250px;
+    border-radius: 5px;
+}
+
+
+
+.container {
+    position: relative;
+    text-align: center;
+    color:white;
+}
+.bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    text-decoration-color: darkgreen;
+}
+
+

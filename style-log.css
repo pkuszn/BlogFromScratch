@@ -1,0 +1,82 @@
+* {
+    font-family: "Consolas" !important;/* <-- fonts */
+}
+
+body {
+    display: block;
+    align-items: center;
+    background-color: gainsboro;
+}
+
+
+.frame {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 5px;
+    horiz-align: center;
+    background-color: lightsteelblue;
+    width: 500px;
+    height: 400px;
+
+}
+
+.row {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10em;
+    horiz-align: center;
+}
+
+#message {
+    height: 200px;
+
+}
+
+.input-border {
+    height: 23px;
+    border-color: red;
+}
+
+#row-button {
+    float: left;
+    width: 100%;
+}
+
+
+.buttons {
+    border-radius: 1px;
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+#cancel-button{
+    float: left;
+}
+#send-button {
+    float: right;
+}
+
+.column:after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+#header {
+    display: table;
+    margin-left: auto;
+    font-size: 25px;
+    margin-right: auto;
+    text-align: center;
+}
+
+.get {
+    display: table;
+    text-align: center;
+    margin-top: 50px;
+    width: 100%
+}
