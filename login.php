@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<h1 id="header">Send message to a blogger</h1>
+<h1 id="header">Send message</h1>
 <div class="frame" style="horiz-align: center">
     <form action="login.php" method="GET">
     <div class="row">
@@ -53,7 +53,7 @@ else{
         if (is_string($login)) {
             echo $_GET['login'];
         } else {
-            echo "Login Failed. Couldn't recognize entered characters";
+            echo "Login Failed. Couldn't recognize characters";
         }
 
         echo '<br></br>E-MAIL: ';
