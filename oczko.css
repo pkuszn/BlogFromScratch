@@ -1,0 +1,25 @@
+*{
+    border-radius: 5px; !important;
+    font-family: "JetBrains Mono";
+}
+
+.column {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 5px;
+    horiz-align: center;
+    background-color: lightsteelblue;
+    width: 500px;
+    height: 400px;
+}
+
+.row {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10em;
+    horiz-align: center;
+}

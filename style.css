@@ -103,6 +103,12 @@ ol,ul {
     margin-top: 2px;
 }
 
+
+#oczko {
+    float: right;
+    margin-top: 2px;
+}
+
 #navigation {
     margin:auto;
     text-align: center;

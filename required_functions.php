@@ -67,5 +67,8 @@ function displayCaptcha(){
     return $result;
 
 }
+
+
+
 ?>
 
