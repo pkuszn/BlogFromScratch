@@ -65,7 +65,26 @@ function displayCaptcha(){
     }
     echo "Captcha: $opr1 $str $opr2";
     return $result;
-
 }
+
+/*
+ * $param1 = computation result
+ * $param2 = user input through form
+ * method return boolean expression that depends on parameters equality
+ */
+function captchaValidation($param1, $param2){
+    if($param1 === $param2){
+        return true;
+    }
+    else if($param1 != $param2){
+        echo "Value is invalid";
+        return false;
+    }
+    else {
+        echo "";
+        return false;
+    }
+}
+
 ?>
 

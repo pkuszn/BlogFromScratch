@@ -17,19 +17,43 @@
 <div class="frame" style="horiz-align: center">
     <div class="random">
         <?php
-            $userInput = displayCaptcha();
+
+
+        $computationResult = displayCaptcha();
+        echo "<br>";
+        echo $computationResult;
+        echo "<br>";
+        echo var_dump($computationResult);
+        echo "<br>";
+
+        echo "<br>";
+        $temp = 0;
+        if (isset($_GET['Captcha'])) {
+            $temp = $_GET["Captcha"];
+        }
+        $userInput = intval($temp);
+        $booleanExpression = captchaValidation($computationResult, $userInput);
+        if($booleanExpression == true){
+            echo "chujk";
+            http_redirect("login.php");
+        }
 
         ?>
     </div>
-
     <div class="row">
-        <input type="text" name="Captcha"/>
+        <form method="GET" action="captcha.php">
+            <input type="text" name="Captcha"/>
+            <input type="submit" name="veryfiCaptcha"/>
+        </form>
     </div>
-    <div class="row">
-        <input type="submit" name="veryfiCaptcha"/>
+    <div class="random">
+
     </div>
 
 </div>
+<?php
+
+?>
 
 
 
