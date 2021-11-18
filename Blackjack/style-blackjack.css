@@ -16,10 +16,13 @@
     height: 400px;
 }
 
-.row {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 10em;
-    horiz-align: center;
+.card:after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+.card-column{
+    width:50%
+    float: right;
 }

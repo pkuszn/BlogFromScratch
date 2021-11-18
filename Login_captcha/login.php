@@ -27,7 +27,7 @@
     </div>
     <div id="row-button">
         <div class="column-button">
-            <button type="button" class="buttons" id="cancel-button"><a href="index.php"/>Cancel</button>
+            <button type="button" class="buttons" id="cancel-button"><a href="../index.php"/>Cancel</button>
         </div>
         <div class="column-button">
             <button type="submit" class="buttons" id="send-button" value="send">Send</button>

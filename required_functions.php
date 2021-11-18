@@ -35,61 +35,14 @@ function emailValidation($param1){
     }
 }
 
-function randomCharacter(){
-    return rand(0,3);
+function redirect($url) {
+    ob_start();
+    header('Location: '.$url);
+    ob_end_flush();
+    die();
 }
 
-function displayCaptcha(){
-    $opr1 = rand(1,9);
-    $opr2 = rand(1,9);
-    $temp = randomCharacter();
-    $str = "";
-    $result = 0;
-    switch($temp){
-        case 0:
-            $result = $opr1 + $opr2;
-            $str = "+";
-            break;
-        case 1:
-            $result = $opr1 - $opr2;
-            $str = "-";
-            break;
-        case 2:
-            $result = $opr1 * $opr2;
-            $str = "*";
-            break;
-        case 3:
-            $result = $opr1 / $opr2;
-            $str = "/";
-            break;
-    }
-    echo "Captcha: $opr1 $str $opr2";
-    return $result;
-}
-
-/*
- * $param1 = computation result
- * $param2 = user input through form
- * method return boolean expression that depends on parameters equality
- */
-function captchaValidation($param1, $param2){
-    if($param1 === $param2){
-        return true;
-    }
-    else if($param1 != $param2){
-        echo "Value is invalid";
-        return false;
-    }
-    else {
-        echo "";
-        return false;
-    }
-}
-
-<<<<<<< HEAD
-=======
 
 
->>>>>>> de9940ff6317bcd53f88e4819e483cde446d33ad
 ?>
 

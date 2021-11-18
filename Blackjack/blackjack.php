@@ -13,9 +13,16 @@
     <div class="card">
         <p>Suma kart:</p>
 
+
     </div>
     <div class="card">
-        <p></p>
+        <div class="card-column">
+            <p>Karty gracz:</p>
+
+        </div>
+        <div class="card-column">
+            <p>Karty komputer:</p>
+        </div>
 
     </div>
 
