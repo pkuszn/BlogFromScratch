@@ -2,7 +2,7 @@
     font-family: "Consolas" !important;/* <-- fonts */
     border-radius: 10px; !important
 }
-
+/* */
 h1 {
     color: red;
 }
@@ -27,7 +27,6 @@ body {
 
 .left-column{
     border-radius: 10px;
-    background-color: darkseagreen;
     float: left;
     padding-bottom: 20px;
     padding-left: 20px;

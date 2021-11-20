@@ -14,7 +14,7 @@
 <body>
 <header class = "header">
     <div class="container">
-        <img id="image" src="logo.jpg" alt="Flowers in Chania"/>
+        <img id="image" src="Images/logo.jpg" alt="Flowers in Chania"/>
         <div class="bottom-left">Patryk Kuszneruk Blog</div>
     </div>
     <div>
@@ -30,8 +30,8 @@
     <li><a href = "https://www.tutorialspoint.com/html">About me</a></li>
     <li><a href = "https://www.tutorialspoint.com/css">Article 1</a></li>
     <li><a href="www.google.pl">About php</a></li>
-    <li id="button-row"><a href="captcha.php">Log in</a></li>
-    <li id="oczko"><a href="oczko.php">Gra w oczko</a></li>
+    <li id="button-row"><a href="Login_captcha/captcha.php">Log in</a></li>
+    <li id="oczko"><a href="Blackjack/blackjack.php">Gra w oczko</a></li>
 </ul>
 </nav>
 
