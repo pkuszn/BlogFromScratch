@@ -14,16 +14,28 @@
 <body>
 <header class = "header">
     <div class="container">
-        <img id="image" src="Images/logo.jpg" alt="Flowers in Chania"/>
+        <img id="image" src="logo.jpg" alt="Flowers in Chania"/>
         <div class="bottom-left">Patryk Kuszneruk Blog</div>
     </div>
     <div>
-    <?php
-    DisplayDate();
-    ?>
+
     </div>
 
 </header>
+<div id="info">
+    <div class="about">
+        <?php
+        echo "User: 
+        "
+        ?>
+    </div>
+    <div class="about" id="date-time">
+        <?php
+        DisplayDate();
+        ?>
+    </div>
+</div>
+
 
 <nav id="navigation">
 <ul id="menu">
@@ -31,7 +43,11 @@
     <li><a href = "https://www.tutorialspoint.com/css">Article 1</a></li>
     <li><a href="www.google.pl">About php</a></li>
     <li id="button-row"><a href="Login_captcha/captcha.php">Log in</a></li>
+<<<<<<< HEAD
     <li id="oczko"><a href="Blackjack/blackjack.php">Gra w oczko</a></li>
+=======
+    <li id="oczko"><a href="Blackjack/blackjack.php">Blackjack</a></li>
+>>>>>>> 5797a615b70abbe9126e15295ff0e2148c9b7b0e
 </ul>
 </nav>
 
@@ -41,19 +57,24 @@
             <h2 class="article-headers">Title</h2>
             <p class="article">Article text</p>
         </div>
-        <div class="card">
-            <h2 class="article-headers">Title</h2>
-            <p class="article">Article text</p>
+        <div id="post-popup">
+            <div class="popup-header">
+                <p class="popup-header">Create a new post</p>
+                <img class="popup-header" src="Icons/remove-button.png" onclick="hidden()" id="hidden-template-button"/>
+            </div>
+            <div class="popup-cards">
+                <p>Title</p>
+                <input type="text" name="title" id="title" class="inputs"/>
+            </div>
+            <div class="popup-cards">
+                <p>Post message</p>
+                <textarea id="post" class="inputs" name="post" cols="1000" rows="10"></textarea>
+            </div>
+            <div class="popup-cards">
+                <input type="submit" value="add" id="post-button">
+            </div>
         </div>
-        <div class="card">
-            <h2 class="article-headers">Title</h2>
-            <p class="article">Article text</p>
-        </div>
-        <div class="card">
-            <h2 class="article-headers">Title</h2>
-            <p class="article">Article text</p>
-        </div>
-
+        <input type="button" value="Add a new post" id="add-new-post"/>
     </div>
     <div class="right-column">
         <div class="right-card">
@@ -63,19 +84,24 @@
         <div class="right-card">
             <h2 class="article-headers">Quadratic Equations</h2>
             <br style="color: black"/>
+            <form action="index.php" method="POST">
+                <p>A: <input type="number" name="A" class="inputs"/></p>
+                <p>B: <input type="number" name="B" class="inputs"/></p>
+                <p>C: <input type="number" name="C" class="inputs"/></p>
+                <input type="submit">
+            </form>
 
-            <p>A: <input type="number" name="A"/></p>
-            <p>B: <input type="number" name="B"/></p>
-            <p>C: <input type="number" name="C"/></p>
-            <hr/>
-            <button type="reset">Solve</button>
-            <br/>
             <?php
-                quadraticEquation(2,2,-12);
+                if(isset($_POST['A']) and isset($_POST['B']) and isset($_POST['C'])){
+                    $A = $_POST['A'];
+                    $B = $_POST['B'];
+                    $C = $_POST['C'];
+
+                    echo '<hr/>';
+                    quadraticEquation($A, $B, $C);
+                }
+
             ?>
-            <hr/>
-
-
         </div>
     </div>
 </div>
