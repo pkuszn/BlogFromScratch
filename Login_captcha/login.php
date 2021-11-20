@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 if(isset($_POST['login']) and isset($_POST['password'])){
     $_SESSION['user'] = $_POST['login'];
 }
@@ -22,31 +24,30 @@ if(isset($_POST['login']) and isset($_POST['password'])){
 <div class="frame" style="horiz-align: center">
     <form action="login.php" method="POST">
     <div class="row">
-        <p>login: <input type="text" class="input-border" name="login"/></p>
+        <p>Login</p>
+        <input type="text" class="input-border" name="login"  placeholder="Enter your login" required/>
     </div>
     <div class="row">
-        <p>password: <input type="password" class="input-border" name="password"/></p>
+        <p>Password</p>
+        <input type="password" class="input-border" name="password" placeholder="Enter your password" required/>
     </div>
-    <div id="row-button">
-        <div class="column-button">
-            <button type="button" class="buttons" id="cancel-button"><a href="../index.php"/>Cancel</button>
+        <div class="output">
+            <?php
+            if(isset($_SESSION['user'])){
+                echo "Logged in";
+                echo $_SESSION['user'];
+                sleep(3);
+                header("Location: ../index.php");
+            }
+
+            ?>
         </div>
-        <div class="column-button">
+        <div id="row-button">
+            <button type="button" class="buttons" id="cancel-button"><a href="../index.php"/>Main page</button>
             <button type="submit" class="buttons" id="send-button" value="send">Send</button>
         </div>
-    </div>
     </form>
-    <div class="output">
-        <?php
-        if(isset($_SESSION['user'])){
-            echo "Zalogowany";
-            echo $_SESSION['user'];
-            sleep(10);
-            header("Location: ../index.php/");
-        }
 
-        ?>
-    </div>
 </div>
 
 </body>

@@ -7,7 +7,7 @@ h1 {
     color: red;
 }
 body {
-    background-color: gainsboro;
+    background-color: dodgerblue;
 }
 
 .left-column{
@@ -21,19 +21,17 @@ body {
 .right-column {
     float: right;
     width: 20%;
-    padding-right: 20px;
+
 }
 
 .card {
     background-color: white;
-    padding: 10px;
     margin-top: 20px;
     margin-right:20px;
 }
 
 .right-card {
     background-color: white;
-    padding: 10px;
     margin-top: 20px;
     width: auto;
     min-height: 300px;
@@ -62,12 +60,6 @@ ol,ul {
     float: right;
     margin-top: 2px;
 }
-
-
-
-
-
-
 
 
 #navigation {
@@ -144,6 +136,7 @@ ol,ul {
 
 #add-new-post{
     float: right;
+    margin-top: 5px;
 }
 
 #post-popup{
@@ -151,6 +144,7 @@ ol,ul {
     background-color: white;
     font-size: 12px; !important;
     width: 100%;
+    display: none;
 }
 
 .popup-cards{
@@ -167,6 +161,11 @@ ol,ul {
 #hidden-template-button{
     padding:5px;
     float: right;
+}
+
+#hidden-template-button:hover{
+    background-color: darkgray;
+
 }
 
 #title{
@@ -203,6 +202,7 @@ ol,ul {
 .about{
     color:  white;
     display: inline;
+    outline: #000099;
 
 }
 
@@ -217,7 +217,6 @@ ol,ul {
 
 .left-column{
     float: left;
-    padding-bottom: 20px;
     width: 75%;
 }
 

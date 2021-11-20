@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-
+<?php
+session_start();
+?>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -25,8 +27,12 @@
 <div id="info">
     <div class="about">
         <?php
-        echo "User: 
-        "
+        if(isset($_SESSION['user'])){
+            echo "User: " . $_SESSION['user'];
+        }
+        else{
+            echo "User: not logged in";
+        }
         ?>
     </div>
     <div class="about" id="date-time">
@@ -39,38 +45,63 @@
 
 <nav id="navigation">
 <ul id="menu">
-    <li><a href = "https://www.tutorialspoint.com/html">About me</a></li>
     <li><a href = "https://www.tutorialspoint.com/css">Article 1</a></li>
     <li><a href="www.google.pl">About php</a></li>
     <li id="button-row"><a href="Login_captcha/captcha.php">Log in</a></li>
     <li id="oczko"><a href="Blackjack/blackjack.php">Blackjack</a></li>
+    <li><a href="logout.php">Logout</a></li>
+
 </ul>
 </nav>
 
 <div class="row">
     <div class="left-column">
         <div class="card">
-            <h2 class="article-headers">Title</h2>
-            <p class="article">Article text</p>
+            <?php
+            if(isset($_POST['title']) and isset($_POST['post'])){
+                $Title = $_POST['title'];
+                $Post = $_POST['post'];
+                echo "<h2>" . $Title . "</h2>";
+                echo "</hr>";
+                echo "<p>" . $Post . "</p>";
+            }else{
+                echo "<h2>Title</h2>";
+                echo "</hr>";
+                echo "<p>Post</p>";
+            }
+            ?>
         </div>
         <div id="post-popup">
             <div class="popup-header">
                 <p class="popup-header">Create a new post</p>
-                <img class="popup-header" src="Icons/remove-button.png" onclick="hidden()" id="hidden-template-button"/>
+                <img class="popup-header" src="Icons/remove-button.png" onclick="closeForm()" id="hidden-template-button"/>
             </div>
-            <div class="popup-cards">
-                <p>Title</p>
-                <input type="text" name="title" id="title" class="inputs"/>
-            </div>
-            <div class="popup-cards">
-                <p>Post message</p>
-                <textarea id="post" class="inputs" name="post" cols="1000" rows="10"></textarea>
-            </div>
-            <div class="popup-cards">
-                <input type="submit" value="add" id="post-button">
-            </div>
+            <form method="POST">
+                <div class="popup-cards">
+                    <p>Title</p>
+                    <input type="text" name="title" id="title" class="inputs"/>
+                </div>
+                <div class="popup-cards">
+                    <p>Post message</p>
+                    <textarea id="post" class="inputs" name="post" cols="1000" rows="10"></textarea>
+                </div>
+                <div class="popup-cards">
+                    <input type="submit" value="add" id="post-button">
+                </div>
+            </form>
         </div>
-        <input type="button" value="Add a new post" id="add-new-post"/>
+        <input type="button" value="Add a new post" id="add-new-post" onclick="openForm()"/>
+        <script type="text/javascript">
+            function openForm(){
+                document.getElementById("post-popup").style.display = "block";
+            }
+
+            function closeForm() {
+                document.getElementById("post-popup").style.display = "none";
+            }
+        </script>
+
+
     </div>
     <div class="right-column">
         <div class="right-card">

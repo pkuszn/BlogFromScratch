@@ -17,11 +17,11 @@ body {
     margin-right: auto;
     margin-top: auto;
     margin-bottom: auto;
-    padding: 5px;
     horiz-align: center;
     background-color: lightsteelblue;
     width: 200px;
     height: 200px;
+    padding: 10px;
 
 }
 
@@ -33,40 +33,8 @@ body {
     text-align:center;
 }
 
-#message {
-    height: 200px;
-
-}
-
-.input-border {
-    height: 23px;
-    border-color: red;
-}
-
-#row-button {
-    float: left;
-    width: 100%;
-}
 
 
-.buttons {
-    border-radius: 1px;
-    width: 100px;
-    margin-bottom: 10px;
-}
-
-#cancel-button{
-    float: left;
-}
-#send-button {
-    float: right;
-}
-
-.column:after {
-    content: " ";
-    display: table;
-    clear: both;
-}
 
 #header {
     display: table;
@@ -76,13 +44,4 @@ body {
     text-align: center;
 }
 
-.get {
-    display: table;
-    text-align: center;
-    margin-top: 50px;
-    width: 100%
-}
 
-.random {
-    text-align:center;
-}
