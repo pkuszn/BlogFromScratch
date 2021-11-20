@@ -38,13 +38,13 @@
     ?>
     <form action="" method="post">
         <p>Enter this number: <?php echo $_SESSION['captcha']; ?></p>
-        <p><input type="text" name="code" /> <input type="submit" value="Submit" />
+        <p><input type="text" name="code" /></p>
+        <input type="submit" value="Submit" />
     </form>
 </div>
 <?php
 
 ?>
-
 
 
 </body>
