@@ -43,11 +43,7 @@
     <li><a href = "https://www.tutorialspoint.com/css">Article 1</a></li>
     <li><a href="www.google.pl">About php</a></li>
     <li id="button-row"><a href="Login_captcha/captcha.php">Log in</a></li>
-<<<<<<< HEAD
-    <li id="oczko"><a href="Blackjack/blackjack.php">Gra w oczko</a></li>
-=======
     <li id="oczko"><a href="Blackjack/blackjack.php">Blackjack</a></li>
->>>>>>> 5797a615b70abbe9126e15295ff0e2148c9b7b0e
 </ul>
 </nav>
 
