@@ -2,12 +2,42 @@
     font-family: "JetBrains Mono" !important;/* <-- fonts */
     border-radius: 10px; !important
 }
-
+/* */
 h1 {
     color: red;
 }
 body {
-    background-color: darkslategrey;
+    background-color: gainsboro;
+}
+
+.left-column{
+    border-radius: 10px;
+    float: left;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    width: 75%;
+}
+
+.right-column {
+    float: right;
+    width: 20%;
+    padding-right: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 10px;
+    margin-top: 20px;
+    margin-right:20px;
+}
+
+.right-card {
+    background-color: white;
+    padding: 10px;
+    margin-top: 20px;
+    width: auto;
+    min-height: 300px;
+    height: auto;
 }
 
 /* Menu elements */
@@ -34,10 +64,6 @@ ol,ul {
 }
 
 
-#oczko {
-    float: right;
-    margin-top: 2px;
-}
 
 
 

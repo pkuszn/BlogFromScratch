@@ -17,13 +17,14 @@
 
     if (isset($_POST['code'])) {
         if ($_POST['code'] == $_SESSION['captcha']) {
-            echo "Captcha valid";
+            echo "Captcha is valid";
             redirect("login.php");
         }
         else {
-            echo "Captcha NOT valid";
+            echo "Captcha is invalid";
         }
     }
+
 
     $_SESSION['captcha'] = mt_rand(10000, 99999);
 
