@@ -35,7 +35,18 @@ function emailValidation($param1){
     }
 }
 
+function getFile(){
+    $file = basename(urldecode(($_GET['file'])));
+    $fileDir = 'BlogFromScratch/icons/';
 
+    if(file_exists($fileDir . $file)){
+        $contents = file_get_contents($fileDir . $file);
+        header('Content-type: image/png');
+
+        echo $contents;
+
+    }
+}
 
 
 

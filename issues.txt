@@ -1,2 +1,3 @@
 20.11.2021
 1. Resolve issue with too wide div[article] line: 50
+2. Create folder for all icons

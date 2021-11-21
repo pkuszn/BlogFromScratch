@@ -3,18 +3,48 @@
     font-family: "JetBrains Mono";
 }
 
+body{
+    background-color: dodgerblue;
+}
+
 .column {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-    padding: 5px;
+    padding: 10px;
     horiz-align: center;
     background-color: lightsteelblue;
-    width: 500px;
-    height: 400px;
+    width: 400px;
+    height: 300px;
 }
+.card{
+    display: inline;
+}
+
+#header{
+    text-align:center;
+
+}
+
+header{
+    width:100%;
+}
+
+#session{
+    float: left;
+}
+
+#prev{
+    float: right;
+}
+#prev:hover{
+    background-color: aliceblue;
+}
+.top{
+    display:inline-block;
+}
+
+
 
 .card:after {
     content: " ";
@@ -22,7 +52,61 @@
     clear: both;
 }
 
-.card-column{
-    width:50%;
+.buttons-div{
+    display:inline;
+    width:100%;
+    height:100%;
+    outline-offset: 2px;
+}
+.buttons{
+    position: relative;
+    width:120px;
+    margin-top: 150px;
+}
+
+#drawn{
+    float: left;
+}
+
+#drawn:hover{
+    background-color: green;
+}
+
+#pass{
     float: right;
 }
+
+#start{
+    float: left;
+    width: 120px;
+}
+
+#pass:hover{
+    background-color:red;
+}
+
+table{
+    outline: black;
+    font-size: 14px;
+    padding: 5px;
+    border-collapse: collapse;
+    width: 100%;
+}
+td{
+    padding: 10px;
+}
+
+table td{
+    border: 1px solid black;
+}
+
+table th {
+    background-color: lightslategray;
+    border-radius: 0px;
+    width: 33%;
+}
+
+.output{
+    margin:10px;
+}
+
