@@ -94,11 +94,11 @@ function drawCards($array)
                             }
                             else if(isset($_POST['pass'])){
                                 if($_SESSION['userScore'] <= 21 AND $_SESSION['userScore'] > $_SESSION['computerScore']){
-                                    $GLOBALS['Result'] = "User win";
+                                    $GLOBALS['Result'] = "User won";
                                     $_SESSION['userScore'] = 0;
                                 }
                                 else if($_SESSION['computerScore'] <= 21 AND $_SESSION['computerScore'] > $_SESSION['userScore']){
-                                    $GLOBALS['Result'] = "Computer win";
+                                    $GLOBALS['Result'] = "Computer won";
                                     $_SESSION['computerScore'] = 0;
                                 }
                             }
@@ -126,6 +126,7 @@ function drawCards($array)
             </div>
             <div class="output">
                 <?php
+                if(empty($_POST['pass']) AND empty($_POST['pass2']) AND empty($_POST))
                 if(isset($_POST['pass'])){
                     echo "Results: " . $GLOBALS['Result'];
                 }

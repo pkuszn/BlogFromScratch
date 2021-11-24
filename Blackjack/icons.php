@@ -1,10 +1,22 @@
 <?php
-$imagesDir = __DIR__.'BlockFromScratch/Icons/';
-$content = file_get_contents($imagesDir.$_GET['requested']);
-$content = base64_encode($content);
+$imagesDirectory = "images/";
 
-$data = "data:image/png;base64,{$content}";
+if (is_dir($imagesDirectory)) {
+    $opendirectory = opendir($imagesDirectory);
 
-header('Content-Type: image/png');
-echo base64_decode($data);
+    while (($image = readdir($opendirectory)) !== false) {
+        if (($image == '.') || ($image == '..')) {
+            continue;
+        }
+
+        $imgFileType = pathinfo($image, PATHINFO_EXTENSION);
+
+        if (($imgFileType == 'jpg') || ($imgFileType == 'png')) {
+            echo "<img src='images/" . $image . "' width='200'> ";
+        }
+    }
+
+    closedir($opendirectory);
+}
+
 ?>
