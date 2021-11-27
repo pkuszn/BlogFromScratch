@@ -1,6 +1,6 @@
 * {
     font-family: "JetBrains Mono" !important;/* <-- fonts */
-    border-radius: 10px; !important
+    border-radius: 5px; !important
 }
 /* */
 h1 {
@@ -8,6 +8,7 @@ h1 {
 }
 body {
     background-color: dodgerblue;
+    margin: 0;
 }
 
 .left-column{
@@ -181,8 +182,8 @@ ol,ul {
 }
 
 .header {
+    border-radius: 0;
     text-align: center;
-    padding: 30px;
     font-size: 40px;
     background: white;
 }
@@ -195,21 +196,92 @@ ol,ul {
 
 /* Under logo infos */
 
-#info{
-    display: inline;
-}
-
-.about{
-    color:  black;
-    display: inline;
-    outline: #000099;
+.topbars:after{
+    border-radius: 0;
+    width: 100%;
+    display:table;
+    clear:both;
+    content:"";
 
 }
 
-#date-time{
+.topbars-containers{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border: 1px solid lightskyblue;
+    border-radius: 0;
+    font-size:14px;
+}
+
+.span-containers {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+#topbars-containers-date{
+    float: left;
+    width: 33.33%;
+}
+#topbars-containers-search{
+    display: inline-block;
+    width: 33.33%;
+}
+
+#search{
+    display:inline;
+}
+.search-container{
+    display: inline-block;
+}
+
+#topbars-containers-user-account{
     float: right;
+    width: 32.90%;
 }
 
+#login{
+    display: inline;
+}
+
+/* Login Container */
+
+#login:after{
+    border-radius: 0;
+    width: 100%;
+    display:table;
+    clear:both;
+    content:"";
+
+}
+
+.login-container{
+    height: 23px;
+    line-height: inherit;
+    text-align: center;
+    border: 1px solid lightskyblue;
+    border-radius: 0;
+    font-size:14px;
+    width:50%;
+}
+
+#block{
+    outline: none;
+    display: inline;
+}
+
+.session-container{
+    display: inline-block;
+}
+
+
+
+.span-login {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
 
 
 

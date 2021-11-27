@@ -13,6 +13,7 @@ session_start();
 
 </head>
 
+
 <body>
 <header class = "header">
     <div class="container">
@@ -24,24 +25,53 @@ session_start();
     </div>
 
 </header>
-<div id="info">
-    <div class="about">
-        <?php
-        if(isset($_SESSION['user'])){
-            echo "User: " . $_SESSION['user'];
-        }
-        else{
-            echo "User: not logged in";
-        }
-        ?>
+<div class="topbars">
+    <div class="topbars-containers" id="topbars-containers-date">
+        <span class="span-containers">
+                   <?php
+                   DisplayDate();
+                   ?>
+        </span>
     </div>
-    <div class="about" id="date-time">
-        <?php
-        DisplayDate();
-        ?>
+    <div class="topbars-containers" id="topbars-containers-search">
+        <span class="span-containers" id="search">
+            <div class="search-container">
+                <p>Search articles: </p>
+            </div>
+            <div class="search-container">
+                <input type="text" placeholder="Input text"/>
+            </div>
+
+        </span>
+    </div>
+    <div class="topbars-containers" id="topbars-containers-user-account">
+        <span class="span-containers" id="login">
+            <span class="span-login">
+                <div class="login-container" id="block">
+                    <div class="session-container">
+
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+                <div class="login-container">
+
+
+                </div>
+            </span>
+        </span>
     </div>
 </div>
 
+<?php
+if(isset($_SESSION['user'])){
+    echo "User: " . $_SESSION['user'];
+}
+else{
+    echo "User: not logged in";
+}
+?>
 
 <nav id="navigation">
 <ul id="menu">
