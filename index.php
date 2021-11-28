@@ -45,44 +45,56 @@ session_start();
         </span>
     </div>
     <div class="topbars-containers" id="topbars-containers-user-account">
-        <span class="span-containers" id="login">
-            <span class="span-login">
-                <div class="login-container" id="block">
-                    <div class="session-container">
-
-                    </div>
-                    <div>
-
-                    </div>
-                </div>
-                <div class="login-container">
-
-
-                </div>
+        <span class="span-containers">
+            <span id="user-session">
+                  <?php
+                  if(isset($_SESSION['user'])){
+                      echo "User: " . $_SESSION['user'];
+                  }
+                  else{
+                      echo "User: not logged in";
+                  }
+                  ?>
+            </span>
+            <span>
+                <img src="Icons/user.png"/>
             </span>
         </span>
     </div>
 </div>
 
-<?php
-if(isset($_SESSION['user'])){
-    echo "User: " . $_SESSION['user'];
-}
-else{
-    echo "User: not logged in";
-}
-?>
+
 
 <nav id="navigation">
 <ul id="menu">
     <li><a href = "https://www.tutorialspoint.com/css">Article 1</a></li>
     <li><a href="www.google.pl">About php</a></li>
-    <li id="button-row"><a href="Login_captcha/captcha.php">Log in</a></li>
+    <li><a href="Login_captcha/captcha.php">Test</a></li>
     <li id="oczko"><a href="Blackjack/blackjack.php">Blackjack</a></li>
     <li><a href="logout.php">Logout</a></li>
 
 </ul>
 </nav>
+
+<div class="user-account-buttons">
+    <span id="span-user-account">
+        <a href="Login_captcha/captcha.php" id="login"">
+                   <p class="user-account-labels">
+                Login
+            </p>
+
+        </a>
+        <div id="signup">
+            <p class="user-account-labels">
+                Sign up
+            </p>
+        </div>
+
+
+    </span>
+
+</div>
+
 
 <div class="row">
     <div class="left-column">
