@@ -235,53 +235,72 @@ ol,ul {
 .search-container{
     display: inline-block;
 }
-
 #topbars-containers-user-account{
     float: right;
-    width: 32.90%;
+    width: 32.85%;
+}
+
+#user-session{
+    display: inline-block;
+}
+
+/*
+Buttons account
+ */
+
+.user-account-buttons{
+    width: 100%;
+    margin-top:10px;
+    display:block;
+
 }
 
 #login{
     display: inline;
-}
-
-/* Login Container */
-
-#login:after{
-    border-radius: 0;
-    width: 100%;
-    display:table;
-    clear:both;
-    content:"";
-
-}
-
-.login-container{
-    height: 23px;
-    line-height: inherit;
+    color:red;
+    width: 120px;
+    height:25px;
+    background-color: white;
+    float: right;
+    margin:5px;
+    text-decoration: none;
     text-align: center;
-    border: 1px solid lightskyblue;
-    border-radius: 0;
-    font-size:14px;
-    width:50%;
 }
 
-#block{
-    outline: none;
+#login:hover{
+    background-color: blue;
+    color:white;
+}
+
+
+#signup{
     display: inline;
+    color:red;
+    height:25px;
+    width: 120px;
+    margin:5px;
+    background-color: white;
+    float: right;
+    text-align: center;
 }
 
-.session-container{
-    display: inline-block;
+#signup:hover{
+    background-color: blue;
+    color:white;
 }
 
+.user-account-labels{
+    text-align: center;
+    margin: 0;
 
-
-.span-login {
-    display: inline-block;
-    vertical-align: middle;
-    line-height: normal;
 }
+
+#span-user-account{
+    text-align:center;
+    display:block;
+    margin-right:15px;
+}
+
 
 
 
