@@ -1,0 +1,105 @@
+*{
+    font-family: "JetBrains Mono"; !important;
+}
+
+body {
+    display: block;
+    text-align: center;
+    background-color: gainsboro;
+}
+
+
+.register-container {
+    display: block;
+    padding: 5px;
+    background-color: dodgerblue;
+    margin-right: auto;
+    margin-left: auto;
+    min-width:400px;
+    max-width: 500px;
+    min-height: 200px;
+    overflow: hidden;
+    outline: none;
+    text-align: center;
+
+}
+
+.register-container:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#terms{
+    display: inline;
+}
+
+.terms-block{
+    display: inline-block;
+}
+
+label {
+    display: block;
+}
+
+.register-sections{
+    float: left;
+    width: 50%;
+}
+
+.buttons-container{
+    display:inline-block;
+    width:100%;
+    margin-top: 100px;
+
+}
+
+#cancel{
+    width: 120px;
+    height: 25px;
+    float: left;
+    border-radius: 5px;
+}
+#register{
+    width: 120px;
+    height: 25px;
+    float: right;
+    border-radius: 5px;
+}
+
+
+h1{
+    text-align: center;
+}
+
+.input-container{
+    overflow: hidden;
+    white-space: nowrap;
+    margin:1px;
+    text-align:center;
+
+}
+
+
+
+#form-container{
+    display: inline;
+}
+
+
+.input-description{
+    text-align: center;
+}
+
+
+#back-to-main-button{
+    display: inline-block;
+    width: 100%;
+}
+
+#back{
+    float: right;
+}
+#back:hover{
+    background-color: aliceblue;
+}

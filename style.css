@@ -122,71 +122,7 @@ ol,ul {
 
 
 
-/* New post popUp */
 
-.popup-header{
-    padding:5px;
-    display: inline;
-    font-size: 20px
-}
-
-#button-remove{
-    float: right;
-}
-
-
-#add-new-post{
-    float: right;
-    margin-top: 5px;
-}
-
-#post-popup{
-    margin-top: 10px;
-    background-color: white;
-    font-size: 12px; !important;
-    width: 100%;
-    display: none;
-}
-
-.popup-cards{
-    padding: 10px;
-    display: inline-block;
-    width: 100%;
-
-}
-
-#post-button{
- width: 80px;
-}
-
-#hidden-template-button{
-    padding:5px;
-    float: right;
-}
-
-#hidden-template-button:hover{
-    background-color: darkgray;
-
-}
-
-#title{
-    width: 30%;
-}
-#post{
-    width:30%;
-    height: 70px;
-}
-
-.inputs{
-    border-radius: 1px;
-}
-
-.header {
-    border-radius: 0;
-    text-align: center;
-    font-size: 40px;
-    background: white;
-}
 
 
 
@@ -237,7 +173,7 @@ ol,ul {
 }
 #topbars-containers-user-account{
     float: right;
-    width: 32.85%;
+    width: 32.89%;
 }
 
 #user-session{
@@ -262,7 +198,7 @@ Buttons account
     height:25px;
     background-color: white;
     float: right;
-    margin:5px;
+    margin:10px;
     text-decoration: none;
     text-align: center;
 }
@@ -278,10 +214,17 @@ Buttons account
     color:red;
     height:25px;
     width: 120px;
-    margin:5px;
+    margin:10px;
     background-color: white;
     float: right;
     text-align: center;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #signup:hover{
@@ -314,11 +257,13 @@ Buttons account
 .right-column {
     float: right;
     width: 20%;
+
 }
 
 .card {
     background-color: white;
     padding: 10px;
+    width: 100%;
 }
 
 .right-card {
@@ -352,6 +297,73 @@ Buttons account
         padding: 0;
     }
 }
+
+/* New post popUp */
+
+.popup-header{
+    padding:5px;
+    display: inline;
+    font-size: 20px
+}
+
+#button-remove{
+    float: right;
+}
+
+
+#add-new-post{
+    float: right;
+    margin-top: 5px;
+}
+
+#post-popup{
+    margin-top: 10px;
+    background-color: white;
+    font-size: 12px; !important;
+    width: 102%;
+    display: block;
+}
+
+.popup-cards{
+    padding: 10px;
+    display: inline-block;
+    width: 100%;
+
+}
+
+#post-button{
+    width: 80px;
+}
+
+#hidden-template-button{
+    padding:5px;
+    float: right;
+}
+
+#hidden-template-button:hover{
+    background-color: darkgray;
+
+}
+
+#title{
+    width: 30%;
+}
+#post{
+    width:30%;
+    height: 70px;
+}
+
+.inputs{
+    border-radius: 1px;
+}
+
+.header {
+    border-radius: 0;
+    text-align: center;
+    font-size: 40px;
+    background: white;
+}
+
 
 
 /* footer elements */

@@ -18,7 +18,7 @@
     if (isset($_POST['code'])) {
         if ($_POST['code'] == $_SESSION['captcha']) {
             echo "Captcha is valid";
-            redirect("login.php");
+            redirect("LoginUser.php");
         }
         else {
             echo "Captcha is invalid";

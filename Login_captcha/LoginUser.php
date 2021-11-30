@@ -22,7 +22,7 @@ if(isset($_POST['login']) and isset($_POST['password'])){
 
 <h1 id="header">Log in</h1>
 <div class="frame" style="horiz-align: center">
-    <form action="login.php" method="POST">
+    <form action="LoginUser.php" method="POST">
     <div class="row">
         <p>Login</p>
         <input type="text" class="input-border" name="login"  placeholder="Enter your login" required/>
@@ -37,13 +37,13 @@ if(isset($_POST['login']) and isset($_POST['password'])){
                 echo "Logged in";
                 echo $_SESSION['user'];
                 sleep(3);
-                header("Location: ../index.php");
+                header("Location: ../Index.php");
             }
 
             ?>
         </div>
         <div id="row-button">
-            <button type="button" class="buttons" id="cancel-button"><a href="../index.php"/>Main page</button>
+            <button type="button" class="buttons" id="cancel-button"><a href="../Index.php"/>Main page</button>
             <button type="submit" class="buttons" id="send-button" value="send">Send</button>
         </div>
     </form>

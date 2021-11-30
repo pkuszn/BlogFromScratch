@@ -8,14 +8,14 @@ session_start();
     <title>Patryk Kuszneruk</title>
     <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
     <?php
-    include('required_functions.php');
+    include('RequiredFunctions.php');
     ?>
 
 </head>
 
 
 <body>
-<header class = "header">
+<header class="header">
     <div class="container">
         <img id="image" src="logo.jpg" alt="Flowers in Chania"/>
         <div class="bottom-left">Patryk Kuszneruk Blog</div>
@@ -48,10 +48,9 @@ session_start();
         <span class="span-containers">
             <span id="user-session">
                   <?php
-                  if(isset($_SESSION['user'])){
+                  if (isset($_SESSION['user'])) {
                       echo "User: " . $_SESSION['user'];
-                  }
-                  else{
+                  } else {
                       echo "User: not logged in";
                   }
                   ?>
@@ -64,29 +63,35 @@ session_start();
 </div>
 
 
-
 <nav id="navigation">
-<ul id="menu">
-    <li><a href = "https://www.tutorialspoint.com/css">Article 1</a></li>
-    <li><a href="www.google.pl">About php</a></li>
-    <li><a href="Login_captcha/captcha.php">Test</a></li>
-    <li id="oczko"><a href="Blackjack/blackjack.php">Blackjack</a></li>
-    <li><a href="logout.php">Logout</a></li>
+    <ul id="menu">
+        <li><a href="https://www.tutorialspoint.com/css">Article 1</a></li>
+        <li><a href="www.google.pl">About php</a></li>
+        <li><a href="Login_captcha/Captcha.php">Test</a></li>
+        <li id="oczko"><a href="Blackjack/BlackjackGame.php">Blackjack</a></li>
+        <li><a href="Logout.php">Logout</a></li>
 
-</ul>
+    </ul>
 </nav>
 
 <div class="user-account-buttons">
     <span id="span-user-account">
-        <a href="Login_captcha/captcha.php" id="login"">
+        <a href="Login_captcha/Captcha.php" id="login"">
                    <p class="user-account-labels">
                 Login
             </p>
 
         </a>
-        <div id="signup">
+        <div id="signup" typeof="button" onclick="redirectToRegisterView()">
             <p class="user-account-labels">
                 Sign up
+                <script type="text/javascript">
+                    function redirectToRegisterView() {
+                        document.getElementById(("signup")).onclick = function () {
+                            location.href = "RegisterUser.php";
+                        }
+                    }
+                </script>
             </p>
         </div>
 
@@ -100,13 +105,13 @@ session_start();
     <div class="left-column">
         <div class="card">
             <?php
-            if(isset($_POST['title']) and isset($_POST['post'])){
+            if (isset($_POST['title']) and isset($_POST['post'])) {
                 $Title = $_POST['title'];
                 $Post = $_POST['post'];
                 echo "<h2>" . $Title . "</h2>";
                 echo "</hr>";
                 echo "<p>" . $Post . "</p>";
-            }else{
+            } else {
                 echo "<h2>Title</h2>";
                 echo "</hr>";
                 echo "<p>Post</p>";
@@ -116,7 +121,8 @@ session_start();
         <div id="post-popup">
             <div class="popup-header">
                 <p class="popup-header">Create a new post</p>
-                <img class="popup-header" src="Icons/remove-button.png" onclick="closeForm()" id="hidden-template-button"/>
+                <img class="popup-header" src="Icons/remove-button.png" onclick="closeForm()"
+                     id="hidden-template-button"/>
             </div>
             <form method="POST">
                 <div class="popup-cards">
@@ -134,7 +140,7 @@ session_start();
         </div>
         <input type="button" value="Add a new post" id="add-new-post" onclick="openForm()"/>
         <script type="text/javascript">
-            function openForm(){
+            function openForm() {
                 document.getElementById("post-popup").style.display = "block";
             }
 
@@ -153,7 +159,7 @@ session_start();
         <div class="right-card">
             <h2 class="article-headers">Quadratic Equations</h2>
             <br style="color: black"/>
-            <form action="index.php" method="POST">
+            <form action="Index.php" method="POST">
                 <p>A: <input type="number" name="A" class="inputs"/></p>
                 <p>B: <input type="number" name="B" class="inputs"/></p>
                 <p>C: <input type="number" name="C" class="inputs"/></p>
@@ -161,14 +167,14 @@ session_start();
             </form>
 
             <?php
-                if(isset($_POST['A']) and isset($_POST['B']) and isset($_POST['C'])){
-                    $A = $_POST['A'];
-                    $B = $_POST['B'];
-                    $C = $_POST['C'];
+            if (isset($_POST['A']) and isset($_POST['B']) and isset($_POST['C'])) {
+                $A = $_POST['A'];
+                $B = $_POST['B'];
+                $C = $_POST['C'];
 
-                    echo '<hr/>';
-                    quadraticEquation($A, $B, $C);
-                }
+                echo '<hr/>';
+                quadraticEquation($A, $B, $C);
+            }
 
             ?>
         </div>
