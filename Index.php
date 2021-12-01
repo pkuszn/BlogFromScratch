@@ -105,17 +105,70 @@ session_start();
     <div class="left-column">
         <div class="card">
             <?php
-            if (isset($_POST['title']) and isset($_POST['post'])) {
-                $Title = $_POST['title'];
-                $Post = $_POST['post'];
-                echo "<h2>" . $Title . "</h2>";
-                echo "</hr>";
-                echo "<p>" . $Post . "</p>";
-            } else {
-                echo "<h2>Title</h2>";
-                echo "</hr>";
-                echo "<p>Post</p>";
+            $servername = "localhost";
+            $username = "root";
+            $password = "123456";
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password);
+
+            // Check connection
+            if ($conn->connect_error) {
+                function_alert("Connection failed");
+                function function_alert($msg) {
+                    echo "<script type='text/javascript'>alert('$msg');</script>";
+                }
+                
+                die("Connection failed: " . $conn->connect_error);
             }
+            echo "Connected successfully";
+
+            try{
+                $host = "localhost";
+                $user = "root";
+                $pass = "123456";
+                $db = "test2";
+
+                $conn = mysqli_connect($host,$user,$pass, $db);
+
+                $PostsTitle ="";
+                $PostsText ="";
+                $PostsCreatedDate = "";
+
+
+                $sql = "select * from posts";
+                $rs = mysqli_query($conn, $sql);
+                while ($row = $rs->fetch_assoc()) {
+                    $PostsTitle = $row['Posts_Title'];
+                    $PostsText = $row['Posts_Text'];
+                    $PostsCreatedDate = $row['Posts_CreatedDate'];
+                }
+
+                if(isset($PostsTitle) AND isset($PostsText) AND isset($PostsCreatedDate)){
+                    echo "<h2>" . $PostsTitle . "</h2>";
+                    echo "</hr>";
+                    echo "<p>" . $PostsText . "</p>";
+                    echo "<p style='text-align: right'>" . $PostsCreatedDate . "</p>";
+                }
+            } catch(mysqli_sql_exception $e){
+                echo $e.message();
+                $conn.rollback();
+            }
+
+            if (isset($_POST['title']) and isset($_POST['post'])) {
+                $title = mysqli_real_escape_string($conn, $_REQUEST['title']);
+                $post = mysqli_real_escape_string($conn, $_REQUEST['post']);
+                $query = "INSERT INTO posts (Posts_Title, Posts_Text)
+                VALUES ('$title', '$post')";
+                if(mysqli_query($conn, $query)){
+                    echo "Records added successfully.";
+                } else{
+                    echo "ERROR: Could not able to execute $query. " . mysqli_error($conn);
+                }
+            } else{
+                echo 'Empty post';
+            }
+
             ?>
         </div>
         <div id="post-popup">
