@@ -368,6 +368,13 @@ Buttons account
 
 /* footer elements */
 
+.debug{
+    display:inline-block;
+    color:red;
+    margin:10px;
+}
+
+
 footer {
     padding: 20px;
     text-align: center;
