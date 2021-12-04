@@ -25,15 +25,7 @@ function quadraticEquation($A, $B, $C){
     }
 }
 
-function emailValidation($param1){
-    $value = preg_match('/^([a-z|A-Z|0-9]{4,22})@([a-z|A-Z|0-9]{2,12})\\.(pl|com)$/', $param1);
-    if($value) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
+
 
 function getFile(){
     $file = basename(urldecode(($_GET['file'])));

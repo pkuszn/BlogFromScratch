@@ -80,8 +80,6 @@ h1{
 
 }
 
-
-
 #form-container{
     display: inline;
 }
@@ -90,7 +88,6 @@ h1{
 .input-description{
     text-align: center;
 }
-
 
 #back-to-main-button{
     display: inline-block;

@@ -88,7 +88,7 @@ session_start();
                 <script type="text/javascript">
                     function redirectToRegisterView() {
                         document.getElementById(("signup")).onclick = function () {
-                            location.href = "RegisterUser.php";
+                            location.href = "Register/RegisterUser.php";
                         }
                     }
                 </script>
@@ -105,68 +105,47 @@ session_start();
     <div class="left-column">
         <div class="card">
             <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "123456";
-
-            // Create connection
-            $conn = new mysqli($servername, $username, $password);
-
-            // Check connection
-            if ($conn->connect_error) {
-                function_alert("Connection failed");
-                function function_alert($msg) {
-                    echo "<script type='text/javascript'>alert('$msg');</script>";
-                }
-                
-                die("Connection failed: " . $conn->connect_error);
-            }
-            echo "Connected successfully";
-
+            require("Connection.php");
+            $conn = establishConnection();
             try{
-                $host = "localhost";
-                $user = "root";
-                $pass = "123456";
-                $db = "test2";
-
-                $conn = mysqli_connect($host,$user,$pass, $db);
-
                 $PostsTitle ="";
                 $PostsText ="";
                 $PostsCreatedDate = "";
-
-
                 $sql = "select * from posts";
                 $rs = mysqli_query($conn, $sql);
+
                 while ($row = $rs->fetch_assoc()) {
-                    $PostsTitle = $row['Posts_Title'];
-                    $PostsText = $row['Posts_Text'];
-                    $PostsCreatedDate = $row['Posts_CreatedDate'];
+                    $PostsTitle = $row['Post_title'];
+                    $PostsText = $row['Post_message'];
+                    $PostsCreatedDate = $row['Post_created_date'];
                 }
 
                 if(isset($PostsTitle) AND isset($PostsText) AND isset($PostsCreatedDate)){
                     echo "<h2>" . $PostsTitle . "</h2>";
+                    echo "<hr>";
                     echo "</hr>";
                     echo "<p>" . $PostsText . "</p>";
                     echo "<p style='text-align: right'>" . $PostsCreatedDate . "</p>";
                 }
+
             } catch(mysqli_sql_exception $e){
                 echo $e.message();
-                $conn.rollback();
+                $conn.mysqli_rollback($rs);
             }
 
             if (isset($_POST['title']) and isset($_POST['post'])) {
                 $title = mysqli_real_escape_string($conn, $_REQUEST['title']);
                 $post = mysqli_real_escape_string($conn, $_REQUEST['post']);
-                $query = "INSERT INTO posts (Posts_Title, Posts_Text)
+                $query = "INSERT INTO posts (Post_title, Post_message)
                 VALUES ('$title', '$post')";
                 if(mysqli_query($conn, $query)){
-                    echo "Records added successfully.";
+                    $_SESSION['db_status'] = "Records added successfully";
+                    echo "<meta http-equiv='refresh' content='0'>";
                 } else{
                     echo "ERROR: Could not able to execute $query. " . mysqli_error($conn);
                 }
             } else{
-                echo 'Empty post';
+                echo 'Create a new post';
             }
 
             ?>
@@ -180,15 +159,18 @@ session_start();
             <form method="POST">
                 <div class="popup-cards">
                     <p>Title</p>
-                    <input type="text" name="title" id="title" class="inputs"/>
+                    <input type="text" name="title" id="title" class="inputs" required/>
                 </div>
                 <div class="popup-cards">
                     <p>Post message</p>
-                    <textarea id="post" class="inputs" name="post" cols="1000" rows="10"></textarea>
+                    <textarea id="post" class="inputs" name="post" cols="1000" rows="10" required></textarea>
                 </div>
                 <div class="popup-cards">
                     <input type="submit" value="add" id="post-button">
                 </div>
+
+
+
             </form>
         </div>
         <input type="button" value="Add a new post" id="add-new-post" onclick="openForm()"/>
@@ -236,6 +218,14 @@ session_start();
 <div>
 </div>
 
+<div class="debug">
+    <?php
+    echo "connection_status: " . $_SESSION['connection-status'] . "\n";
+    echo "db_status: " .  $_SESSION['db_status'] . "\n";
+    echo "user: ".  $_SESSION['user'];
+    ?>
+
+</div>
 
 <footer style="text-align: center">
     <p>Created by Kuszneruk Patryk, spec ISI</p>

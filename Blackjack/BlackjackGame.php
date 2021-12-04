@@ -65,7 +65,7 @@ function drawCards($array)
         echo $UserSession;
         ?>
     </p>
-    <img src="previous.png" id="prev" class="top" onclick="backToMain()" />
+    <img src="Icons/previous.png" id="prev" class="top" onclick="backToMain()" />
     <script>
         function backToMain(){
             window.location.replace("../index.php");
@@ -80,8 +80,8 @@ function drawCards($array)
                 <table>
                     <tr>
                         <th></th>
-                        <th><img src="user.png"/th>
-                        <th><img src="imac.png"</th>
+                        <th><img src="Icons/user.png"</th>
+                        <th><img src="Icons/imac.png"</th>
                     </tr>
                     <tr>
                         <td>Cards</td>
