@@ -335,15 +335,6 @@ Buttons account
     width: 80px;
 }
 
-#hidden-template-button{
-    padding:5px;
-    float: right;
-}
-
-#hidden-template-button:hover{
-    background-color: darkgray;
-
-}
 
 #title{
     width: 30%;
@@ -364,6 +355,35 @@ Buttons account
     background: white;
 }
 
+/* Posts structure */
+
+.post-header{
+    text-align:left;
+    margin:5px;
+}
+
+.commentary-container{
+    display: inline-block;
+    width:100%;
+}
+
+#button-commentary{
+    float: right;
+    margin-right:10px;
+    display:inline-block;
+}
+
+.commentary-section{
+    display: none;
+    width:100%;
+    margin-bottom:5px;
+}
+
+#commentary-hidden-button{
+    display: inline;
+    float: right;
+    padding:10px;
+}
 
 
 /* footer elements */
@@ -383,3 +403,16 @@ footer {
 }
 
 
+
+/* Independent of views */
+
+#hidden-template-button{
+    padding:5px;
+    display: inline;
+    float: right;
+}
+
+#hidden-template-button:hover{
+    background-color: darkgray;
+
+}
