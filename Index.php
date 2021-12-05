@@ -10,9 +10,7 @@ session_start();
     <?php
     include('RequiredFunctions.php');
     ?>
-
 </head>
-
 
 <body>
 <header class="header">
@@ -21,9 +19,7 @@ session_start();
         <div class="bottom-left">Patryk Kuszneruk Blog</div>
     </div>
     <div>
-
     </div>
-
 </header>
 <div class="topbars">
     <div class="topbars-containers" id="topbars-containers-date">
@@ -62,7 +58,6 @@ session_start();
     </div>
 </div>
 
-
 <nav id="navigation">
     <ul id="menu">
         <li><a href="https://www.tutorialspoint.com/css">Article 1</a></li>
@@ -70,7 +65,6 @@ session_start();
         <li><a href="Login_captcha/Captcha.php">Test</a></li>
         <li id="oczko"><a href="Blackjack/BlackjackGame.php">Blackjack</a></li>
         <li><a href="Logout.php">Logout</a></li>
-
     </ul>
 </nav>
 
@@ -80,7 +74,6 @@ session_start();
                    <p class="user-account-labels">
                 Login
             </p>
-
         </a>
         <div id="signup" typeof="button" onclick="redirectToRegisterView()">
             <p class="user-account-labels">
@@ -94,12 +87,8 @@ session_start();
                 </script>
             </p>
         </div>
-
-
     </span>
-
 </div>
-
 
 <div class="row">
     <div class="left-column">
@@ -121,15 +110,15 @@ session_start();
                 }
 
                 if(isset($PostsTitle) AND isset($PostsText) AND isset($PostsCreatedDate)){
-                    echo "<h2>" . $PostsTitle . "</h2>";
+                    echo "<h2 class='post-header'>" . $PostsTitle . "</h2>";
                     echo "<hr>";
                     echo "</hr>";
-                    echo "<p>" . $PostsText . "</p>";
-                    echo "<p style='text-align: right'>" . $PostsCreatedDate . "</p>";
+                    echo "<p class='post-text'>" . $PostsText . "</p>";
+                    echo "<p class='post-date''>" . $PostsCreatedDate . "</p>";
                 }
 
             } catch(mysqli_sql_exception $e){
-                echo $e.message();
+                echo $e.mysqli_stmt_error($rs);
                 $conn.mysqli_rollback($rs);
             }
 
@@ -149,6 +138,23 @@ session_start();
             }
 
             ?>
+            <div class="commentary-container">
+                <div id="commentary-section">
+                    <div id="comment" class="commentary-header">
+                        <img src="Icons/remove-button.png" onclick="closeComment()" id="commentary-hidden-button"/>
+                    </div>
+                </div>
+                <script>
+                    function openComment() {
+                        document.getElementById("commentary-section").style.display = "inline-block";
+                    }
+
+                    function closeComment() {
+                        document.getElementById("commentary-section").style.display = "none";
+                    }
+                </script>
+                <input type="button" value="Add a commentary" id="button-commentary" onclick="openComment()"/>
+            </div>
         </div>
         <div id="post-popup">
             <div class="popup-header">
@@ -168,9 +174,6 @@ session_start();
                 <div class="popup-cards">
                     <input type="submit" value="add" id="post-button">
                 </div>
-
-
-
             </form>
         </div>
         <input type="button" value="Add a new post" id="add-new-post" onclick="openForm()"/>
@@ -183,17 +186,16 @@ session_start();
                 document.getElementById("post-popup").style.display = "none";
             }
         </script>
-
-
     </div>
     <div class="right-column">
         <div class="right-card">
             <h2 class="article-headers">About me</h2>
+            <hr>
             <p class="about-author-description">I am a student of Computer Science at the University of Silesia</p>
         </div>
         <div class="right-card">
             <h2 class="article-headers">Quadratic Equations</h2>
-            <br style="color: black"/>
+            <hr>
             <form action="Index.php" method="POST">
                 <p>A: <input type="number" name="A" class="inputs"/></p>
                 <p>B: <input type="number" name="B" class="inputs"/></p>
@@ -213,6 +215,19 @@ session_start();
 
             ?>
         </div>
+        <div class="right-card">
+            <h2 class="article-headers">TWI lab exercises</h2>
+            <hr>
+            <li class="TWI-list"><a href="TWI_lab/Canvas/Canvas.php">Canvas</a></li>
+            <li class="TWI-list">Drawing app</li>
+            <li class="TWI-list">Audio</li>
+            <li class="TWI-list">Form HTML4</li>
+            <li class="TWI-list">Form HTML5</li>
+            <li class="TWI-list">XML</li>
+            <li class="TWI-list">jQuery</li>
+            <li class="TWI-list">Snake jQuery</li>
+            <li class="TWI-list">Project</li>
+        </div>
     </div>
 </div>
 <div>
@@ -224,13 +239,10 @@ session_start();
     echo "db_status: " .  $_SESSION['db_status'] . "\n";
     echo "user: ".  $_SESSION['user'];
     ?>
-
 </div>
-
 <footer style="text-align: center">
     <p>Created by Kuszneruk Patryk, spec ISI</p>
 </footer>
-
 </body>
 </html>
 
