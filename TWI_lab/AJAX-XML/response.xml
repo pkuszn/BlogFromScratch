@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<response>
+    <people>
+        <person>
+            <name>
+                Bucky Roberts
+            </name>
+            <ssn>
+                sdfdafg2134e23
+            </ssn>
+        </person>
+        <person>
+            <name>
+                Mike Litoris
+            </name>
+            <ssn>
+                fsdafasf1q321
+            </ssn>
+        </person>
+    </people>
+</response>

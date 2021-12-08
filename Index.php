@@ -222,7 +222,7 @@ session_start();
             <li class="TWI-list">Audio</li>
             <li class="TWI-list"><a href="TWI_lab/FormHTML4/FormHTML4.php">Form HTML4</a></li>
             <li class="TWI-list"><a href="TWI_lab/FormHTML5/FormHTML5.php">Form HTML5</a></li>
-            <li class="TWI-list">XML</li>
+            <li class="TWI-list"><a href="TWI_lab/AJAX-XML/Ajax-XML.php">AJAX-XML</a></li>
             <li class="TWI-list">jQuery</li>
             <li class="TWI-list">Snake jQuery</li>
             <li class="TWI-list">Project</li>
