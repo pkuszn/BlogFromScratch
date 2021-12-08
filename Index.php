@@ -216,12 +216,11 @@ session_start();
             ?>
         </div>
         <div class="right-card">
-            <h2 class="article-headers">TWI lab exercises</h2>
+            <h2 class="article-headers">TIWP lab exercises</h2>
             <hr>
             <li class="TWI-list"><a href="TWI_lab/Canvas/Canvas.php">Canvas</a></li>
-            <li class="TWI-list">Drawing app</li>
             <li class="TWI-list">Audio</li>
-            <li class="TWI-list">Form HTML4</li>
+            <li class="TWI-list"><a href="TWI_lab/FormHTML4/FormHTML4.php">Form HTML4</a></li>
             <li class="TWI-list">Form HTML5</li>
             <li class="TWI-list">XML</li>
             <li class="TWI-list">jQuery</li>
