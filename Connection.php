@@ -1,9 +1,9 @@
 <?php
 
 function establishConnection(){
-    $host = "localhost";
+    $host = "127.0.0.1";
     $user = "root";
-    $pass = "123456";
+    $pass =  "my#@3y17;database";
     $db = "mydb";
     error_reporting(E_ALL);
     ini_set('display_errors', 1);

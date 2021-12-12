@@ -219,7 +219,7 @@ session_start();
             <h2 class="article-headers">TIWP lab exercises</h2>
             <hr>
             <li class="TWI-list"><a href="TWI_lab/Canvas/Canvas.php">Canvas</a></li>
-            <li class="TWI-list">Audio</li>
+            <li class="TWI-list"><a href="TWI_lab/AudioVideo/VideoAudio.php">Audio & Video</a></li>
             <li class="TWI-list"><a href="TWI_lab/FormHTML4/FormHTML4.php">Form HTML4</a></li>
             <li class="TWI-list"><a href="TWI_lab/FormHTML5/FormHTML5.php">Form HTML5</a></li>
             <li class="TWI-list"><a href="TWI_lab/AJAX-XML/Ajax-XML.php">AJAX-XML</a></li>
