@@ -362,6 +362,18 @@ Buttons account
     margin:5px;
 }
 
+.post-text{
+    width: 100%;
+    display: inline-block;
+    margin: auto;
+    height:auto;
+}
+
+.post-date{
+    float: right;
+}
+
+
 .commentary-container{
     display: inline-block;
     width:100%;
