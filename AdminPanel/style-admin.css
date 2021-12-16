@@ -1,0 +1,53 @@
+*{
+    font-family: "JetBrains Mono"; !important;
+}
+
+html, body {
+    height:100%;
+}
+
+html,body{
+    height:100%;
+}
+.container{
+    display:table;
+    background-color:#ccc;
+    width:100%;
+    height:100%;
+}
+.green{
+    display:table-cell;
+    background-color:#b3d4fc;
+    width:70%;
+}
+.red{
+    display:table-cell;
+    background-color:papayawhip;
+    width:30%;
+}
+
+#admin-header{
+    text-align:center;
+}
+
+.settings{
+    display:block;
+    margin:10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+#admin{
+    text-align: center;
+}
+#user{
+    text-align: center;
+}
+
+#options {
+    text-align:center;
+}
+#trends{
+    texdt-align:center;
+}
