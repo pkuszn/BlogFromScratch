@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <title>Document</title>
+</head>
+<body>
+<div id="container">
+    <nav id="topnav" class="nav">
+        <ul id="topnav">
+            <li>
+                <a href="?page=home">Home</a>
+            </li>
+            <li>
+                <a href="?page=test">Test</a>
+            </li>
+            <li>
+                <a href="?page=articles">Articles</a>
+            </li>
+            <li>
+                <a href="?page=blackjack">Blackjack</a>
+            </li>
+            <li>
+                <a href="?page=about">About author</a>
+            </li>
+            <li>
+                <a href="?page=about">About author</a>
+            </li>
+            <li>
+                <a href="?page=about">About author</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="logo-and-user-profile" class="nav">
+        <div class="user-profile-container">
+            <div class="user-profile-rows">
+                <p id="user-name">User: not logged</p>
+            </div>
+            <div class="user-profile-rows">
+                <img src="temp/user.png"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="topbar">
+    <div class="topbar-column" id="search-container">
+        <div class="search">
+            <input type="text" id="input-articles" name="search" placeholder="Search articles"/>
+            <button type="button" onclick="">Search</button>
+        </div>
+    </div>
+    <div class="topbar-column" id="user-account-buttons">
+    <span id="span-user-account">
+        <a href="Login_captcha/Captcha.php" id="login"">
+                   <p class="user-account-labels">
+                Login
+            </p>
+        </a>
+        <div id="signup" typeof="button" onclick="redirectToRegisterView()">
+            <p class="user-account-labels">
+                Sign up
+            </p>
+        </div>
+    </span>
+    </div>
+</div>
+
+<section>
+    <h1 class="<?php echo($page == 'test' ? 'active' : '') ?>"> this is my layout</h1>
+    <?php
+    include $main_content;
+    ?>
+</section>
+
+</body>
+</html>

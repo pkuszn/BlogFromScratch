@@ -52,7 +52,7 @@ session_start();
                   ?>
             </span>
             <span>
-                <img src="Icons/user.png"/>
+                <img src="app/view/temp/user.png"/>
             </span>
         </span>
     </div>
@@ -141,7 +141,7 @@ session_start();
             <div class="commentary-container">
                 <div id="commentary-section">
                     <div id="comment" class="commentary-header">
-                        <img src="Icons/remove-button.png" onclick="closeComment()" id="commentary-hidden-button"/>
+                        <img src="app/icons/remove-button.png" onclick="closeComment()" id="commentary-hidden-button"/>
                     </div>
                 </div>
                 <script>
@@ -159,7 +159,7 @@ session_start();
         <div id="post-popup">
             <div class="popup-header">
                 <p class="popup-header">Create a new post</p>
-                <img class="popup-header" src="Icons/remove-button.png" onclick="closeForm()"
+                <img class="popup-header" src="app/icons/remove-button.png" onclick="closeForm()"
                      id="hidden-template-button"/>
             </div>
             <form method="POST">
