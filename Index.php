@@ -52,7 +52,7 @@ session_start();
                   ?>
             </span>
             <span>
-                <img src="app/view/temp/user.png"/>
+                <img src="public/user.png"/>
             </span>
         </span>
     </div>
@@ -94,7 +94,7 @@ session_start();
     <div class="left-column">
         <div class="card">
             <?php
-            require("Connection.php");
+            require("connection.php");
             $conn = establishConnection();
             try{
                 $PostsTitle ="";

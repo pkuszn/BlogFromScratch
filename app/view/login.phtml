@@ -1,0 +1,27 @@
+<head>
+<link rel="stylesheet" href="styles/style-log.css"/>
+</head>
+<body>
+<h1 id="header">Log in</h1>
+<div class="frame" style="horiz-align: center">
+    <form action="<?php $config['MODEL_PATH'] . 'login.php'; ?>" method="POST">
+        <div class="row">
+            <p>Login</p>
+            <input class="input-log" type="text" class="input-border" name="login" placeholder="Enter your login" required/>
+        </div>
+        <div class="row">
+            <p>Password</p>
+            <input class="input-log" type="password" class="input-border" name="password" placeholder="Enter your password" required/>
+        </div>
+        <div class="output">
+            <?php
+                IsExist();
+            ?>
+        </div>
+        <div id="row-button">
+            <input type="submit" class="buttons" name="submit" value="send"/>
+        </div>
+    </form>
+</div>
+</body>
+

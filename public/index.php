@@ -1,4 +1,10 @@
 <?php
+
+if(session_status() === PHP_SESSION_NONE)
+{
+    session_start();
+}
+
 defined('APPLICATION_PATH') || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../app'));
 const DS = DIRECTORY_SEPARATOR;
 
@@ -18,11 +24,4 @@ if(file_exists($view)){
 }
 
 include $config['VIEW_PATH'] . 'layout.phtml';
-
-
-
-
-
-
-
 ?>

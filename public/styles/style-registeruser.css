@@ -2,17 +2,11 @@
     font-family: "JetBrains Mono"; !important;
 }
 
-body {
-    display: block;
-    text-align: center;
-    background-color: gainsboro;
-}
-
 
 .register-container {
     display: block;
     padding: 5px;
-    background-color: dodgerblue;
+    background-color: white;
     margin-right: auto;
     margin-left: auto;
     min-width:400px;
@@ -21,8 +15,15 @@ body {
     overflow: hidden;
     outline: none;
     text-align: center;
+    box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
 
 }
+
+input{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+    color: #333333;
+}
+
 
 .register-container:after{
     content: "";
@@ -54,13 +55,18 @@ label {
 
 }
 
+#form-captcha input-container captcha-message{
+    all: initial;
+}
+
+
 #cancel{
     width: 120px;
     height: 25px;
     float: left;
     border-radius: 5px;
 }
-#register{
+#register-button{
     width: 120px;
     height: 25px;
     float: right;

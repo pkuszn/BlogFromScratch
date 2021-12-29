@@ -1,8 +1,22 @@
-This is the view of the test page
-<?php
-echo "this is section";
-?>
 
 <div>
-    <p><?php echo $title?></p>
+    <button style="margin: 0 auto; display: block;" id="test-button" type="button">Kliknij hehe ;)</button>
+    <h1 id="test-p"></h1>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#test-button').click(function(){
+                var clickBtnValue = $(this).val();
+                var ajaxurl = '../app/model/test.php',
+                    data =  {'action': clickBtnValue};
+                $.post(ajaxurl, data, function (response) {
+                    $("#test-p").html(response)
+                });
+            });
+
+        });
+    </script>
 </div>
+
+
+
+
