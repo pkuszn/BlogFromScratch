@@ -1,34 +1,38 @@
 * {
     font-family: "JetBrains Mono" !important;
-    border-radius: 5px; !important;
 }
 
-
-body {
-    display: block;
-    text-align: center;
-    background-color: gainsboro;
-}
 
 
 .frame {
     display: block;
+    text-align: center;
     padding: 5px;
-    background-color: dodgerblue;
+    background-color: white;
     margin-right: auto;
     margin-left: auto;
     width: 300px;
     height: 300px;
     outline: none;
+    box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+
+
 
 }
 .row {
     display: block;
 }
 
+#header{
+    text-align: center;
+}
 
 .input-border {
     height: 23px;
+}
+
+.input-log{
+    box-shadow: rgba(0,0,0,0.20 ) 0px -50px 36px -28px inset; ;
 }
 
 #row-button {
@@ -38,7 +42,7 @@ body {
 
 .buttons {
     width: 130px;
-    margin-top: 100px;
+    margin-top: 120px;
 }
 
 #cancel-button{

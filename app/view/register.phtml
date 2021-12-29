@@ -1,1 +1,83 @@
-<?php
+<head>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/style-registeruser.css"/>
+</head>
+<body>
+<h1>Sign up</h1>
+<!--<script type="text/javascript" src="<?php // echo $config['HELPER_PATH'] . 'register-helper.js'; ?>"> -->
+
+<div class="register-container">
+    <form action="<?php $config['MODEL_PATH'] . 'register.php' ?>" method="POST" id="form-container">
+        <div class="register-sections">
+            <h4>Obligatory</h4>
+            <div class="input-container">
+                <label for="nickname">Nickname</label>
+                <input type="text" name="nickname" required/>
+            </div>
+            <div class="input-container">
+                <label for="email">E-mail address</label>
+                <input type="text" name="email" required/>
+            </div>
+            <div class="input-container">
+                <label for="password">Password</label>
+                <input type="text" name="password" required/>
+            </div>
+            <div class="input-container">
+                <label for="confirmpassword">Confirm Password</label>
+                <input type="text" name="confirmpassword" required/>
+            </div>
+            <div class="input-container" id="terms">
+                <label for="privacypolicy" class="terms-block"><a href="https://www.lipsum.com/privacy.pdf">Accept terms</a></label>
+                <input type="checkbox"  class="terms-block" name="privacypolicy" />
+            </div>
+        </div>
+        <h4>Optional</h4>
+        <div class="register-sections">
+            <div class="input-container">
+                <label for="firstname">First Name</label>
+                <input type="text" name="firstname" />
+            </div>
+            <div class="input-container">
+                <label for="lastname">Last Name</label>
+                <input type="text" name="lastname" />
+            </div>
+            <div class="input-container">
+                <label for="birthday">Birthday</label>
+                <input type="text" name="birthday" />
+            </div>
+            <div class="input-container">
+                <label for="country">Country</label>
+                <input type="text" name="country" />
+            </div>
+        </div>
+        <!--
+        <form method="post" id="form-captcha">
+            <div id="input-container">
+                <p id="captcha-message">Enter this number:
+                    <?php //echo $_SESSION['captcha']; ?>
+                </p>
+                <p><input type="text" name="code" id="send-data" required/></p>
+                <?php
+/*
+                checkCaptcha() ? displayImage($config['ICONS_PATH'] . 'check.png', false)
+                    : displayImage($config['ICONS_PATH'] . 'close.png', false);
+*/
+                ?>
+            </div>
+        </form>
+        -->
+        <div class="buttons-container">
+            <div>
+                <button type="submit" value="Register" name='submit' id="register-button">Register</button>
+                <button type="button" value="Cancel" id="cancel" name="cancel">Cancel</button>
+            </div>
+        </div>
+        <?php
+        registerProcess();
+        echo "dupa";
+        ?>
+    </form>
+</div>
+
+</body>
+
