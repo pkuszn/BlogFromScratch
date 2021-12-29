@@ -44,7 +44,6 @@ h1 {
 #topnav {
     background-color: #333;
     overflow: hidden;
-    outline: 1px solid red;
     width: 80%;
 }
 
@@ -62,7 +61,6 @@ h1 {
 #logo-and-user-profile{
     background-color: #333;
     width:20%;
-    outline: 1px solid red;
     height:50px;
 }
 
@@ -75,12 +73,28 @@ h1 {
 .user-profile-rows{
     float: left;
     width: 50%;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
 }
 
-#user-name{
+#user-image{
+    color: transparent;
+    position: relative;
+    top: 50%;
+    transform: translateY(+25%);
+}
+
+
+
+#user-name {
     color: white;
     text-align: center;
     font-size: 10px;
+    position: relative;
+    top: 50%;
+    transform: translateY(+60%);
 }
 
 
@@ -231,6 +245,7 @@ Buttons account
     margin: 10px;
 
 }
+
 
 #input-articles{
     width: 225px;

@@ -7,10 +7,7 @@ function establishConnection(){
     $db = "mydb";
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
-
-
 // Check connection
-
     if ($conn->connect_error) {
         function function_alert($msg) {
             echo "<script type='text/javascript'>alert('$msg');</script>";
