@@ -4,10 +4,10 @@
 </head>
 <body>
 <h1>Sign up</h1>
-<!--<script type="text/javascript" src="<?php // echo $config['HELPER_PATH'] . 'register-helper.js'; ?>"> -->
+
 
 <div class="register-container">
-    <form action="<?php $config['MODEL_PATH'] . 'register.php' ?>" method="POST" id="form-container">
+    <form action="<?php $config['MODEL_PATH'] . 'register.php' ?>" method="POST" id="form-container" name="form">
         <div class="register-sections">
             <h4>Obligatory</h4>
             <div class="input-container">
@@ -20,11 +20,11 @@
             </div>
             <div class="input-container">
                 <label for="password">Password</label>
-                <input type="text" name="password" required/>
+                <input type="password" name="password" required/>
             </div>
             <div class="input-container">
                 <label for="confirmpassword">Confirm Password</label>
-                <input type="text" name="confirmpassword" required/>
+                <input type="password" name="confirmpassword" required/>
             </div>
             <div class="input-container" id="terms">
                 <label for="privacypolicy" class="terms-block"><a href="https://www.lipsum.com/privacy.pdf">Accept terms</a></label>
@@ -43,29 +43,34 @@
             </div>
             <div class="input-container">
                 <label for="birthday">Birthday</label>
-                <input type="text" name="birthday" />
+                <input type="date" name="birthday" id="birth"/>
             </div>
             <div class="input-container">
-                <label for="country">Country</label>
-                <input type="text" name="country" />
+                <label for="City">City</label>
+                <input type="text" name="city"/>
             </div>
         </div>
-        <!--
-        <form method="post" id="form-captcha">
+
+        <div id="form-captcha">
             <div id="input-container">
                 <p id="captcha-message">Enter this number:
-                    <?php //echo $_SESSION['captcha']; ?>
+                    <?php echo $_SESSION['captcha']; ?>
                 </p>
                 <p><input type="text" name="code" id="send-data" required/></p>
+                <button type="button" id="button-test" onclick="testAjax()">Test</button>
                 <?php
-/*
-                checkCaptcha() ? displayImage($config['ICONS_PATH'] . 'check.png', false)
-                    : displayImage($config['ICONS_PATH'] . 'close.png', false);
-*/
+                if($_POST['action'] == 'test'){
+                    checkCaptcha() ? displayImage($config['ICONS_PATH'] . 'check.png', false)
+                        : displayImage($config['ICONS_PATH'] . 'close.png', false);
+                }
+                else{
+                    echo "";
+                }
                 ?>
             </div>
-        </form>
-        -->
+        </div>
+
+
         <div class="buttons-container">
             <div>
                 <button type="submit" value="Register" name='submit' id="register-button">Register</button>
@@ -73,11 +78,66 @@
             </div>
         </div>
         <?php
-        registerProcess();
-        echo "dupa";
+        /*
+        if(IsEmailExists() == 1){
+            registerProcess();
+        } else{
+            echo "Email is already exists";
+        }
+        */
         ?>
     </form>
 </div>
+
+<script>
+//Async validate captcha
+function testAjax() {
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: '../app/model/register.php',
+            data: {action: 'test'},
+            success: function (response) {
+                alert(response);
+                console.log(response);
+            }
+        });
+    });
+}
+
+
+
+
+
+
+    $(document).ready(function(){
+        $('email').on('change', function(){
+            $.ajax({
+                url: '../app/model/register.php',
+                data: {
+                    'email' : $('email').val()
+                },
+                dataType: 'json',
+                success: function(data){
+                    if(data == true){
+                        alert('Email exists');
+                    }
+                    else{
+                        alert("Email does not exists");
+                    }
+                },
+                error: function(data){
+                    alert('error');
+                }
+            });
+        });
+    });
+
+</script>
+
+
+
+
 
 </body>
 

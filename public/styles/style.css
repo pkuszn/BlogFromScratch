@@ -316,3 +316,165 @@ Buttons account
     width: 225px;
     box-shadow: none;
 }
+
+
+
+/* Articles and right panel elements */
+
+.left-column{
+    float: left;
+    width: 75%;
+}
+
+.right-column {
+    float: right;
+    width: 20%;
+
+}
+
+.card {
+    background-color: white;
+    padding: 10px;
+    width: 100%;
+    display: inline-block;
+}
+
+.right-card {
+    background-color: white;
+    padding: 10px;
+    margin-top: 20px;
+    width: auto;
+    min-height: 300px;
+    height: auto;
+
+}
+
+.article-headers {
+    text-align: left;
+    color: dimgrey;
+}
+
+.row{
+    margin:20px;
+}
+
+.row:after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 800px) {
+    .left-column, .right-column {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+/* New post popUp */
+
+.popup-header{
+    padding:5px;
+    display: inline;
+    font-size: 20px
+}
+
+#button-remove{
+    float: right;
+}
+
+
+#add-new-post{
+    float: right;
+    margin-top: 5px;
+}
+
+#post-popup{
+    margin-top: 10px;
+    background-color: white;
+    font-size: 12px; !important;
+    width: 102%;
+    display: block;
+}
+
+.popup-cards{
+    padding: 10px;
+    display: inline-block;
+    width: 100%;
+
+}
+
+#post-button{
+    width: 80px;
+}
+
+
+#title{
+    width: 30%;
+}
+#post{
+    width:30%;
+    height: 70px;
+}
+
+.inputs{
+    border-radius: 1px;
+}
+
+.header {
+    border-radius: 0;
+    text-align: center;
+    font-size: 40px;
+    background: white;
+}
+
+/* Posts structure */
+
+.post-header{
+    text-align:left;
+    margin:5px;
+}
+
+.post-text{
+    width: 100%;
+    display: inline-block;
+    margin: auto;
+    height:auto;
+}
+
+.post-date{
+    float: right;
+}
+
+
+#right-corner{
+    display: flex;
+}
+
+
+.post-author{
+    float: right;
+}
+
+.commentary-container{
+    display: inline-block;
+    width:100%;
+}
+
+#button-commentary{
+    float: right;
+    margin-right:10px;
+    display:inline-block;
+}
+
+.commentary-section{
+    display: none;
+    width:100%;
+    margin-bottom:5px;
+}
+
+#commentary-hidden-button{
+    display: inline;
+    float: right;
+    padding:10px;
+}
