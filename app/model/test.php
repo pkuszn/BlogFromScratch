@@ -8,7 +8,7 @@ if (isset($_POST['action'])) {
 function foo(){
     echo "dupal";
 }
-
+/*
 function select()
 {
     $conn = establishConnection();
@@ -39,5 +39,6 @@ function select()
     }
 
 }
+*/
 
 ?>

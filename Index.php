@@ -218,11 +218,11 @@ session_start();
         <div class="right-card">
             <h2 class="article-headers">TIWP lab exercises</h2>
             <hr>
-            <li class="TWI-list"><a href="TWI_lab/Canvas/Canvas.php">Canvas</a></li>
-            <li class="TWI-list"><a href="TWI_lab/AudioVideo/VideoAudio.php">Audio & Video</a></li>
-            <li class="TWI-list"><a href="TWI_lab/FormHTML4/FormHTML4.php">Form HTML4</a></li>
-            <li class="TWI-list"><a href="TWI_lab/FormHTML5/FormHTML5.php">Form HTML5</a></li>
-            <li class="TWI-list"><a href="TWI_lab/AJAX-XML/Ajax-XML.php">AJAX-XML</a></li>
+            <li class="TWI-list"><a href="TIWP_LAB/Canvas/Canvas.php">Canvas</a></li>
+            <li class="TWI-list"><a href="TIWP_LAB/AudioVideo/VideoAudio.php">Audio & Video</a></li>
+            <li class="TWI-list"><a href="TIWP_LAB/FormHTML4/FormHTML4.php">Form HTML4</a></li>
+            <li class="TWI-list"><a href="TIWP_LAB/FormHTML5/FormHTML5.php">Form HTML5</a></li>
+            <li class="TWI-list"><a href="TIWP_LAB/AJAX-XML/Ajax-XML.php">AJAX-XML</a></li>
             <li class="TWI-list">jQuery</li>
             <li class="TWI-list">Snake jQuery</li>
             <li class="TWI-list">Project</li>

@@ -55,10 +55,9 @@ label {
 
 }
 
-#form-captcha input-container captcha-message{
-    all: initial;
+#birth{
+    width:187px;
 }
-
 
 #cancel{
     width: 120px;
@@ -78,12 +77,14 @@ h1{
     text-align: center;
 }
 
-.input-container{
-    overflow: hidden;
-    white-space: nowrap;
-    margin:1px;
-    text-align:center;
+#form-captcha{
+    display: inline;
+    width: 100%;
+    float: left;
+}
 
+#input-container{
+    display: inline-block;
 }
 
 #form-container{

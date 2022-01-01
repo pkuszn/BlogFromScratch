@@ -19,4 +19,11 @@ function establishConnection(){
     $_SESSION['connection-status'] = "Connected successfully";
     return $conn;
 }
+
+
+
+
+
+
+
 ?>
