@@ -333,6 +333,7 @@ Buttons account
 }
 
 .card {
+    margin-bottom: 30px;
     background-color: white;
     padding: 10px;
     width: 100%;
@@ -342,7 +343,7 @@ Buttons account
 .right-card {
     background-color: white;
     padding: 10px;
-    margin-top: 20px;
+    margin-bottom: 20px;
     width: auto;
     min-height: 300px;
     height: auto;
@@ -394,7 +395,7 @@ Buttons account
     background-color: white;
     font-size: 12px; !important;
     width: 102%;
-    display: block;
+    display: none;
 }
 
 .popup-cards{
@@ -477,4 +478,52 @@ Buttons account
     display: inline;
     float: right;
     padding:10px;
+}
+
+
+/* Pagination */
+
+.pagination{
+    width: 100%;
+    display:inline-block;
+    text-align: center;
+    margin: 10px;
+}
+
+.next-page{
+    width: 50px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.pag-rows:hover{
+    background-color: greenyellow;
+}
+
+
+.pag-rows{
+    background-color: burlywood;
+}
+
+
+/* Footer */
+
+.footer{
+    width: 100%;
+    height: 100px;
+    background-color: black;
+}
+
+#footer-author{
+    ont: bold 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    width: 100%;
+    color: white;
+}
+
+.footer-icons{
+    display:inline-block;
+    float: right;
+    padding-right: 20px;
+
 }
