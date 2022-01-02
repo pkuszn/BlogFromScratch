@@ -9,3 +9,4 @@ $config = [
     //'HELPER_PATH' =>  APPLICATION_PATH . DS . 'view' . DS . 'helper' . DS
 ];
 require $config['LIB_PATH'] . 'functions.php';
+require $config['LIB_PATH'] . 'pagination.php';
