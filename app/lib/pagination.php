@@ -38,4 +38,6 @@ function Offset($pageNow, $perPage){
     return $offset;
 }
 
+
+
 ?>

@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/style-blackjack.css"/>
+</head>
+<body>
+<header class="top">
+    <script>
+        function backToMain(){
+            window.location.replace("../index.php");
+        }
+    </script>
+</header>
+<h2 id="header">BlackJack</h2>
+<div class="column">
+    <div class="card">
+        <form method="POST">
+            <div class="card-column">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th><img src="../app/icons/user.png"</th>
+                        <th><img src="../app/icons/imac.png"</th>
+                    </tr>
+                    <tr>
+                        <td>Cards</td>
+                        <td>
+                            <?php
+                            $_SESSION['userScore'] = drawCards($_SESSION['cards']) + drawCards($_SESSION['cards']);
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            $_SESSION['computerScore'] = drawCards($_SESSION['cards']) + drawCards($_SESSION['cards']);;
+                            ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sum of cards</td>
+                        <td>
+                            <?php
+                            echo $_SESSION['userScore'];
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            echo $_SESSION['computerScore'];
+                            ?></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="output">
+                <?php
+                if(empty($_POST['pass']) AND empty($_POST['pass2']) AND empty($_POST))
+                if(isset($_POST['pass'])){
+                    echo "Results: " . $_SESSION['Result'];
+                }
+                else {
+                    echo "Results: ";
+                }
+                ?>
+            </div>
+
+    </div>
+    <div class="button-div">
+        <button name="draw-card" id="drawn" class=buttons">Draw a card</button>
+        <input type="submit" class=buttons" id="pass" name="pass" value="Pass">
+
+    </div>
+    <!--
+    <button type="start" name="start" value="Start"/>
+    -->
+    </form>
+
+</div>
+
+</body>
+</html>
