@@ -62,11 +62,30 @@
         <div class="pagination">
             <table class="next-page">
                 <?php
+                $image = displayImage($config['ICONS_PATH'] . 'left-arrow.png', true);
+                if($_SESSION['pageNow'] != 1){
+                    $var = "?pagination=" . ($_SESSION['pageNow'] - 1);
+                }
+                else{
+                    $var = "?pagination=" . ($_SESSION['pageNow']);
+                }
+                echo "<a href='$var'><img src = 'data:image/png;base64,$image' class='pag-rows' id='left-arrow-pag'/></a>"; ?>
+                <?php
                 for ($i = 1; $i <= $_SESSION['amountOfPages']; $i++) {
-                    printf("<a href='?pagination=%u'>%u</a>",
+                    printf("<a href='?pagination=%u' class='pag-rows'>%u</a>",
                     $i, $i);
                 }
                 ?>
+                <?php
+                $image = displayImage($config['ICONS_PATH'] . 'right-arrow.png', true);
+                $var = "?pagination=" . ($_SESSION['pageNow'] + 1);
+                if($_SESSION['pageNow'] != $_SESSION['amountOfPages']){
+                    $var = "?pagination=" . ($_SESSION['pageNow'] + 1);
+                }
+                else{
+                    $var = "?pagination=" . ($_SESSION['pageNow']);
+                }
+                echo "<a href='$var'><img src = 'data:image/png;base64,$image' class='pag-rows' id='right-arrow-pag'/></a>"; ?>
             </table>
         </div>
     </div>
@@ -80,23 +99,30 @@
             <h2 class="article-headers">Quadratic Equations</h2>
             <hr>
             <form action="Index.php" method="POST">
-                <p>A: <input type="number" name="A" class="inputs"/></p>
-                <p>B: <input type="number" name="B" class="inputs"/></p>
-                <p>C: <input type="number" name="C" class="inputs"/></p>
-                <input type="submit">
+                <p>A: <input type="number" name="A" class="quadratic-equ-input"/></p>
+                <p>B: <input type="number" name="B" class="quadratic-equ-input"/></p>
+                <p>C: <input type="number" name="C" class="quadratic-equ-input"/></p>
+                <button type="button" onclick="quadraticEquation(3,2,1)">Solve</button>
             </form>
+            </hr>
+            <p id="equation-output"></p>
+            <script>
+                function quadraticEquation(A, B, C){
+                    window.func = arg => console.log('=\\');
+                    $.ajax({
+                        type: 'POST',
+                        url: '../app/lib/math.php',
+                        data: {action: 'math', 'A=' + A + "B=" + B + "C=" + C}
+                        success: function(data){
+                            console.log(data);
+                            $('#equation-output').text(data)
+                            alert(data);
+                            console.log(data);
+                         }
+                    });
+                }
+            </script>
 
-            <?php
-            if (isset($_POST['A']) and isset($_POST['B']) and isset($_POST['C'])) {
-                $A = $_POST['A'];
-                $B = $_POST['B'];
-                $C = $_POST['C'];
-
-                echo '<hr/>';
-                quadraticEquation($A, $B, $C);
-            }
-
-            ?>
         </div>
         <div class="right-card">
             <h2 class="article-headers">TIWP lab exercises</h2>

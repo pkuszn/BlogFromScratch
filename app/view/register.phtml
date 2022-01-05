@@ -53,19 +53,34 @@
 
         <div id="form-captcha">
             <div id="input-container">
-                <p id="captcha-message">Enter this number:
-                    <?php echo $_SESSION['captcha']; ?>
+                <p id="captcha-message">Enter this number
+                    <?php echo "<p id='session-captcha'> " . $_SESSION['captcha'] .  "</p>" ?>
                 </p>
                 <p><input type="text" name="code" id="send-data" required/></p>
                 <button type="button" id="button-test" onclick="testAjax()">Test</button>
+                <script type="text/javascript">
+                    //Async validate captcha
+                    function testAjax() {
+                        var test=75;
+                        $(document).ready(function () {
+                            $.ajax({
+                                type: "POST",
+                                url: '../app/model/register.php',
+                                data: {
+                                    'action' : 'captcha',
+                                    'input' : test
+                                }
+                                success: function (data) {
+                                    alert(data);
+                                    console.log("poszlo");
+                                }
+                            });
+                        });
+                    }
+                </script>
+
                 <?php
-                if($_POST['action'] == 'test'){
-                    checkCaptcha() ? displayImage($config['ICONS_PATH'] . 'check.png', false)
-                        : displayImage($config['ICONS_PATH'] . 'close.png', false);
-                }
-                else{
-                    echo "";
-                }
+
                 ?>
             </div>
         </div>
@@ -89,51 +104,6 @@
     </form>
 </div>
 
-<script>
-//Async validate captcha
-function testAjax() {
-    $(document).ready(function () {
-        $.ajax({
-            type: "POST",
-            url: '../app/model/register.php',
-            data: {action: 'test'},
-            success: function (response) {
-                alert(response);
-                console.log(response);
-            }
-        });
-    });
-}
-
-
-
-
-
-
-    $(document).ready(function(){
-        $('email').on('change', function(){
-            $.ajax({
-                url: '../app/model/register.php',
-                data: {
-                    'email' : $('email').val()
-                },
-                dataType: 'json',
-                success: function(data){
-                    if(data == true){
-                        alert('Email exists');
-                    }
-                    else{
-                        alert("Email does not exists");
-                    }
-                },
-                error: function(data){
-                    alert('error');
-                }
-            });
-        });
-    });
-
-</script>
 
 
 

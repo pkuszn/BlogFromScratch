@@ -4,16 +4,21 @@
 //Link this statement with AJAX execute
 require ("connection.php");
 
-function checkCaptcha(){
+if(isset($_POST['action']) == 'test'){
+    if(isset($_REQUEST)){
+        $test = $_REQUEST['input'];
+        checkCaptcha($test);
+    }
+}
+$_SESSION['captcha'] = mt_rand(10000, 99999);
+
+function checkCaptcha($param){
     $response = false;
-    if (isset($_POST['code'])) {
-        if ($_POST['code'] == $_SESSION['captcha']) {
-            $response = true;
-            return $response;
-            $_SESSION['user'] = $_POST['nickname'];
-        } else {
-            return $response;
-        }
+    if ($param == $_SESSION['captcha']) {
+        $response = true;
+        return $response;
+    } else {
+        return $response;
     }
     $_SESSION['captcha'] = mt_rand(10000, 99999);
 }
