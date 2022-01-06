@@ -54,37 +54,60 @@
         <div id="form-captcha">
             <div id="input-container">
                 <p id="captcha-message">Enter this number
-                    <?php echo "<p id='session-captcha'> " . $_SESSION['captcha'] .  "</p>" ?>
+                    <?php echo "<p id='session-captcha'> " . $_SESSION['captcha'] . "</p>" ?>
                 </p>
                 <p><input type="text" name="code" id="send-data" required/></p>
-                <button type="button" id="button-test" onclick="testAjax()">Test</button>
+                <button type="button" name="button-test" id="button-test" >Test</button>
                 <script type="text/javascript">
-                    //Async validate captcha
-                    function testAjax() {
-                        var test=75;
-                        $(document).ready(function () {
-                            $.ajax({
-                                type: "POST",
-                                url: '../app/model/register.php',
-                                data: {
-                                    'action' : 'captcha',
-                                    'input' : test
-                                }
-                                success: function (data) {
-                                    alert(data);
-                                    console.log("poszlo");
-                                }
-                            });
+                    $(document).ready(function(){
+                        $('button[name="button-test"]').on('click', function(){
+                            sendCaptchaInput();
+                        });
+                    })
+
+                    function sendCaptchaInput(){
+                        var dataString = document.getElementsByName("code");
+                        var jsonString = JSON.stringify(dataString);
+                        $.ajax({
+                            type: "POST",
+                            url: '../app/model/register.php',
+                            data: {
+                                data: jsonString
+                            },
+                            cache: false,
+
+                            success: function () {
+                                console.log(dataString.toString());
+                                alert("OK");
+
+                            }
                         });
                     }
                 </script>
-
-                <?php
-
-                ?>
             </div>
         </div>
-
+        <?php
+        echo boolval($statement);
+        $result = ($statement) ? "true" : "false";
+        echo $result;
+        if($result == 'false'){
+            echo "nie dziala";
+            unset($result);
+        }
+        else{
+            $output = IsEmailExists();
+            if($output > 0){
+                registerProcess();
+            }
+            else{
+                echo "<script>alert('email exists in database')</script>";
+            }
+            echo "poszlo ;)";
+            registerProcess();
+            unset($result);
+        }
+        ?>
+<!-- '../app/model/test.php' -->
 
         <div class="buttons-container">
             <div>
