@@ -1,7 +1,0 @@
-20.11.2021
-- Resolve issue with too wide div[article] line: 50
-- Create folder for all icons
-
-30.11.2021
-- Adjust a topbar columns in a responsive way
--

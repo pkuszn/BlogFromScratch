@@ -452,19 +452,19 @@ Buttons account
 }
 
 .post-date{
-    float: right;
 }
-
-
-#right-corner{
-    display: flex;
-}
-
 
 .post-author{
     float: right;
 }
 
+
+.author-info{
+    margin-right:5px;
+    margin-bottom: -15px;
+    display: table;
+    float: right;
+}
 .commentary-container{
     display: inline-block;
     width:100%;
