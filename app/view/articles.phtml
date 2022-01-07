@@ -1,0 +1,108 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/styles/style.css"/>
+    <link rel="stylesheet" href="/styles/style-articles.css"/>
+</head>
+<body>
+<p id="filter-desc">Filter options</p>
+<div class="filter">
+    <ul class="filter-options">
+        <li class="filter-options-styles"><a>Year</a></li>
+        <li class="filter-options-styles"><a>Date</a></li>
+        <li class="filter-options-styles"><a>Alphabetic</a></li>
+        <li class="filter-options-styles">
+            Choose year:
+            <select name="year">
+                <option value="2022">2022</option>
+                <option value="2022">2021</option>
+                <option value="2022">2020</option>
+                <option value="2022">2019</option>
+            </select>
+        </li>
+    </ul>
+
+</div>
+<div class="row articles">
+    <div class="left-column articles">
+        <?php
+        echo selectPosts();
+        ?>
+        <div id="post-popup">
+            <div class="popup-header">
+                <p class="popup-header">Create a new post</p>
+                <?php
+                $image = displayImage($config['ICONS_PATH'] . 'remove-button.png', true);
+                echo "<img src = 'data:image/png;base64,$image' id='commentary-hidden-button' onclick='closeForm()'/>";
+                ?>
+            </div>
+            <form method="POST">
+                <?php
+                $action = isset($_SESSION['user']) ? "" : "<div class='popup-cards'>
+                <p>Author</p>
+                <input type='text' name='author' id='author' class='inputs' required/>
+            </div>";
+                echo $action;
+                ?>
+                <div class="popup-cards">
+                    <p>Title</p>
+                    <input type="text" name="title" id="title" class="inputs" required/>
+                </div>
+                <div class="popup-cards">
+                    <p>Post message</p>
+                    <textarea id="post" class="inputs" name="post" cols="1000" rows="10" required></textarea>
+                </div>
+                <div class="popup-cards">
+                    <input type="submit" value="add" id="post-button" name="add"/>
+                </div>
+                <div class="popup-cards">
+                    <?php
+                    addNewPost();
+                    ?>
+                </div>
+
+            </form>
+        </div>
+        <input type="button" value="Add a new post" id="add-new-post" onclick="openForm()"/>
+        <script type="text/javascript">
+            function openForm() {
+                document.getElementById("post-popup").style.display = "block";
+            }
+
+            function closeForm() {
+                document.getElementById("post-popup").style.display = "none";
+            }
+        </script>
+
+        <div class="pagination">
+            <table class="next-page">
+                <?php
+                $image = displayImage($config['ICONS_PATH'] . 'left-arrow.png', true);
+                if($_SESSION['pageNow'] != 1){
+                    $var = "?pagination=" . ($_SESSION['pageNow'] - 1);
+                }
+                else{
+                    $var = "?pagination=" . ($_SESSION['pageNow']);
+                }
+                echo "<a href='$var'><img src = 'data:image/png;base64,$image' class='pag-rows' id='left-arrow-pag'/></a>"; ?>
+                <?php
+                for ($i = 1; $i <= $_SESSION['amountOfPages']; $i++) {
+                    printf("<a href='?pagination=%u' class='pag-rows'>%u</a>",
+                        $i, $i);
+                }
+                ?>
+                <?php
+                $image = displayImage($config['ICONS_PATH'] . 'right-arrow.png', true);
+                $var = "?pagination=" . ($_SESSION['pageNow'] + 1);
+                if($_SESSION['pageNow'] != $_SESSION['amountOfPages']){
+                    $var = "?pagination=" . ($_SESSION['pageNow'] + 1);
+                }
+                else{
+                    $var = "?pagination=" . ($_SESSION['pageNow']);
+                }
+                echo "<a href='$var'><img src = 'data:image/png;base64,$image' class='pag-rows' id='right-arrow-pag'/></a>"; ?>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
