@@ -28,7 +28,7 @@ function selectPosts()
             $PostsText = $row['Post_message'];
             $PostsCreatedDate = $row['Post_created_date'];
             $PostAuthor = $row['Post_Author'];
-            echo "<div class='card'>";
+            echo "<div class='card articles'>";
             echo "<h2 class='post-header'>" . $PostsTitle . "</h2>";
             echo "<hr>";
             echo "</hr>";

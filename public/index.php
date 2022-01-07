@@ -24,4 +24,6 @@ if(file_exists($view)){
 }
 
 include $config['VIEW_PATH'] . 'layout.phtml';
+
+
 ?>

@@ -129,6 +129,7 @@ body{
     position: relative;
     top: 50%;
     transform: translateY(+60%);
+    height: 100%;
 }
 
 
@@ -315,4 +316,310 @@ Buttons account
 #input-articles{
     width: 225px;
     box-shadow: none;
+}
+
+
+
+/* Articles and right panel elements */
+
+.left-column{
+    float: left;
+    width: 75%;
+}
+
+.right-column {
+    float: right;
+    width: 20%;
+
+}
+
+.card {
+    margin-bottom: 30px;
+    background-color: white;
+    padding: 10px;
+    width: 100%;
+    display: inline-block;
+}
+
+.right-card {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: auto;
+    min-height: 300px;
+    height: auto;
+
+}
+
+.article-headers {
+    text-align: left;
+    color: dimgrey;
+}
+
+.quadratic-equ-input{
+    width: 100%;
+}
+
+.row{
+    margin:20px;
+}
+
+.row:after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 800px) {
+    .left-column, .right-column {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+/* New post popUp */
+
+.popup-header{
+    padding:5px;
+    display: inline;
+    font-size: 20px
+}
+
+#button-remove{
+    float: right;
+}
+
+
+#add-new-post{
+    float: right;
+    margin-top: -5px;
+    margin-right: -20px;
+}
+
+#post-popup{
+    margin-top: 10px;
+    background-color: white;
+    font-size: 12px; !important;
+    width: 102%;
+    display: none;
+}
+
+.popup-cards{
+    padding: 10px;
+    display: inline-block;
+    width: 100%;
+
+}
+
+#post-button{
+    width: 80px;
+}
+
+
+#title{
+    width: 30%;
+}
+#post{
+    width:30%;
+    height: 70px;
+}
+
+.inputs{
+    border-radius: 1px;
+}
+
+
+
+.header {
+    border-radius: 0;
+    text-align: center;
+    font-size: 40px;
+    background: white;
+}
+
+/* Posts structure */
+
+.post-header{
+    text-align:left;
+    margin:5px;
+}
+
+.post-text{
+    width: 100%;
+    display: inline-block;
+    margin: auto;
+    height:auto;
+}
+
+.post-date{
+}
+
+.post-author{
+    float: right;
+}
+
+
+.author-info{
+    margin-right:5px;
+    margin-bottom: -15px;
+    display: table;
+    float: right;
+}
+.commentary-container{
+    display: inline-block;
+    width:100%;
+}
+
+#button-commentary{
+    float: right;
+    margin-right:10px;
+    display:inline-block;
+}
+
+.commentary-section{
+    display: none;
+    width:100%;
+    margin-bottom:5px;
+}
+
+#commentary-hidden-button{
+    display: inline;
+    float: right;
+    padding:10px;
+}
+
+
+/* Pagination */
+
+.pagination{
+    width: 100%;
+    display:inline-block;
+    text-align: center;
+    margin: 10px;
+}
+
+.next-page{
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 10px;
+
+
+}
+
+.pag-rows:hover{
+    background-color: burlywood;
+}
+
+
+.pag-rows{
+    width: 20px;
+    background-color: white;
+    display:inline-block;
+    padding: 10px;
+    text-decoration: none;
+}
+
+#pag-row-num{
+    height: 100px;
+}
+
+
+#right-arrow-pag{
+    transform:translateY(15px);
+    height:21px;
+
+    border-top-right-radius: 5px;
+
+
+}
+#left-arrow-pag{
+    transform:translateY(15px);
+    height:21px;
+    border-top-left-radius: 5px;
+
+
+}
+
+
+
+/* Footer */
+
+.footer{
+    width: 100%;
+    height: 100px;
+    background-color: #333;
+}
+
+#footer-author{
+    ont: bold 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    width: 100%;
+    color: white;
+}
+
+.footer-icons{
+    display:inline-block;
+    float: right;
+    padding-right: 20px;
+
+}
+
+/* --------------------------------------------------------------------
+ARTICLES PART
+ */
+
+
+
+
+
+.left-column.articles{
+    margin-right: 30px;
+}
+
+.card.articles{
+    width: 100%;
+}
+
+.left-column.articles{
+    width: initial;
+}
+
+.card.articles{
+    min-height: 400px;
+}
+
+.filter{
+    width: 100%;
+    height:50px;
+    background-color: white;
+}
+
+#filter-desc{
+text-align: center;
+}
+
+
+.filter-options {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+
+.filter-options-styles {
+}
+
+.add-new-post-articles{
+    outline: 1px solid black;
+
+}
+
+.delete-articles{
+    outline: 1px solid black;
+
+}
+
+.edit-articles{
+    outline: 1px solid black;
 }

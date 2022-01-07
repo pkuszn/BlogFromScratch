@@ -4,10 +4,10 @@
 </head>
 <body>
 <h1>Sign up</h1>
-<!--<script type="text/javascript" src="<?php // echo $config['HELPER_PATH'] . 'register-helper.js'; ?>"> -->
+
 
 <div class="register-container">
-    <form action="<?php $config['MODEL_PATH'] . 'register.php' ?>" method="POST" id="form-container">
+    <form action="<?php $config['MODEL_PATH'] . 'register.php' ?>" method="POST" id="form-container" name="form">
         <div class="register-sections">
             <h4>Obligatory</h4>
             <div class="input-container">
@@ -20,11 +20,11 @@
             </div>
             <div class="input-container">
                 <label for="password">Password</label>
-                <input type="text" name="password" required/>
+                <input type="password" name="password" required/>
             </div>
             <div class="input-container">
                 <label for="confirmpassword">Confirm Password</label>
-                <input type="text" name="confirmpassword" required/>
+                <input type="password" name="confirmpassword" required/>
             </div>
             <div class="input-container" id="terms">
                 <label for="privacypolicy" class="terms-block"><a href="https://www.lipsum.com/privacy.pdf">Accept terms</a></label>
@@ -43,29 +43,72 @@
             </div>
             <div class="input-container">
                 <label for="birthday">Birthday</label>
-                <input type="text" name="birthday" />
+                <input type="date" name="birthday" id="birth"/>
             </div>
             <div class="input-container">
-                <label for="country">Country</label>
-                <input type="text" name="country" />
+                <label for="City">City</label>
+                <input type="text" name="city"/>
             </div>
         </div>
-        <!--
-        <form method="post" id="form-captcha">
+
+        <div id="form-captcha">
             <div id="input-container">
-                <p id="captcha-message">Enter this number:
-                    <?php //echo $_SESSION['captcha']; ?>
+                <p id="captcha-message">Enter this number
+                    <?php echo "<p id='session-captcha'> " . $_SESSION['captcha'] . "</p>" ?>
                 </p>
                 <p><input type="text" name="code" id="send-data" required/></p>
-                <?php
-/*
-                checkCaptcha() ? displayImage($config['ICONS_PATH'] . 'check.png', false)
-                    : displayImage($config['ICONS_PATH'] . 'close.png', false);
-*/
-                ?>
+                <button type="button" name="button-test" id="button-test" >Test</button>
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $('button[name="button-test"]').on('click', function(){
+                            sendCaptchaInput();
+                        });
+                    })
+
+                    function sendCaptchaInput(){
+                        var dataString = document.getElementsByName("code");
+                        var jsonString = JSON.stringify(dataString);
+                        $.ajax({
+                            type: "POST",
+                            url: '../app/model/register.php',
+                            data: {
+                                data: jsonString
+                            },
+                            cache: false,
+
+                            success: function () {
+                                console.log(dataString.toString());
+                                alert("OK");
+
+                            }
+                        });
+                    }
+                </script>
             </div>
-        </form>
-        -->
+        </div>
+        <?php
+        echo boolval($statement);
+        $result = ($statement) ? "true" : "false";
+        echo $result;
+        if($result == 'false'){
+            echo "nie dziala";
+            unset($result);
+        }
+        else{
+            $output = IsEmailExists();
+            if($output > 0){
+                registerProcess();
+            }
+            else{
+                echo "<script>alert('email exists in database')</script>";
+            }
+            echo "poszlo ;)";
+            registerProcess();
+            unset($result);
+        }
+        ?>
+<!-- '../app/model/test.php' -->
+
         <div class="buttons-container">
             <div>
                 <button type="submit" value="Register" name='submit' id="register-button">Register</button>
@@ -73,11 +116,21 @@
             </div>
         </div>
         <?php
-        registerProcess();
-        echo "dupa";
+        /*
+        if(IsEmailExists() == 1){
+            registerProcess();
+        } else{
+            echo "Email is already exists";
+        }
+        */
         ?>
     </form>
 </div>
+
+
+
+
+
 
 </body>
 

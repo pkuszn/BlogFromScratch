@@ -1,7 +1,6 @@
 <?php
-
-function displayDate() {
-    echo "Today is " . date('l jS \of F Y h:i:s A');
+if(isset($_POST['action']) == 'math' AND $_REQUEST['A'] = 'A' AND $_REQUEST['B'] = 'B' AND $_REQUEST['C'] = 'C'){
+    quadraticEquation($_REQUEST['A'],$_REQUEST['B'],$_REQUEST['C']);
 }
 
 function quadraticEquation($A, $B, $C){
@@ -24,23 +23,4 @@ function quadraticEquation($A, $B, $C){
         echo "The equation has two solutions: " . "x1: " . $x1 . " x2: " . $x2;
     }
 }
-
-
-
-function getFile(){
-    $file = basename(urldecode(($_GET['file'])));
-    $fileDir = 'BlogFromScratch/icons/';
-
-    if(file_exists($fileDir . $file)){
-        $contents = file_get_contents($fileDir . $file);
-        header('Content-type: image/png');
-
-        echo $contents;
-
-    }
-}
-
-
-
 ?>
-

@@ -1,5 +1,5 @@
 <?php
-require('connection.php');
+require $config['LIB_PATH'] . 'connection.php';
 
 if (isset($_POST['action'])) {
     select();
@@ -8,7 +8,7 @@ if (isset($_POST['action'])) {
 function foo(){
     echo "dupal";
 }
-
+/*
 function select()
 {
     $conn = establishConnection();
@@ -39,5 +39,6 @@ function select()
     }
 
 }
+*/
 
 ?>
