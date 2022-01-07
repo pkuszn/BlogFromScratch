@@ -563,3 +563,63 @@ Buttons account
     padding-right: 20px;
 
 }
+
+/* --------------------------------------------------------------------
+ARTICLES PART
+ */
+
+
+
+
+
+.left-column.articles{
+    margin-right: 30px;
+}
+
+.card.articles{
+    width: 100%;
+}
+
+.left-column.articles{
+    width: initial;
+}
+
+.card.articles{
+    min-height: 400px;
+}
+
+.filter{
+    width: 100%;
+    height:50px;
+    background-color: white;
+}
+
+#filter-desc{
+text-align: center;
+}
+
+
+.filter-options {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+
+.filter-options-styles {
+}
+
+.add-new-post-articles{
+    outline: 1px solid black;
+
+}
+
+.delete-articles{
+    outline: 1px solid black;
+
+}
+
+.edit-articles{
+    outline: 1px solid black;
+}
