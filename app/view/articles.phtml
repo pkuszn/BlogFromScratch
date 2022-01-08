@@ -6,21 +6,28 @@
 <body>
 <p id="filter-desc">Filter options</p>
 <div class="filter">
-    <ul class="filter-options">
-        <li class="filter-options-styles"><a>Year</a></li>
-        <li class="filter-options-styles"><a>Date</a></li>
-        <li class="filter-options-styles"><a>Alphabetic</a></li>
-        <li class="filter-options-styles">
-            Choose year:
-            <select name="year">
-                <option value="2022">2022</option>
-                <option value="2022">2021</option>
-                <option value="2022">2020</option>
-                <option value="2022">2019</option>
-            </select>
-        </li>
+    <div class="navbar">
+        <div class="left-filter filter-col">
+            <a class="active" id=""><?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false)?>Name</a>
+            <a class="active"><?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false)?>Date</a>
+            <a class="active"><?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false)?>Year</a>
+            <a class="active"><?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false)?>Alphabetic</a>
+            <a class="active">Choose year:
+                <select class="active off">
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                </select>
+            </a>
+        </div>
+        <div class="right-filter filter-col">
+            <div class="articles-add-post articles-button">Add post</div>
+            <div class="delete-add-post articles-button">Delete post</div>
+            <div class="edit-add-post articles-button">Edit post</div>
+        </div>
+    </div>
     </ul>
-
 </div>
 <div class="row articles">
     <div class="left-column articles">

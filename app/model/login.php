@@ -1,11 +1,13 @@
 <?php
 if(isset($_SESSION['user'])){
-    $_SESSION['test'] = "ciula";
     getInfoAboutUser($_SESSION['user']);
 }
 require $config['LIB_PATH'] . 'connection.php';
+
+
+
 //User_ID	User_name	User_email	User_password	User_amount_of_posts	User_created_date_account	User_birthdate	User_city	User_avatar	User_first_name	User_last_name	Images_Images_ID	Statistics_Statistics_ID
-function IsExist()
+function LoginProcess()
 {
     $conn = establishConnection();
     if (isset($_POST['submit']) and $_SERVER['REQUEST_METHOD'] == "POST") {
@@ -34,6 +36,8 @@ function IsExist()
                     }
                 }
             }
+            mysqli_stmt_close($stmt);
+            mysqli_close($conn);
         }
     }
 }
