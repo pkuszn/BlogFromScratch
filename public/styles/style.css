@@ -568,10 +568,6 @@ Buttons account
 ARTICLES PART
  */
 
-
-
-
-
 .left-column.articles{
     margin-right: 30px;
 }
@@ -588,38 +584,102 @@ ARTICLES PART
     min-height: 400px;
 }
 
+
+/* FILTER OPTIONS */
+
+
+
+
 .filter{
     width: 100%;
-    height:50px;
+    display: inline;
+    overflow: auto;
+}
+
+.filter .navbar{
+    margin: auto;
+}
+
+.filter .active{
+    float: none;
+}
+
+
+#filter-desc{
+    text-align: left;
+    margin-left:30px;
+}
+
+
+
+/* Style the navigation bar */
+
+/* Navbar links */
+.navbar a {
+    float: left;
+    text-align: center;
+    padding: 12px;
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    width: 50%;
+}
+
+/* Navbar links on mouse-over */
+.navbar a:hover {
     background-color: white;
 }
 
-#filter-desc{
-text-align: center;
+/* Current/active navbar link */
+.navbar a:active{
+    background-color: #04AA6D;
+}
+
+.navbar {
+    width: 100%;
+    background-color: #ACBCE6;
+    display:table;
 }
 
 
-.filter-options {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.filter-col{
+    display: inline;
+    float: right;
+}
+
+
+.right-filter{
+    float: right;
+    display: inline-block;
+    width:50%;
+}
+
+.articles-button {
+    display: inline-block;
+    width: 120px;
+    height: 25px;
     text-align: center;
+    color: white;
+    float: right;
+    margin-right: 30px;
+    background-color: #333333;
+    border-radius: 3px;
+}
+
+.articles-button:hover{
+    background-color: white;
+    color: black;
 }
 
 
-.filter-options-styles {
+.left-filter{
+    float:left;
+    display: inline-block;
+    width:50%;
 }
 
-.add-new-post-articles{
-    outline: 1px solid black;
 
-}
-
-.delete-articles{
-    outline: 1px solid black;
-
-}
-
-.edit-articles{
-    outline: 1px solid black;
+.active{
+    color: black;
+    margin-left: 20px;
 }

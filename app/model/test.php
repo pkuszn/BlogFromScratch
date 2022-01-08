@@ -1,13 +1,8 @@
 <?php
 require $config['LIB_PATH'] . 'connection.php';
 
-if (isset($_POST['action'])) {
-    select();
-}
 
-function foo(){
-    echo "dupal";
-}
+
 /*
 function select()
 {

@@ -95,13 +95,6 @@
             unset($result);
         }
         else{
-            $output = IsEmailExists();
-            if($output > 0){
-                registerProcess();
-            }
-            else{
-                echo "<script>alert('email exists in database')</script>";
-            }
             echo "poszlo ;)";
             registerProcess();
             unset($result);
@@ -126,11 +119,5 @@
         ?>
     </form>
 </div>
-
-
-
-
-
-
 </body>
 
