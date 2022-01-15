@@ -1,0 +1,41 @@
+<head>
+    <link rel="stylesheet" href="styles/style.css"/>
+    <script src="https://cdn.tiny.cloud/1/9y3rztdlrlkoaezx1s4xzpgtcytqpvwjni9qhyt8buwkodmo/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+<div id="post-popup articles-post">
+    <div class="popup-header">
+        <p class="popup-header articles-header">Create a new post</p>
+    </div>
+    <form method="POST" id="form-article" action="<?php $config['MODEL_PATH'] . 'post.php' ?>">
+        <div class="popup-cards">
+            <p>Title</p>
+            <input type="text" name="title" id="title title-article" class="inputs title-input" required/>
+        </div>
+        <div class="popup-cards">
+            <p>Post message</p>
+            <div class="WYSIWYG-tags">
+                <textarea id="message-article" class="inputs" name="post" cols="80" rows="10" required></textarea>
+                <script>
+                    tinymce.init({
+                        selector: "#message-article",
+                        setup: function (editor) {
+                        editor.on('change', function () {
+                            tinymce.triggerSave();
+                        });
+                    }
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="popup-cards">
+            <input type="submit" value="Send" id="post-button article-buton" name="submit"/>
+        </div>
+        <div class="popup-cards">
+            <?php
+                addNewPost();
+            ?>
+        </div>
+    </form>
+</div>
+</body>

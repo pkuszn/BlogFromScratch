@@ -14,14 +14,21 @@
     <div class="red" id="left-column">
         <h1 id="admin-header">Admin panel</h1>
         <div class="settings">
-            <img id="admin" class="settings" src="../app/icons/admin.png"/>
+            <a href="index.php?subview=info"><img id="admin" class="settings" src="../app/icons/admin.png"/></a>
             <img id=user" class="settings" src="../app/icons/profile-user.png"/>
             <img id="options" class="settings" src="../app/icons/gear.png"/>
             <img id="trends" class="settings" src="../app/icons/trend.png"/>
         </div>
     </div>
     <div class="green" id="right-column">
-        /// Column 2: Put any relevant content here ///
+        <?php include $config['VIEW_PATH'] . 'subview' . DS .  'info.phtml'; ?>
+    </div>
+</body>
+</html>
+
+</body>
+</html>
+
     </div>
 </div>
 

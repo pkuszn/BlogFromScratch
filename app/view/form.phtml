@@ -1,0 +1,31 @@
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/style-form.css"/></head>
+<body>
+<h1 class="label">Contact form</h1>
+<div class="register-container">
+    <form action="<?php $config['MODEL_PATH'] . 'register.php' ?>" method="POST" id="form-container" name="form">
+        <div class="register-sections">
+            <h4>Obligatory</h4>
+            <div class="input-container">
+                <label for="nickname">Nickname</label>
+                <input type="text" name="nickname" required/>
+            </div>
+            <div class="input-container">
+                <label for="email">E-mail address</label>
+                <input type="text" name="email" required/>
+            </div>
+        </div>
+        <div class="register-sections">
+            <div class="input-container">
+                <label for="message">Message</label>
+                <textarea class="text-area" name="message"></textarea>
+            </div>
+            </div>
+        <div>
+            <div>
+                <button type="submit" value="Register" id="button-form" name='submit'>Send</button>
+            </div>
+        </div>
+        </div>
+    </form>
+</body>

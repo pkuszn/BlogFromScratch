@@ -10,3 +10,4 @@ $config = [
 ];
 require $config['LIB_PATH'] . 'functions.php';
 require $config['LIB_PATH'] . 'pagination.php';
+

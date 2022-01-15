@@ -2,6 +2,11 @@
 $_SESSION['pageNow'] = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
 include $config['MODEL_PATH'] . 'home.php';
 
+if(isset($_GET['attribute'])){
+    $var = $_GET['name'];
+}
+
+
 
 function filter($param){
     $conn = establishConnection();
@@ -10,7 +15,7 @@ function filter($param){
     $_SESSION['amountOfPages'] = calculateArticlesPerPage($entries['COUNT(*)'], $perPage);
     $offset = Offset($_SESSION['pageNow'], $perPage);
     $sql = null;
-    if($param == 0){
+    if($_POST['']){
         $sql = "select * from posts ORDER BY Post_created_date DESC LIMIT ?, ?;";
     }
     else if($param == 1){

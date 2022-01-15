@@ -404,6 +404,8 @@ Buttons account
     display: none;
 }
 
+
+
 .popup-cards{
     padding: 10px;
     display: inline-block;
@@ -488,6 +490,48 @@ Buttons account
     padding:10px;
 }
 
+/* Extended post form in article */
+
+#post-popup\ articles-post{
+    display:block;
+    outline: 1px solid black;
+}
+
+#title\ title-article{
+    width:15%;
+}
+
+
+.form-article{
+    outline: 1px solid black;
+}
+
+/* WYSIWYG elements */
+
+.WYSIWYG-tags{
+    display:inline-block;
+    width:80%;
+}
+
+
+#editor{
+    background-color: white;
+    margin-top:5px;
+    float: left;
+    width:70%;
+    height:400px;
+}
+
+#message-article{
+    width:50%;
+}
+
+
+
+#post-button\ article-buton{
+    border-radius: 3px;
+    width:120px;
+}
 
 /* Pagination */
 
@@ -551,7 +595,7 @@ Buttons account
 }
 
 #footer-author{
-    ont: bold 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: bold 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;
     width: 100%;
     color: white;
@@ -563,6 +607,23 @@ Buttons account
     padding-right: 20px;
 
 }
+
+.chat{
+    float: left;
+    margin-left:10px;
+    transform: translateY(-5px);
+
+}
+
+.link-chat{
+    text-decoration: none;
+    color: white;
+}
+
+.link-chat:hover{
+    color:deepskyblue;
+}
+
 
 /* --------------------------------------------------------------------
 ARTICLES PART
@@ -671,6 +732,10 @@ ARTICLES PART
     color: black;
 }
 
+.articles-a{
+    float:left;
+}
+
 
 .left-filter{
     float:left;
@@ -683,3 +748,9 @@ ARTICLES PART
     color: black;
     margin-left: 20px;
 }
+
+.inline{
+    text-wrap: none;
+    color: white;
+}
+

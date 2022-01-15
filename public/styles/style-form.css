@@ -1,0 +1,67 @@
+.register-container {
+    display: block;
+    padding: 5px;
+    background-color: white;
+    margin-right: auto;
+    margin-left: auto;
+    min-width:400px;
+    max-width: 500px;
+    min-height: 300px;
+    overflow: hidden;
+    outline: none;
+    text-align: center;
+    box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+
+}
+
+input{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+    color: #333333;
+}
+
+.register-container:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#terms{
+    display: inline;
+}
+
+.terms-block{
+    display: inline-block;
+}
+
+label {
+    display: block;
+    text-align: center;
+}
+
+.buttons-container{
+    display:inline-block;
+    width:100%;
+    margin-top: 100px;
+
+}
+
+#form-captcha{
+    display: inline;
+    width: 100%;
+    float: left;
+}
+
+#form-container{
+    display: inline;
+}
+
+.text-area{
+    width:80%;
+    min-height: 150px;
+}
+
+#button-form{
+    float:right;
+    margin-top:20px;
+    width:100px;
+}

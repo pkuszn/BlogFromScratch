@@ -141,6 +141,14 @@
 
 <footer class="footer">
     <p id="footer-author">Created by Patryk Kuszneruk. spec ISI</p>
+
+    <?php
+    $image = displayImage($config['ICONS_PATH'] . 'chat.png', true);
+    echo "<a href='index.php?page=form' class='link-chat'>";
+    echo "Contact me";
+    echo "<img src = 'data:image/png;base64,$image'class='chat'/>";
+    echo "</a>";
+    ?>
     <div class="footer-icons">
         <?php
         $image = displayImage($config['ICONS_PATH'] . 'facebook.png', true);
