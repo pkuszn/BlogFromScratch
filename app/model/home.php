@@ -38,7 +38,11 @@ function selectPosts()
             echo "</hr>";
             echo "<p class='post-date'>" . $PostsCreatedDate . "</p>";
             echo "</div>";
+            echo "<div class='commentary'>";
+
             echo "</div>";
+            echo "</div>";
+
         }
     }
     mysqli_stmt_close($stmt);
@@ -65,6 +69,10 @@ function addNewPost()
                 mysqli_debug("d:t:o,/tmp/client.trace");
                 echo "<meta http-equiv='refresh' content='1;url=index.php?page=home'>";
             }
+            mysqli_stmt_close($stmt);
+            mysqli_close($conn);
         }
     }
+
 }
+

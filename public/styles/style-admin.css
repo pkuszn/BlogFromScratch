@@ -24,7 +24,6 @@ html,body{
 }
 .red{
     display:table-cell;
-    background-color: lightskyblue;
     width:30%;
 }
 
@@ -52,4 +51,39 @@ html,body{
 }
 #trends{
     texdt-align:center;
+}
+
+
+/* User Panel */
+
+#user-panel-label{
+    text-align:center;
+}
+
+.green{
+    clear:both;
+    content:"";
+    display:table;
+    width: 100%;
+}
+
+.user-settings{
+    margin-top:40px;
+    float:left;
+    width:50%;
+    text-align: center;
+}
+
+
+.user-data-template{
+    list-style-type:none;
+    font-size:20px;
+    padding: 10px 5px;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+
+}
+
+.right-side{
+    text-align: left;
 }

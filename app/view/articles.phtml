@@ -6,9 +6,10 @@
 <body>
 <p id="filter-desc">Filter options</p>
 <div class="filter">
+    <form method="GET">
     <div class="navbar">
         <div class="left-filter filter-col">
-            <a class="active" id=""><?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false)?>Name</a>
+            <a class="active" href="?attribute=name"><?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false)?>Name</a>
             <a class="active"><?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false)?>Date</a>
             <a class="active"><?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false)?>Year</a>
             <a class="active"><?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false)?>Alphabetic</a>
@@ -22,11 +23,14 @@
             </a>
         </div>
         <div class="right-filter filter-col">
-            <div class="articles-add-post articles-button">Add post</div>
-            <div class="delete-add-post articles-button">Delete post</div>
-            <div class="edit-add-post articles-button">Edit post</div>
+            <?php
+            echo $add = isset($_SESSION['user']) ? "<div class='articles-add-post articles-button'><a href='index.php?page=post' class='inline'>Add post</a></div>" : "<div class='articles-add-post articles-button'>Add post</div>";
+            echo $delete = isset($_SESSION['user']) ? "<div class='delete-add-post articles-button'><a href='index.php?page=post' class='inline'>Delete post</a></div>" : "<div class='delete-add-post articles-button'>Delete post</div>";
+            echo $edit = isset($_SESSION['user']) ? "<div class='edit-add-post articles-button'><a href='index.php?page=post' class='inline'>Edit post</a></div>" : "<div class='edit-add-post articles-button'>Edit post</div>";
+            ?>
         </div>
     </div>
+    </form>
     </ul>
 </div>
 <div class="row articles">

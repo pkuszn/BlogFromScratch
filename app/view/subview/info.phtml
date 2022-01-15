@@ -1,0 +1,86 @@
+<h1 id="user-panel-label">Account settings</h1>
+<div class="green" id="right-column">
+    <div class="user-settings">
+        <li class="user-data-template">
+            Avatar
+        </li>
+        <li class="user-data-template">
+            Name
+        </li>
+        <li class="user-data-template">
+            Username
+        </li>
+        <li class="user-data-template">
+            Contact
+        </li>
+        <li class="user-data-template">
+            Password
+        </li>
+        <li class="user-data-template">
+            Access
+        </li>
+        <li class="user-data-template">
+            Amount of posts
+        </li>
+        <li class="user-data-template">
+            Date account created
+        </li>
+        <li class="user-data-template">
+            Birthday
+        </li>
+        <li class="user-data-template">
+            City
+        </li>
+    </div>
+    <div class="user-settings right-side">
+        <li class="user-data-template">
+            <?php
+            $action = ($_SESSION['avatar'] == null) ? '-' : $_SESSION['avatar'];
+            echo $action;
+            ?>
+        </li>
+        <li class="user-data-template">
+            <?php echo $_SESSION['user'] //required ?>
+        </li>
+        <li class="user-data-template">
+            <?php
+            $action = ($_SESSION['first_name'] == null) ? '-' : $_SESSION['first_name'];
+            $action2 = ($_SESSION['last_name'] == null) ? '-' : $_SESSION['last_name'];
+            echo $action . $action2;
+            ?>
+        </li>
+        <li class="user-data-template">
+            <?php echo $_SESSION['email'] //required ?>
+
+        </li>
+        <li class="user-data-template">
+            <?php echo $_SESSION['pass'] //required ?>
+
+        </li>
+        <li class="user-data-template">
+            <?php echo $_SESSION['access'] //required ?>
+        </li>
+        <li class="user-data-template">
+            <?php
+            $action = ($_SESSION['access'] == 0) ? '-' : $_SESSION['access'];
+            echo $action;
+            ?>
+        </li>
+        <li class="user-data-template">
+            <?php echo $_SESSION['date-created'] //required ?>
+        </li>
+        <li class="user-data-template">
+            <?php
+            $action = ($_SESSION['birth_date'] == null) ? '-' : $_SESSION['birth_date'];
+            echo $action;
+            ?>
+        </li>
+        <li class="user-data-template">
+            <?php
+            $action = ($_SESSION['city'] == null) ? '-' : $_SESSION['city'];
+            echo $action;
+            ?>
+        </li>
+    </div>
+
+</div>

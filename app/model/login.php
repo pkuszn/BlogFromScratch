@@ -1,6 +1,8 @@
 <?php
+require  $config['MODEL_PATH'] . "admin.php";
 if(isset($_SESSION['user'])){
-    getInfoAboutUser($_SESSION['user']);
+    $user = $_SESSION['user'];
+    getInfoAboutUser($user);
 }
 require $config['LIB_PATH'] . 'connection.php';
 
