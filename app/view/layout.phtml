@@ -31,7 +31,10 @@
                 <a href="?page=blackjack">Blackjack</a>
             </li>
             <li>
-                <a href="?page=admin">Admin panel</a>
+                <?php
+                $action = (isset($_SESSION['user']) AND $_SESSION['access'] == "admin") ? '<a href="?page=admin">Admin panel</a>' : '<a>Admin panel</a>';
+                echo $action;
+                ?>
             </li>
             <li>
                 <a href="?page=about">About author</a>
@@ -54,7 +57,8 @@
             <div class="user-profile-rows">
                 <?php
                 $image = displayImage($config['ICONS_PATH'] . 'user-light.png', true);
-                echo "<a href='index.php?page=user'><img src = 'data:image/png;base64,$image' id='user-image'/></a>";
+                $action =  (isset($_SESSION['user'])) ? "<a href='index.php?page=user'><img src = 'data:image/png;base64,$image' id='user-image'/></a>" : "<img src = 'data:image/png;base64,$image' id='user-image'/>";
+                echo $action;
                 ?>
             </div>
         </div>

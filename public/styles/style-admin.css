@@ -87,3 +87,18 @@ html,body{
 .right-side{
     text-align: left;
 }
+
+
+/* Admin panel -> users */
+
+
+.userID{
+    display:inline-block;
+    border-radius:5px;
+    background-color: deepskyblue;
+}
+
+.userID:hover{
+    background-color: white;
+
+}

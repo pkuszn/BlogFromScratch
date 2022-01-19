@@ -14,15 +14,37 @@
     <div class="red" id="left-column">
         <h1 id="admin-header">Admin panel</h1>
         <div class="settings">
-            <a href="index.php?subview=info"><img id="admin" class="settings" src="../app/icons/admin.png"/></a>
+            <img id="admin" class="settings" src="../app/icons/admin.png"/>
             <img id=user" class="settings" src="../app/icons/profile-user.png"/>
             <img id="options" class="settings" src="../app/icons/gear.png"/>
             <img id="trends" class="settings" src="../app/icons/trend.png"/>
         </div>
     </div>
     <div class="green" id="right-column">
-        <?php include $config['VIEW_PATH'] . 'subview' . DS .  'info.phtml'; ?>
+        <?php
+        displayUsers();
+        ?>
+        <script type="text/javascript">
+            $(".userID").click(function () {
+                var userData = $(this).text();
+                $.ajax({
+                   type:"POST",
+                    url:'../app/model/admin.php',
+                    data: {userID: userData, functionName: 'action'},
+                    cache:false,
+                    success:function(response){
+                       alert(response);
+                    }
+                });
+                alert(userData);
+            });
+        </script>
     </div>
+    <?php
+    $userID = $_SESSION['userID'];
+    echo $userID;
+    deleteUser($userID);
+    ?>
 </body>
 </html>
 

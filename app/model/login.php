@@ -4,7 +4,6 @@ if(isset($_SESSION['user'])){
     $user = $_SESSION['user'];
     getInfoAboutUser($user);
 }
-require $config['LIB_PATH'] . 'connection.php';
 
 
 

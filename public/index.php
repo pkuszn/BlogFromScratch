@@ -15,7 +15,6 @@ $page = get('page', 'home');
 $model = $config['MODEL_PATH'] . $page .  '.php';
 $view = $config['VIEW_PATH'] . $page . '.phtml';
 $_404 = $config['VIEW_PATH'] . '404.phtml';
-$subview = $config['VIEW_PATH'] . 'subview' . $page . '.phtml';
 if(file_exists($model)){
     require $model;
 }
