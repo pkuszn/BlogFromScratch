@@ -1,5 +1,4 @@
 <?php
-require $config['LIB_PATH'] . 'connection.php';
 require $config['MODEL_PATH'] . 'admin.php';
 getInfoAboutUser($_SESSION['user']);
 

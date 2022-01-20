@@ -31,7 +31,10 @@
                 <a href="?page=blackjack">Blackjack</a>
             </li>
             <li>
-                <a href="?page=admin">Admin panel</a>
+                <?php
+                $action = (isset($_SESSION['user']) AND $_SESSION['access'] == "admin") ? '<a href="?page=admin">Admin panel</a>' : '<a>Admin panel</a>';
+                echo $action;
+                ?>
             </li>
             <li>
                 <a href="?page=about">About author</a>
@@ -54,7 +57,8 @@
             <div class="user-profile-rows">
                 <?php
                 $image = displayImage($config['ICONS_PATH'] . 'user-light.png', true);
-                echo "<a href='index.php?page=user'><img src = 'data:image/png;base64,$image' id='user-image'/></a>";
+                $action =  (isset($_SESSION['user'])) ? "<a href='index.php?page=user'><img src = 'data:image/png;base64,$image' id='user-image'/></a>" : "<img src = 'data:image/png;base64,$image' id='user-image'/>";
+                echo $action;
                 ?>
             </div>
         </div>
@@ -64,8 +68,24 @@
 
     <div class="topbar-column" id="search-container">
         <div class="search">
-            <input type="text" id="input-articles" name="search" placeholder="Search articles"/>
-            <button type="button" name="search-button">Search</button>
+            <input type="text" class="inputArticles"name="search" placeholder="Search articles"/>
+            <button type="button" class="searchbtn" name="search-button">Search</button>
+            <script type="text/javascript">
+                $(".searchbtn").click(function () {
+                    alert('true');
+                    var userData = $(".inputArticles").val();
+                    $.ajax({
+                        type:"POST",
+                        url:'../app/model/home.php',
+                        data: {post: userData, functionName: 'action'},
+                        cache:false,
+                        success:function(response){
+                            alert(response);
+                        }
+                    });
+                    alert(userData);
+                });
+            </script>
         </div>
     </div>
     <div class="topbar-column" id="user-account-buttons">

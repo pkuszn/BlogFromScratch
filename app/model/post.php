@@ -1,5 +1,4 @@
 <?php
-require $config['LIB_PATH'] . 'connection.php';
 function addNewPost()
 {
     if (isset($_POST['submit'])) {

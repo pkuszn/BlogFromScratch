@@ -1,15 +1,14 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/connection.php');
 
 // SQL Statements
 //Link this statement with AJAX execute
-require $config['LIB_PATH'] . 'connection.php';
 
 $statement = null;
-if(empty($_POST['code'])){
- // do nothing
-}
-else{
-    if(isset($_POST['code'])){
+if (empty($_POST['code'])) {
+    // do nothing
+} else {
+    if (isset($_POST['code'])) {
         $data = json_decode(stripslashes($_POST['code']));
         $statement = checkCaptcha($data);
     }

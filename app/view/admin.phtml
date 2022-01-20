@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" media="screen" href="../public/styles/style-admin.css"/>
     <title>Admin Panel</title>
+    <?php
+    ?>
 </head>
 <body>
 
@@ -14,15 +16,21 @@
     <div class="red" id="left-column">
         <h1 id="admin-header">Admin panel</h1>
         <div class="settings">
-            <a href="index.php?subview=info"><img id="admin" class="settings" src="../app/icons/admin.png"/></a>
-            <img id=user" class="settings" src="../app/icons/profile-user.png"/>
-            <img id="options" class="settings" src="../app/icons/gear.png"/>
-            <img id="trends" class="settings" src="../app/icons/trend.png"/>
+            <form method="post">
+                <button type="submit" class="settings" name="admin" style=""><img name="admin" id="admin" class="settings" src="../app/icons/admin.png"/></button>
+                <button type="submit" class="settings"name="user" style=""><img name="user" id="user" class="settings" src="../app/icons/profile-user.png"/></button>
+                <button type="submit" class="settings" name="options" style=""><img name="admin" id="admin" class="settings" src="../app/icons/gear.png"/></button>
+                <button type="submit" class="settings"name="trends" style=""><img name="admin" id="admin" class="settings" src="../app/icons/trend.png"/></button>
+            </form>
         </div>
     </div>
     <div class="green" id="right-column">
-        <?php include $config['VIEW_PATH'] . 'subview' . DS .  'info.phtml'; ?>
+        <?php
+        include $main_subview;
+        ?>
     </div>
+    <?php
+    ?>
 </body>
 </html>
 

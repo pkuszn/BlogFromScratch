@@ -15,7 +15,9 @@
         </div>
         <div class="output">
             <?php
-                LoginProcess();
+                require_once $config['LIB_PATH'] . 'connection.php';
+                $conn = establishConnection();
+                LoginProcess($conn);
             ?>
         </div>
         <div id="row-button">

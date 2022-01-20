@@ -1,11 +1,10 @@
 <head>
     <link rel="stylesheet" type="text/css" media="screen" href="styles/style-form.css"/></head>
 <body>
-<h1 class="label">Contact form</h1>
+<h1 id="contact-header">Contact form</h1>
 <div class="register-container">
     <form action="<?php $config['MODEL_PATH'] . 'register.php' ?>" method="POST" id="form-container" name="form">
         <div class="register-sections">
-            <h4>Obligatory</h4>
             <div class="input-container">
                 <label for="nickname">Nickname</label>
                 <input type="text" name="nickname" required/>

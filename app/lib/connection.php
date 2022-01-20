@@ -1,14 +1,10 @@
 <?php
 
 function establishConnection(){
-    define('HOST', '127.0.0.1');
-    define('DATABASE', 'mydb');
-    define('USER', 'root');
-    define('PASS', 'my#@3y17;database');
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
-    $conn = new mysqli(HOST, USER, PASS, DATABASE);
+    $conn = new mysqli('127.0.0.1', 'root', 'my#@3y17;database', 'mydb');
 
 // Check connection
     if (mysqli_connect_errno()) {
@@ -19,11 +15,6 @@ function establishConnection(){
     $_SESSION['connection-status'] = "Connected successfully";
     return $conn;
 }
-
-
-
-
-
 
 
 ?>

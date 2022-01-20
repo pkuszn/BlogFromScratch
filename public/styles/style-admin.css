@@ -87,3 +87,24 @@ html,body{
 .right-side{
     text-align: left;
 }
+
+
+/* Admin panel -> users */
+
+
+.userID{
+    display:inline-block;
+    border-radius:5px;
+}
+
+.userID:hover{
+    background-color: white;
+
+}
+
+.delete-user{
+    margin-bottom:5px;
+
+}
+
+

@@ -23,20 +23,75 @@
             </a>
         </div>
         <div class="right-filter filter-col">
-            <?php
-            echo $add = isset($_SESSION['user']) ? "<div class='articles-add-post articles-button'><a href='index.php?page=post' class='inline'>Add post</a></div>" : "<div class='articles-add-post articles-button'>Add post</div>";
-            echo $delete = isset($_SESSION['user']) ? "<div class='delete-add-post articles-button'><a href='index.php?page=post' class='inline'>Delete post</a></div>" : "<div class='delete-add-post articles-button'>Delete post</div>";
-            echo $edit = isset($_SESSION['user']) ? "<div class='edit-add-post articles-button'><a href='index.php?page=post' class='inline'>Edit post</a></div>" : "<div class='edit-add-post articles-button'>Edit post</div>";
-            ?>
+            <div class='articles-add-post articles-button' id="newarticle">Add post</div>
+            <script>
+                $(".articles-add-post").click(function () {
+                    window.location.replace("index.php?page=post");
+                });
+                $(document).ready(function(){
+                    $(".delete-tool").click(function () {
+                       var postData = $(this).attr("alt");
+                        if (confirm("Are you sure you want to delete a post?") == true) {
+                            $.ajax({
+                                type: "POST",
+                                url: '../app/model/articles.php',
+                                data: {post: postData, functionName: 'delete'},
+                                cache: false,
+                                success: function (response) {
+                                    alert(response);
+                                    setInterval(refresh(), 5000);
+                                }
+                            });
+                        }
+                    });
+                    $(".edit-tool").on("click", function(){
+                        var postData = $(this).attr("alt");
+                        if(confirm("Are you sure you want to edit a post?")){
+                            $.ajax({
+                                type: "POST",
+                                url: '../app/model/articles.php',
+                                data: {post: postData, functionName: 'edit'},
+                                cache: false,
+                                success: function (response) {
+                                    alert(response);
+                                    setInterval(refresh(), 5000);
+                                }
+                            });
+                        }
+                    })
+                });
+
+                function refresh(){
+                    location.reload(true);
+                }
+            </script>
+
         </div>
     </div>
     </form>
     </ul>
+    <script type="text/javascript">
+        $(".searchbtn").click(function () {
+            alert('true');
+            var userData = $(".inputArticles").val();
+            $.ajax({
+                type:"POST",
+                url:'../app/model/home.php',
+                data: {post: userData, functionName: 'action'},
+                cache:false,
+                success:function(response){
+                    alert(response);
+                }
+            });
+            alert(userData);
+        });
+    </script>
+    </script>
 </div>
 <div class="row articles">
     <div class="left-column articles">
         <?php
-        echo selectPosts();
+        filter();
         ?>
         <div id="post-popup">
             <div class="popup-header">

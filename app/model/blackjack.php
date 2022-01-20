@@ -1,13 +1,5 @@
 <?php
 
-
-if(isset($_SESSION['user'])){
-    $UserSession = $_SESSION['user'];
-}
-else{
-    $UserSession = "Not logged in";
-}
-
 $deck = array(
     '2' => 2,
     '3' => 3,
@@ -40,7 +32,7 @@ $user = array();
 function drawCards($array)
 {
     $rand_key = array_rand($array);
-    echo $rand_key. "\n";
+    echo $rand_key . "\n";
     $rand_value = $array[$rand_key];
 
     $output = $rand_value;
@@ -49,16 +41,14 @@ function drawCards($array)
 
 
 $_SESSION['userScore'] = drawCards($_SESSION['cards']) + drawCards($_SESSION['cards']);
-if(isset($_POST['draw-card'])){
+if (isset($_POST['draw-card'])) {
     $_SESSION['newCard'] = drawCards($_SESSION['cards']);
     $_SESSION['userScore'] += $_SESSION['newCard'];
-}
-else if(isset($_POST['pass'])){
-    if($_SESSION['userScore'] <= 21 AND $_SESSION['userScore'] > $_SESSION['computerScore']){
+} else if (isset($_POST['pass'])) {
+    if ($_SESSION['userScore'] <= 21 and $_SESSION['userScore'] > $_SESSION['computerScore']) {
         $_SESSION['Result'] = "User won";
         $_SESSION['userScore'] = 0;
-    }
-    else if($_SESSION['computerScore'] <= 21 AND $_SESSION['computerScore'] > $_SESSION['userScore']){
+    } else if ($_SESSION['computerScore'] <= 21 and $_SESSION['computerScore'] > $_SESSION['userScore']) {
         $_SESSION['Result'] = "Computer won";
         $_SESSION['computerScore'] = 0;
     }
