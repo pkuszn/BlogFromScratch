@@ -68,8 +68,24 @@
 
     <div class="topbar-column" id="search-container">
         <div class="search">
-            <input type="text" id="input-articles" name="search" placeholder="Search articles"/>
-            <button type="button" name="search-button">Search</button>
+            <input type="text" class="inputArticles"name="search" placeholder="Search articles"/>
+            <button type="button" class="searchbtn" name="search-button">Search</button>
+            <script type="text/javascript">
+                $(".searchbtn").click(function () {
+                    alert('true');
+                    var userData = $(".inputArticles").val();
+                    $.ajax({
+                        type:"POST",
+                        url:'../app/model/home.php',
+                        data: {post: userData, functionName: 'action'},
+                        cache:false,
+                        success:function(response){
+                            alert(response);
+                        }
+                    });
+                    alert(userData);
+                });
+            </script>
         </div>
     </div>
     <div class="topbar-column" id="user-account-buttons">

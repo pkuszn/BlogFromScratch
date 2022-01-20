@@ -1,9 +1,5 @@
 <?php
 require  $config['MODEL_PATH'] . "admin.php";
-if(isset($_SESSION['user'])){
-    $user = $_SESSION['user'];
-    getInfoAboutUser($user);
-}
 
 
 
@@ -34,6 +30,7 @@ function LoginProcess()
                     } else {
                         echo "<meta http-equiv='refresh' content='1;url=index.php?page=home'>";
                         $_SESSION['user'] = $login;
+                        getInfoAboutUser($login);
                     }
                 }
             }
