@@ -1,0 +1,27 @@
+<h1 id="admin-header">Users</h1>
+<?php
+displayUsers();
+?>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".userID").click(function () {
+            if (confirm("Are you sure you want to delete the user?") == true) {
+                var userData = $(this).attr("alt");
+                $.ajax({
+                    type: "POST",
+                    url: '../app/model/admin.php',
+                    data: {userID: userData, functionName: 'action'},
+                    cache: false,
+                    success: function (response) {
+                        setInterval(refreshPage(), 5000);
+                    }
+                });
+                alert(userData);
+            }
+        });
+    });
+
+    function refreshPage() {
+        location.reload(true);
+    }
+</script>

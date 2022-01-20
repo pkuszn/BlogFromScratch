@@ -28,14 +28,42 @@
                 $(".articles-add-post").click(function () {
                     window.location.replace("index.php?page=post");
                 });
-
-                $(".delete-tool").click(function () {
-                    alert('test');
+                $(document).ready(function(){
+                    $(".delete-tool").click(function () {
+                       var postData = $(this).attr("alt");
+                        if (confirm("Are you sure you want to delete a post?") == true) {
+                            $.ajax({
+                                type: "POST",
+                                url: '../app/model/articles.php',
+                                data: {post: postData, functionName: 'delete'},
+                                cache: false,
+                                success: function (response) {
+                                    alert(response);
+                                    setInterval(refresh(), 5000);
+                                }
+                            });
+                        }
+                    });
+                    $(".edit-tool").on("click", function(){
+                        var postData = $(this).attr("alt");
+                        if(confirm("Are you sure you want to edit a post?")){
+                            $.ajax({
+                                type: "POST",
+                                url: '../app/model/articles.php',
+                                data: {post: postData, functionName: 'edit'},
+                                cache: false,
+                                success: function (response) {
+                                    alert(response);
+                                    setInterval(refresh(), 5000);
+                                }
+                            });
+                        }
+                    })
                 });
-                $(".edit-tool").click(function () {
-                    alert('test');
-                });
 
+                function refresh(){
+                    location.reload(true);
+                }
             </script>
 
         </div>

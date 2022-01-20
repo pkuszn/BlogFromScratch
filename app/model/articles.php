@@ -1,7 +1,24 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/connection.php');
 $_SESSION['pageNow'] = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
-include $config['MODEL_PATH'] . 'home.php';
+
+
+
+if(isset($_POST['functionName']) == "delete"){
+    $conn = establishConnection();
+    $postData = json_decode($_POST['post']);
+    echo $postData;
+    $sql = "DELETE FROM posts WHERE Post_ID = ?";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "<script type='text/javascript'>alert('SQL statement failed')</script>";
+    } else {
+        mysqli_stmt_bind_param($stmt, "i", $postData);
+        mysqli_stmt_execute($stmt);
+    }
+}
+
+
 
 
 function filter()
@@ -66,10 +83,9 @@ function filter()
             $PostAuthor = $row['Post_Author'];
             echo "<div class='card'>";
             $image = (isset($_SESSION['access']) == "admin") ? displayImage($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/icons/delete.png', true) : "";
-            echo "<img src = 'data:image/png;base64,$image' id='post-tools' class='delete-tool'/>";
+            echo "<img src = 'data:image/png;base64,$image' alt='$PostID' id='post-tools' class='delete-tool'/>";
             $image2 = (isset($_SESSION['access']) == "admin") ? displayImage($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/icons/edit.png', true) : "";
-            echo "<img src = 'data:image/png;base64,$image2' id='post-tools' class='edit-tool'/>";
-            echo "<p class='postID'>" . "POST ID: " . $PostID . "</p>";
+            echo "<img src = 'data:image/png;base64,$image2' alt='$PostID' id='post-tools' class='edit-tool'/>";
             echo "<h2 class='post-header'>" . $PostsTitle . "</h2>";
             echo "<hr>";
             echo "</hr>";

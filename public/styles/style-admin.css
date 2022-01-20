@@ -95,11 +95,15 @@ html,body{
 .userID{
     display:inline-block;
     border-radius:5px;
-    background-color: deepskyblue;
 }
 
 .userID:hover{
     background-color: white;
+
+}
+
+.delete-user{
+    margin-bottom:5px;
 
 }
 
