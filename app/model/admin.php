@@ -9,8 +9,8 @@ if(isset($_POST['admin'])){
 if(isset($_POST['user'])){
     $main_subview = $_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/view/subview/info.phtml';
 }
-if(isset($_POST['admin'])){
-    $main_subview = $_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/view/subview/users.phtml';
+if(isset($_POST['priviliges'])){
+    $main_subview = $_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/view/subview/privileges.phtml';
 }
 if(isset($_POST['admin'])){
     $main_subview = $_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/view/subview/users.phtml';
@@ -18,6 +18,23 @@ if(isset($_POST['admin'])){
 if(isset($_POST['admin'])){
     $main_subview = $_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/view/subview/users.phtml';
 }
+
+
+if(isset($_POST['functionDesc']) == "privileges"){
+    $conn = establishConnection();
+    $priviliges = json_decode($_POST['userID']);
+    echo $priviliges;
+    $sql = "UPDATE user SET User_access = 'user' WHERE User_ID = ?";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        echo "<script type='text/javascript'>alert('SQL statement failed')</script>";
+    }
+    else{
+        mysqli_stmt_bind_param($stmt, "i", $priviliges);
+        mysqli_stmt_execute($stmt);
+    }
+}
+
 
 
 if (isset($_POST['functionName']) == "action") {
@@ -80,6 +97,31 @@ function displayUsers(){
         }
     }
 }
+
+
+function displayUsersWithUnknownAccess(){
+    $conn = establishConnection();
+    $sql = "SELECT * from user WHERE User_access = 'unknown' ORDER BY User_created_date_account DESC";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        echo "<script type='text/javascript'>alert('SQL statement failed')</script>";
+    }
+    else{
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $image = displayImage( $_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/icons/key-user.png', true);
+        while($row = mysqli_fetch_assoc($result)){
+            echo  "<img src = 'data:image/png;base64,$image' alt='" . $row['User_ID'] . "' class='userID' '/>" .  "\t" . $row['User_name'] . "\t" . $row['User_email']  . "\t" . $row['User_access']  . "\t" . $row['User_amount_of_posts']  . "\t" . $row['User_created_date_account']  . "\t" . $row['User_birthdate']  . "\t" . $row['User_first_name']  . "\t" . $row['User_last_name'] . "<br>";
+            echo "<hr>";
+        }
+    }
+}
+
+
+
+
+
+
 
 
 

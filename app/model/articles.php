@@ -2,9 +2,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/connection.php');
 $_SESSION['pageNow'] = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
 
-
-
-if(isset($_POST['functionName']) == "delete"){
+if(isset($_POST['functionDelete']) == "delete"){
     $conn = establishConnection();
     $postData = json_decode($_POST['post']);
     echo $postData;
@@ -18,8 +16,11 @@ if(isset($_POST['functionName']) == "delete"){
     }
 }
 
+if(isset($_POST['search'])){
+    if(!empty($_POST['search'])){
 
-
+    }
+}
 
 function filter()
 {
@@ -28,16 +29,22 @@ function filter()
     $entries = getAmountOfEntries($conn, 'posts');
     $_SESSION['amountOfPages'] = calculateArticlesPerPage($entries['COUNT(*)'], $perPage);
     $offset = Offset($_SESSION['pageNow'], $perPage);
-    $sql = $sql = "select * from posts ORDER BY Post_created_date DESC LIMIT ?, ?;";
-//
-//    if($_POST['']){
-//        $sql = "select * from posts ORDER BY Post_created_date DESC LIMIT ?, ?;";
+    $sql = "select * from posts ORDER BY Post_created_date DESC LIMIT ?, ?;";
+
+    if (isset($_POST['name'])) {
+        $sql = "select * from posts ORDER BY Post_author ASC LIMIT ?, ?;";
+    } else if (isset($_POST['date'])) {
+        $sql = "select * from posts ORDER BY Post_created_date ASC LIMIT ?, ?;";
+    } else if (isset($_POST['alphabetic'])) {
+        $sql = "select * from posts ORDER BY Post_message ASC LIMIT ?, ?;";
+    } else if (isset($_POST['date'])) {
+        $sql = "select * from posts ORDER BY Post_created_date ASC LIMIT ?, ?;";
+    }
 //    }
 //    else if($param == 1){
 //        $sql = "select * from posts ORDER BY Post_created_date ASC LIMIT ?, ?;";
 //    }
 //    else if($param == 2){
-//        $sql = "select * from posts ORDER BY Post_title DESC LIMIT ?, ?;";
 //    }
 //    else if($param == 3){
 //        $sql = "select * from posts ORDER BY Post_title ASC LIMIT ?, ?;";

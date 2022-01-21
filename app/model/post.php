@@ -1,4 +1,27 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/lib/connection.php');
+
+if(isset($_POST['functionEdit']) == "edit"){
+    $conn = establishConnection();
+    $postData = json_decode($_POST['post']);
+    echo $postData;
+    $sql = "SELECT Post_ID, Post_title, Post_message FROM posts WHERE Post_ID = ?";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "<script type='text/javascript'>alert('SQL statement failed')</script>";
+    } else {
+        mysqli_stmt_bind_param($stmt, "i", $postData);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo  $row['Post_ID'] . ",";
+            echo  $row['Post_title'] . ",";
+            echo  $row['Post_message'];
+        }
+    }
+}
+
+
 function addNewPost()
 {
     if (isset($_POST['submit'])) {
@@ -21,3 +44,7 @@ function addNewPost()
         }
     }
 }
+
+?>
+
+

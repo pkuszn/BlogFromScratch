@@ -68,24 +68,16 @@
 
     <div class="topbar-column" id="search-container">
         <div class="search">
-            <input type="text" class="inputArticles"name="search" placeholder="Search articles"/>
-            <button type="button" class="searchbtn" name="search-button">Search</button>
-            <script type="text/javascript">
-                $(".searchbtn").click(function () {
-                    alert('true');
-                    var userData = $(".inputArticles").val();
-                    $.ajax({
-                        type:"POST",
-                        url:'../app/model/home.php',
-                        data: {post: userData, functionName: 'action'},
-                        cache:false,
-                        success:function(response){
-                            alert(response);
-                        }
+            <form method="POST" action="<?php echo $config['MODEL_PATH'] . "articles.php"?>">
+                <input type="text" class="inputArticles"name="search" placeholder="Search articles"/>
+                <button type="submit" class="searchbtn" name="search-button" onclick="document.location.href = 'index.php?page=articles'">Search</button>
+                <script type="text/javascript">
+                    $(".searchbtn").click(function () {
+                        alert('test');
+                        document.location.href = ("index.php?page=articles");
                     });
-                    alert(userData);
-                });
-            </script>
+                </script>
+            </form>
         </div>
     </div>
     <div class="topbar-column" id="user-account-buttons">
