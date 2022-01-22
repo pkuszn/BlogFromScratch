@@ -1,6 +1,8 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/lib/connection.php');
-
+$PostID = "";
+$PostTitle = "";
+$PostMessage = "";
 if(isset($_POST['functionEdit']) == "edit"){
     $conn = establishConnection();
     $postData = json_decode($_POST['post']);
@@ -14,9 +16,28 @@ if(isset($_POST['functionEdit']) == "edit"){
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         while ($row = mysqli_fetch_assoc($result)) {
-            echo  $row['Post_ID'] . ",";
-            echo  $row['Post_title'] . ",";
-            echo  $row['Post_message'];
+            $PostID = $row['Post_ID'];
+            echo $PostID;
+            echo ['Post_title'];
+            echo $row['Post_message'];
+            edit($PostID);
+        }
+    }
+}
+function edit($PostID)
+{
+    if (isset($_POST['editbtn']) and isset($_POST['title']) and isset($_POST['post'])){
+        $conn = establishConnection();
+        $PostTitle = $_POST['title'];
+        $PostMessage = $_POST['post'];
+        $sql = "UPDATE posts SET Post_title = ?, Post_message = ? WHERE Post_ID = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            echo "<script type='text/javascript'>alert('SQL statement failed')</script>";
+        } else {
+            mysqli_stmt_bind_param($stmt, "ssi", $PostTitle, $PostMessage, $PostID);
+            mysqli_stmt_execute($stmt);
+            echo "<meta http-equiv='refresh' content='1;url=index.php?page=home'>";
         }
     }
 }

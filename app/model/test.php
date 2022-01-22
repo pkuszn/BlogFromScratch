@@ -1,6 +1,9 @@
 <?php
 require $config['MODEL_PATH'] . 'admin.php';
+require $config['MODEL_PATH'] . 'comment.php';
+
 getInfoAboutUser($_SESSION['user']);
+
 
 /*
 function select()

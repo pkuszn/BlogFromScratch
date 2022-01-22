@@ -7,11 +7,14 @@
     <div class="popup-header">
         <p class="popup-header articles-header">Create a new post</p>
     </div>
-    <form method="POST" id="form-article" action="<?php $config['MODEL_PATH'] . 'post.php' ?>">
+    <form method="POST" id="form-article" action="<?php $config['MODEL_PATH'] . 'editor.php' ?>">
         <div class="popup-cards">
             <p>Title</p>
             <?php
             $action = isset($_SESSION['postTitle']) ? $_SESSION['postTitle'] : "test"; echo $action;
+            echo $PostID;
+            echo $PostTitle;
+            echo $PostMessage;
             ?>
             <input type="text" name="title" id="title title-article" class="inputs title-input" required/>
         </div>
@@ -38,6 +41,7 @@
         </div>
         <div class="popup-cards">
             <input type="submit" value="Send" id="post-button article-buton" name="submit"/>
+            <input type="submit" value="Edit" id="post-button article-buton" name="editbtn"/>
         </div>
         <div class="popup-cards">
             <?php

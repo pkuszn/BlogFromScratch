@@ -26,7 +26,7 @@
             <div class='articles-add-post articles-button' id="newarticle">Add post</div>
             <script>
                 $(".articles-add-post").click(function () {
-                    window.location.replace("index.php?page=post");
+                    window.location.replace("index.php?page=editor");
                 });
                 $(document).ready(function(){
                     $(".delete-tool").click(function () {
@@ -55,8 +55,6 @@
                                 success: function (response) {
                                     alert(response);
                                     var array = [];
-                                    export{array};
-                                    // Wstawić w post iffset($_POST['Cczy klikniety edit i w momencie kliniecia przekazac response do funckji edytuj()
                                     for (var i = 0; i < response.length; i++) {
                                         array = response[i];
                                         console.log(response[i]);
@@ -79,7 +77,7 @@
                     location.reload(true);
                 }
                 function redirect(){
-                    window.location.replace("index.php?page=post");
+                    window.location.replace("index.php?page=editor");
                 }
 
             </script>

@@ -97,11 +97,23 @@ function filter()
             echo "<hr>";
             echo "</hr>";
             echo "<p class='post-text'>" . $PostsText . "</p>";
+            echo "<div class='author-container'>";
             echo "<div class='author-info'>";
-            echo "<p class='post-author'>" . $PostAuthor . "</p>";
-            echo "</hr>";
+            echo "<p class='post-author'>" . "<b>". $PostAuthor . "</b>" . "</p>";
             echo "<p class='post-date'>" . $PostsCreatedDate . "</p>";
-            echo "<br>";
+            echo "</div>";
+            echo "<h4 style='text-align:left;margin: 20px;' >Comments</h4>";
+            echo "<div class='commentbtn-container'>";
+            echo "<div class='commentbtn'>";
+            echo "<form method='POST'>";
+            echo "<div class='commentary'>";
+            require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/model/comment.php');
+            showComments($PostID);
+            require($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/comment.phtml');
+            echo "</div>";
+            echo "</form>";
+            echo "</div>";
+            echo "</div>";
             echo "</div>";
             echo "</div>";
         }

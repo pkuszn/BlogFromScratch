@@ -102,11 +102,11 @@
         <div class="right-card">
             <h2 class="article-headers">Last posts</h2>
             <hr>
-            <li class="TWI-list"><a href="TIWP_LAB/Canvas/Canvas.php">Canvas</a></li>
-            <li class="TWI-list"><a href="TIWP_LAB/AudioVideo/VideoAudio.php">Audio & Video</a></li>
-            <li class="TWI-list"><a href="TIWP_LAB/FormHTML4/FormHTML4.php">Form HTML4</a></li>
-            <li class="TWI-list"><a href="TIWP_LAB/FormHTML5/FormHTML5.php">Form HTML5</a></li>
-            <li class="TWI-list"><a href="TIWP_LAB/AJAX-XML/Ajax-XML.php">AJAX-XML</a></li>
+            <li class="TWI-list"><a href="../BlogFromScratch/TIWP_LAB/Canvas/Canvas.php">Canvas</a></li>
+            <li class="TWI-list"><a href="../BlogFromScratchTIWP_LAB/AudioVideo/VideoAudio.php">Audio & Video</a></li>
+            <li class="TWI-list"><a href="../BlogFromScratchTIWP_LAB/FormHTML4/FormHTML4.php">Form HTML4</a></li>
+            <li class="TWI-list"><a href="../BlogFromScratchTIWP_LAB/FormHTML5/FormHTML5.php">Form HTML5</a></li>
+            <li class="TWI-list"><a href="../BlogFromScratchTIWP_LAB/AJAX-XML/Ajax-XML.php">AJAX-XML</a></li>
             <li class="TWI-list">jQuery</li>
             <li class="TWI-list">Snake jQuery</li>
             <li class="TWI-list">Project</li>
@@ -114,31 +114,33 @@
         <div class="right-card">
             <h2 class="article-headers">Quadratic Equations</h2>
             <hr>
-            <form action="Index.php" method="POST">
-                <p>A: <input type="number" name="A" class="quadratic-equ-input"/></p>
-                <p>B: <input type="number" name="B" class="quadratic-equ-input"/></p>
-                <p>C: <input type="number" name="C" class="quadratic-equ-input"/></p>
-                <button type="button" onclick="quadraticEquation(3,2,1)">Solve</button>
-            </form>
-            </hr>
-            <p id="equation-output"></p>
-            <script>
-                function quadraticEquation(A, B, C){
-                    window.func = arg => console.log('=\\');
+                <p>A: <input type="text" class="inputA" id="quadratic-equ-input"/></p>
+                <p>B: <input type="text" class="inputB" id="quadratic-equ-input"/></p>
+                <p>C: <input type="text" class="inputC" id="quadratic-equ-input"/></p>
+                <button type="button" class="quadraticbtn">Solve</button>
+            <script type="text/javascript">
+                $(".quadraticbtn").on("click", function () {
+                    var a = $(".inputA").val();
+                    var b = $(".inputB").val();
+                    var c = $(".inputC").val();
+                    alert(a+b+c);
                     $.ajax({
-                        type: 'POST',
-                        url: '../app/lib/math.php',
-                        data: {action: 'math', 'A=' + A + "B=" + B + "C=" + C}
-                        success: function(data){
-                            console.log(data);
-                            $('#equation-output').text(data)
-                            alert(data);
-                            console.log(data);
-                         }
+                        type: "POST",
+                        url: '../app/model/home.php',
+                        data: {A: a, B: b, C: c, functionName: 'equation'},
+                        cache: false,
+                        success: function (response) {
+                            alert(response);
+                        }
                     });
-                }
+                });
             </script>
-
+            </hr>
+            <?php
+            if(isset($_POST['quadraticbtn'])){
+                echo $result;
+            }
+            ?>
         </div>
         <div class="right-card">
             <h2 class="article-headers">TIWP lab exercises</h2>

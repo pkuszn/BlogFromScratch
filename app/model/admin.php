@@ -12,8 +12,8 @@ if(isset($_POST['user'])){
 if(isset($_POST['priviliges'])){
     $main_subview = $_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/view/subview/privileges.phtml';
 }
-if(isset($_POST['admin'])){
-    $main_subview = $_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/view/subview/users.phtml';
+if(isset($_POST['avatar'])){
+    $main_subview = $_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/view/subview/avatar.phtml';
 }
 if(isset($_POST['admin'])){
     $main_subview = $_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/view/subview/users.phtml';

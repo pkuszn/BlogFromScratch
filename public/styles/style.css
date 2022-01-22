@@ -356,7 +356,7 @@ Buttons account
     color: dimgrey;
 }
 
-.quadratic-equ-input{
+#quadratic-equ-input{
     width: 100%;
 }
 
@@ -392,7 +392,6 @@ Buttons account
 
 #add-new-post{
     float: right;
-    margin-top: -5px;
     margin-right: -20px;
 }
 
@@ -453,18 +452,6 @@ Buttons account
     height:auto;
 }
 
-.post-date{
-}
-
-.post-author{
-    float: right;
-}
-
-.postID{
-    float:right;
-    text-align: right;
-    width:100%;
-}
 
 #post-tools{
     float:right;
@@ -476,13 +463,135 @@ Buttons account
     background-color: wheat;
 }
 
+.post-date{
+    float:right;
+    display: flex;
+    justify-content: right;
+}
 
+.post-author{
+    justify-content: right;
+    float:right;
+    display: flex;
+
+}
+
+.postID{
+    float:right;
+    text-align: right;
+    width:100%;
+}
+
+
+.author-container{
+    content:"";
+    clear:both;
+    display: table;
+    width:100%;
+    font-size:12px;
+
+}
 
 .author-info{
     margin-right:5px;
     margin-bottom: -15px;
-    display: table;
+    padding: 0px 0px 0px 5px;
     float: right;
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+    width:50%;
+
+}
+
+/* Comments section */
+
+.commentary{
+    width:100%;
+}
+
+.commentary-card{
+    float:left;
+    width:100%;
+}
+
+/* Commentary structure */
+
+.user-comment-container{
+    border-radius: 4px;
+    width:100%;
+    margin:5px;
+    clear:both;
+    content:"";
+    display: table;
+    background-color: aliceblue;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+
+}
+.user-avatar-container{
+    float:left;
+    width:12%;
+    text-align: center;
+    vertical-align: middle;
+    transform: translateY(30%);
+}
+
+.user-text-container{
+    margin-top:5px;
+    padding:5px;
+}
+
+
+.user-comment-date{
+    text-align:right;
+}
+
+.comment-input-section{
+    display: none;
+    margin-left:5px;
+}
+
+.add-comment-button{
+  display: inline-block;
+
+}
+
+
+
+label,
+textarea {
+    font-size: .8rem;
+    letter-spacing: 1px;
+}
+textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.commentbtn{
+    width:100%;
+    display: inline-block;
+}
+
+/* .. */
+
+.commbtn{
+    float:left;
+    margin-left:5px;
+}
+
+.commentbtn-container {
+    margin: 15px;
+    width: 60%;
 }
 .commentary-container{
     display: inline-block;
@@ -850,3 +959,13 @@ ARTICLES PART
     border-color: #4285f4;
     outline: none;
 }
+
+hr{
+    color: black;
+    background-color: grey;
+
+    height:2px;
+}
+
+
+

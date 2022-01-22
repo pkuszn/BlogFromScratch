@@ -1,0 +1,29 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        var loaded = true;
+        if (loaded) {
+            $('.add-comment-button').on('click', function () {
+                var postID = $(this).attr("alt");
+                var message = $('.text-message').val();
+                JSON.stringify(message);
+                var author = $('.comment-author').val();
+                JSON.stringify(author);
+                alert(message + author);
+                $.ajax({
+                    type: "POST",
+                    url: '../app/model/home.php',
+                    data: {postID: postID, message: message, author: author, functionName: 'insertComments'},
+                    cache: false,
+                    success: function (response) {
+                        alert(response)
+                        setInterval(refreshPage(), 5000);
+                    }
+                });
+            });
+            loaded = false;
+        }
+    });
+    function refreshPage() {
+        location.reload(true);
+    }
+</script>

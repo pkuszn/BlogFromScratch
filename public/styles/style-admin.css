@@ -172,3 +172,36 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
+
+/* Avatar view */
+
+.avatar-main-container{
+    clear:both;
+    content:"";
+    display: table;
+    width:100%;
+}
+
+.add-avatar-container{
+    float:left;
+    width:50%;
+    display: inline-block;
+}
+
+.avatar-test{
+    background-color: white;
+    float:right;
+
+}
+
+#avatar-desc{
+    text-align:center;
+}
+#avatar-button{
+    float:left;
+    text-align: center;
+}
+
+#avatar-user-panel{
+    margin-top:-15px;
+}
