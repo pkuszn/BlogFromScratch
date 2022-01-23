@@ -9,23 +9,21 @@
     <p>Author</p>
     <input type="text" class="comment-author" name="author"/>
     <p>Post message</p>
-    <textarea name="text" class="text-message" cols="60" rows="5">
-    </textarea>
+    <textarea name="text" class="text-message" cols="60" rows="5"></textarea>
     <?php
     $image = displayImage($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/icons/add-message.png', true);
     echo "<img src = 'data:image/png;base64,$image' class='add-comment-button' alt='$PostID' onclick='closeForm()'/>";
     include_once $_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/subview/send.phtml';
     ?>
 </div>
-<button type='button' class='commbtn' value='Add comment'>Add Comment</button>
-
+<button type='button' name='commbtn' class='commbtn' value='Add comment'>Add Comment</button>
 <script type="text/javascript">
     $(".commentbtn-2").click(function(){
-        $('.comment-input-section').hide();
-        $('.commbtn').show();
+        $(this).parent('div').hide();
+        $(this).parent('div').siblings('button').show();
     });
     $('.commbtn').click(function(){
-        $('.comment-input-section').show();
+        $(this).siblings('div').show();
         $(this).hide();
     });
 

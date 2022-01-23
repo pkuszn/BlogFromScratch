@@ -134,8 +134,9 @@ function selectPosts()
                         echo "<div class='commentbtn'>";
                             echo "<form method='POST'>";
                                 echo "<div class='commentary'>";
-                                      require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/model/comment.php');
-                                      showComments($PostID);
+            require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/model/comment.php');
+
+            showComments($PostID);
                                     require($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/comment.phtml');
                                  echo "</div>";
                             echo "</form>";
