@@ -58,11 +58,15 @@
             <div class="user-profile-rows">
                 <?php
                 include $config['LIB_PATH']  .  "upload.php";
-                $image = displayImage($config['ICONS_PATH'] . 'user-light.png', true);
-                $userURL = $_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/lib/uploads/'.getFilename($_SESSION['id']);
-                $userImage = displayImage($userURL, true);
-                $action =  (isset($_SESSION['user'])) ? "<a href='index.php?page=user'><img src = 'data:image/png;base64,$userImage' id='user-image'/></a>" : "<img src = 'data:image/png;base64,$image' id='user-image'/>";
-                echo $action;
+                if(isset($_SESSION['user'])){
+                    $userURL = $_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/lib/uploads/'.getFilename($_SESSION['id']);
+                    $userImage = displayImage($userURL, true);
+                    echo "<a href='index.php?page=user'><img src = 'data:image/png;base64,$userImage' id='user-image'/></a>" ;
+                }
+                else{
+                    $image = displayImage($config['ICONS_PATH'] . 'user-light.png', true);
+                    echo "<img src = 'data:image/png;base64,$image' id='user-image'/>";
+                }
                 ?>
             </div>
         </div>
@@ -72,16 +76,32 @@
 
     <div class="topbar-column" id="search-container">
         <div class="search">
-            <form method="POST" action="<?php echo $config['MODEL_PATH'] . "articles.php"?>">
                 <input type="text" class="inputArticles"name="search" placeholder="Search articles"/>
-                <button type="submit" class="searchbtn" name="search-button" onclick="document.location.href = 'index.php?page=articles'">Search</button>
+                <button type="submit" class="searchbtn" name="search-button" >Search</button>
                 <script type="text/javascript">
-                    $(".searchbtn").click(function () {
-                        alert('test');
-                        document.location.href = ("index.php?page=articles");
+                    function sleep(ms) {
+                        return new Promise(resolve => setTimeout(resolve, ms));
+                    }
+                    $('.searchbtn').one("click", function () {
+                        var searchInput = $(this).siblings('input').val();
+                        $.ajax({
+                            type: "POST",
+                            url: '../app/model/articleone.php',
+                            data: {searchInput: searchInput, functionDesc: 'searchPost'},
+                            cache: false,
+                            success: function (response) {
+                                if (response.redirect) {
+                                    window.location.href = response.redirect;
+                                } else {
+                                    sleep(2000).then(() => {
+                                        $("div").replaceWith(response).append();
+                                    });
+                                    console.log('testresponse')
+                                }
+                            }
+                        });
                     });
                 </script>
-            </form>
         </div>
     </div>
     <div class="topbar-column" id="user-account-buttons">

@@ -75,7 +75,6 @@ function getInfoAboutUser($param)
             $_SESSION['city'] = $row['User_city'];
             $_SESSION['first_name'] = $row['User_first_name'];
             $_SESSION['last_name'] = $row['User_last_name'];
-            $_SESSION['avatar'] = $row['User_Avatar'];
         }
     }
 }

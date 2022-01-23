@@ -47,32 +47,10 @@
                     $(".edit-tool").on("click", function(){
                         var postData = $(this).attr("alt");
                         if(confirm("Are you sure you want to edit a post?")){
-                            $.ajax({
-                                type: "POST",
-                                url: '../app/model/post.php',
-                                data: {post: postData, functionEdit: 'edit'},
-                                cache: false,
-                                success: function (response) {
-                                    alert(response);
-                                    var array = [];
-                                    for (var i = 0; i < response.length; i++) {
-                                        array = response[i];
-                                        console.log(response[i]);
-                                    }
-                                    setInterval(redirect(), 5000);
-                                }
-                            });
+                           $(this).parent('div').children('div').children('div').children('div').children('div').parent('div').show();
                         }
-                    })
+                    });
                 });
-
-                var full_list = "";
-                for(var i=0; i<array.length; ++i){
-                    full_list = full_list + array[i]+ "<br>";
-                }
-
-                $("#filter-desc").html(full_list);
-
                 function refresh(){
                     location.reload(true);
                 }

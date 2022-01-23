@@ -10,18 +10,13 @@
     <form method="POST" id="form-article" action="<?php $config['MODEL_PATH'] . 'editor.php' ?>">
         <div class="popup-cards">
             <p>Title</p>
-            <?php
-            $action = isset($_SESSION['postTitle']) ? $_SESSION['postTitle'] : "test"; echo $action;
-            echo $PostID;
-            echo $PostTitle;
-            echo $PostMessage;
-            ?>
             <input type="text" name="title" id="title title-article" class="inputs title-input" required/>
         </div>
         <div class="popup-cards">
+            <p class="idpost"></p>
             <p>Post message</p>
             <div class="WYSIWYG-tags">
-                <textarea id="message-article" class="inputs" name="post" cols="80" rows="10" required></textarea>
+                <textarea id="message-article" class="inputs" name="post-message" cols="80" rows="10" required></textarea>
                 <script>
                     tinymce.init({
                         selector: "#message-article",
@@ -31,11 +26,6 @@
                         });
                     }
                     });
-
-                    var postTitle = "<?php $action = isset($_SESSION['postTitle']) ? $_SESSION['postTitle'] : ""; echo $action;?>";
-                    console.log(postTitle);
-
-
                 </script>
             </div>
         </div>

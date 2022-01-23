@@ -1,6 +1,5 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/connection.php');
-$_SESSION['pageNow'] = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
 
 if(isset($_POST['functionDelete']) == "delete"){
     $conn = establishConnection();
@@ -26,19 +25,16 @@ function filter()
 {
     $conn = establishConnection();
     $perPage = 10;
-    $entries = getAmountOfEntries($conn, 'posts');
-    $_SESSION['amountOfPages'] = calculateArticlesPerPage($entries['COUNT(*)'], $perPage);
-    $offset = Offset($_SESSION['pageNow'], $perPage);
-    $sql = "select * from posts ORDER BY Post_created_date DESC LIMIT ?, ?;";
+    $sql = "select * from posts ORDER BY Post_created_date DESC;";
 
     if (isset($_POST['name'])) {
-        $sql = "select * from posts ORDER BY Post_author ASC LIMIT ?, ?;";
+        $sql = "select * from posts ORDER BY Post_author ASC;";
     } else if (isset($_POST['date'])) {
-        $sql = "select * from posts ORDER BY Post_created_date ASC LIMIT ?, ?;";
+        $sql = "select * from posts ORDER BY Post_created_date ASC;";
     } else if (isset($_POST['alphabetic'])) {
-        $sql = "select * from posts ORDER BY Post_message ASC LIMIT ?, ?;";
+        $sql = "select * from posts ORDER BY Post_message ASC";
     } else if (isset($_POST['date'])) {
-        $sql = "select * from posts ORDER BY Post_created_date ASC LIMIT ?, ?;";
+        $sql = "select * from posts ORDER BY Post_created_date ASC;";
     }
 //    }
 //    else if($param == 1){
@@ -79,7 +75,6 @@ function filter()
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         echo "<script type='text/javascript'>alert('SQL error')</script>";
     } else {
-        mysqli_stmt_bind_param($stmt, "ii", $offset, $perPage);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         while ($row = mysqli_fetch_assoc($result)) {
@@ -89,31 +84,38 @@ function filter()
             $PostsCreatedDate = $row['Post_created_date'];
             $PostAuthor = $row['Post_Author'];
             echo "<div class='card'>";
-            $image = (isset($_SESSION['access']) == "admin") ? displayImage($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/icons/delete.png', true) : "";
-            echo "<img src = 'data:image/png;base64,$image' alt='$PostID' id='post-tools' class='delete-tool'/>";
-            $image2 = (isset($_SESSION['access']) == "admin") ? displayImage($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/icons/edit.png', true) : "";
-            echo "<img src = 'data:image/png;base64,$image2' alt='$PostID' id='post-tools' class='edit-tool'/>";
+            $imageDelete = displayImage($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/icons/delete.png', true);
+            $imageEdit = displayImage($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/icons/edit.png', true);
+            $action = (isset($_SESSION['access']) == "admin") ? "<img src = 'data:image/png;base64,$imageDelete' alt='$PostID' id='post-tools' class='delete-tool'/>" : "";
+            $action2 =  (isset($_SESSION['access']) == "admin") ? "<img src = 'data:image/png;base64,$imageEdit' alt='$PostID' id='post-tools' name='edit-button' class='edit-tool'/>" : "";
+            echo $action;
+            echo $action2;
             echo "<h2 class='post-header'>" . $PostsTitle . "</h2>";
             echo "<hr>";
             echo "</hr>";
             echo "<p class='post-text'>" . $PostsText . "</p>";
             echo "<div class='author-container'>";
             echo "<div class='author-info'>";
-            echo "<p class='post-author'>" . "<b>". $PostAuthor . "</b>" . "</p>";
-            echo "<p class='post-date'>" . $PostsCreatedDate . "</p>";
+                echo "<p class='post-author'>" . "<b>". $PostAuthor . "</b>" . "</p>";
+                echo "<p class='post-date'>" . $PostsCreatedDate . "</p>";
             echo "</div>";
             echo "<h4 style='text-align:left;margin: 20px;' >Comments</h4>";
             echo "<div class='commentbtn-container'>";
-            echo "<div class='commentbtn'>";
-            echo "<form method='POST'>";
-            echo "<div class='commentary'>";
-            require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/model/comment.php');
-            showComments($PostID);
-            require($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/comment.phtml');
+                echo "<div class='commentbtn'>";
+                    echo "<form method='POST'>";
+                        echo "<div class='commentary'>";
+                        require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/model/comment.php');
+                        showComments($PostID);
+                        require($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/comment.phtml');
+                    echo "</div>";
+                echo "</form>";
+
             echo "</div>";
-            echo "</form>";
+            echo "<div class='edit-container'>";
+                require($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/edit.phtml');
             echo "</div>";
             echo "</div>";
+
             echo "</div>";
             echo "</div>";
         }

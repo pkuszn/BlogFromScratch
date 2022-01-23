@@ -1,0 +1,44 @@
+
+    <div>
+        <hr>
+        <h2>Edit a post</h2>
+        <p>Title</p>
+    </div>
+    <form method="post"><div class="edit-post-container">
+            <input type="text" name="edit-title" id="title" required/>
+            <p>Post message</p>
+            <div class>
+                <textarea name='edit-message' cols="80" rows="10" required></textarea>
+                <script>
+                    tinymce.init({
+                        selector: "#message-article",
+                        setup: function (editor) {
+                            editor.on('change', function () {
+                                tinymce.triggerSave();
+                            });
+                        }
+                    });
+                </script>
+            </div>
+    </form>
+        <button type="submit" class="edit">Edit post</button>
+        <button type="button" class="cancel-edit">Cancel</button>
+<script type="text/javascript">
+    $('.cancel-edit').on('click', function () {
+        $(this).parent('div').parent('div').hide();
+    });
+    $('.edit').one('click', function () {
+        var postID = $(this).parent('div').parent('div').parent('div').parent('div').parent('div').find('.edit-tool').css('background-color', 'blue');
+        alert(postID);
+        $.ajax({
+            type: "POST",
+            url: '../app/model/edit.php',
+            data: {post: postID, functionEdit: 'edit'},
+            cache: false,
+            success: function (response) {
+                setInterval(refresh(), 5000);
+            }
+        });
+    });
+</script>
+</div>

@@ -57,10 +57,9 @@
                     <?php echo "<p id='session-captcha'> " . $_SESSION['captcha'] . "</p>" ?>
                 </p>
                 <p><input type="text" name="code" id="send-data" required/></p>
-                <button type="button" name="button-test" id="button-test" >Test</button>
                 <script type="text/javascript">
                     $(document).ready(function(){
-                        $('button[name="button-test"]').on('click', function(){
+                        $('button[name="send-data"]').on('click', function(){
                             sendCaptchaInput();
                         });
                     })
@@ -89,14 +88,13 @@
         <?php
         echo boolval($statement);
         $result = ($statement) ? "true" : "false";
-        echo $result;
-        if($result == 'false'){
-            echo "nie dziala";
+        if($result == 'false' and isset($_POST['code'])){
             unset($result);
+            echo "<script>alert('Captcha is invalid')</script>";
         }
-        else{
-            echo "poszlo ;)";
+        else if(isset($_POST['code'])){
             registerProcess();
+            echo "<script>alert('User became registered')</script>";
             unset($result);
         }
         ?>
