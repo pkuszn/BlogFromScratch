@@ -2,9 +2,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/connection.php');
 $_SESSION['pageNow'] = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
 
-
-
-if(isset($_POST['functionName']) == "delete"){
+if(isset($_POST['functionDelete']) == "delete"){
     $conn = establishConnection();
     $postData = json_decode($_POST['post']);
     echo $postData;
@@ -18,8 +16,11 @@ if(isset($_POST['functionName']) == "delete"){
     }
 }
 
+if(isset($_POST['search'])){
+    if(!empty($_POST['search'])){
 
-
+    }
+}
 
 function filter()
 {
@@ -28,16 +29,22 @@ function filter()
     $entries = getAmountOfEntries($conn, 'posts');
     $_SESSION['amountOfPages'] = calculateArticlesPerPage($entries['COUNT(*)'], $perPage);
     $offset = Offset($_SESSION['pageNow'], $perPage);
-    $sql = $sql = "select * from posts ORDER BY Post_created_date DESC LIMIT ?, ?;";
-//
-//    if($_POST['']){
-//        $sql = "select * from posts ORDER BY Post_created_date DESC LIMIT ?, ?;";
+    $sql = "select * from posts ORDER BY Post_created_date DESC LIMIT ?, ?;";
+
+    if (isset($_POST['name'])) {
+        $sql = "select * from posts ORDER BY Post_author ASC LIMIT ?, ?;";
+    } else if (isset($_POST['date'])) {
+        $sql = "select * from posts ORDER BY Post_created_date ASC LIMIT ?, ?;";
+    } else if (isset($_POST['alphabetic'])) {
+        $sql = "select * from posts ORDER BY Post_message ASC LIMIT ?, ?;";
+    } else if (isset($_POST['date'])) {
+        $sql = "select * from posts ORDER BY Post_created_date ASC LIMIT ?, ?;";
+    }
 //    }
 //    else if($param == 1){
 //        $sql = "select * from posts ORDER BY Post_created_date ASC LIMIT ?, ?;";
 //    }
 //    else if($param == 2){
-//        $sql = "select * from posts ORDER BY Post_title DESC LIMIT ?, ?;";
 //    }
 //    else if($param == 3){
 //        $sql = "select * from posts ORDER BY Post_title ASC LIMIT ?, ?;";
@@ -90,11 +97,23 @@ function filter()
             echo "<hr>";
             echo "</hr>";
             echo "<p class='post-text'>" . $PostsText . "</p>";
+            echo "<div class='author-container'>";
             echo "<div class='author-info'>";
-            echo "<p class='post-author'>" . $PostAuthor . "</p>";
-            echo "</hr>";
+            echo "<p class='post-author'>" . "<b>". $PostAuthor . "</b>" . "</p>";
             echo "<p class='post-date'>" . $PostsCreatedDate . "</p>";
-            echo "<br>";
+            echo "</div>";
+            echo "<h4 style='text-align:left;margin: 20px;' >Comments</h4>";
+            echo "<div class='commentbtn-container'>";
+            echo "<div class='commentbtn'>";
+            echo "<form method='POST'>";
+            echo "<div class='commentary'>";
+            require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/model/comment.php');
+            showComments($PostID);
+            require($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/comment.phtml');
+            echo "</div>";
+            echo "</form>";
+            echo "</div>";
+            echo "</div>";
             echo "</div>";
             echo "</div>";
         }

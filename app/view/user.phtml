@@ -13,6 +13,7 @@
     <title>Admin Panel</title>
 </head>
 <body>
+<!-- Rectangular switch -->
 
 <div class="container">
     <div class="red" id="left-column">
@@ -23,6 +24,13 @@
             <img id="options" class="settings" src="../app/icons/gear.png"/>
             <img id="trends" class="settings" src="../app/icons/trend.png"/>
         </div>
+        <script type="javascript">
+            $(document).ready(function(){
+                $(".settings").click(function () {
+                    alert('in progres..')
+                });
+            });
+        </script>
     </div>
     <h1 id="user-panel-label">Account settings</h1>
     <div class="green" id="right-column">
@@ -64,8 +72,11 @@
         <div class="user-settings right-side">
             <li class="user-data-template">
                 <?php
-                    $action = ($_SESSION['avatar'] == null) ? '-' : $_SESSION['avatar'];
-                    echo $action;
+                require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/upload.php');
+                $img = $_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/uploads/' . getFilename($_SESSION['id']);
+                $image = displayImage($img, true);
+                $action = ($_SESSION['id'] == null) ? '-' : "<img src = 'data:image/png;base64,$image' id='avatar-user-panel'/>";
+                echo $action;
                 ?>
             </li>
             <li class="user-data-template">

@@ -39,18 +39,4 @@ function LoginProcess()
         }
     }
 }
-
-function redirectIfLogged()
-{
-    if (isset($_POST['submit'])) {
-        echo "Logged in: ";
-        echo $_SESSION['user'];
-        sleep(2);
-        header("Location: ../index.php");
-    }
-}
-
-
-
-
 ?>

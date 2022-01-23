@@ -1,16 +1,16 @@
 <h1 id="admin-header">Users</h1>
 <?php
-displayUsers();
+displayUsersWithUnknownAccess();
 ?>
 <script type="text/javascript">
     $(document).ready(function(){
         $(".userID").click(function () {
-            if (confirm("Are you sure you want to delete the user?") == true) {
+            if (confirm("Are you sure to authorize the user?") == true) {
                 var userData = $(this).attr("alt");
                 $.ajax({
                     type: "POST",
                     url: '../app/model/admin.php',
-                    data: {userID: userData, functionName: 'action'},
+                    data: {userID: userData, functionDesc: 'privileges'},
                     cache: false,
                     success: function (response) {
                         setInterval(refreshPage(), 5000);

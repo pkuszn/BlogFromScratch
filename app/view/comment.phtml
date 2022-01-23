@@ -1,0 +1,34 @@
+<head>
+    <link rel="stylesheet" href="styles/style.css"/>
+</head>
+<div class="comment-input-section">
+    <?php
+    $image = displayImage($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/icons/remove-button.png', true);
+    echo "<img src = 'data:image/png;base64,$image' class='commentbtn-2' id='commentary-hidden-button'  onclick='closeForm()'/>";
+    ?>
+    <p>Author</p>
+    <input type="text" class="comment-author" name="author"/>
+    <p>Post message</p>
+    <textarea name="text" class="text-message" cols="60" rows="5">
+    </textarea>
+    <?php
+    $image = displayImage($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/icons/add-message.png', true);
+    echo "<img src = 'data:image/png;base64,$image' class='add-comment-button' alt='$PostID' onclick='closeForm()'/>";
+    include_once $_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/subview/send.phtml';
+    ?>
+</div>
+<button type='button' class='commbtn' value='Add comment'>Add Comment</button>
+
+<script type="text/javascript">
+    $(".commentbtn-2").click(function(){
+        $('.comment-input-section').hide();
+        $('.commbtn').show();
+    });
+    $('.commbtn').click(function(){
+        $('.comment-input-section').show();
+        $(this).hide();
+    });
+
+</script>
+
+

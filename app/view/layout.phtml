@@ -13,7 +13,8 @@
 <div id="container">
     <div id="logo-container" class="nav">
         <div  class="logo-column" id="logo">
-            <?php displayImage($config['ICONS_PATH'] . 'connection.png', false)?>
+            <?php displayImage($config['ICONS_PATH'] . 'connection.png', false);
+            ?>
         </div>
     </div>
     <nav id="topnav" class="nav">
@@ -56,8 +57,11 @@
             </div>
             <div class="user-profile-rows">
                 <?php
+                include $config['LIB_PATH']  .  "upload.php";
                 $image = displayImage($config['ICONS_PATH'] . 'user-light.png', true);
-                $action =  (isset($_SESSION['user'])) ? "<a href='index.php?page=user'><img src = 'data:image/png;base64,$image' id='user-image'/></a>" : "<img src = 'data:image/png;base64,$image' id='user-image'/>";
+                $userURL = $_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/lib/uploads/'.getFilename($_SESSION['id']);
+                $userImage = displayImage($userURL, true);
+                $action =  (isset($_SESSION['user'])) ? "<a href='index.php?page=user'><img src = 'data:image/png;base64,$userImage' id='user-image'/></a>" : "<img src = 'data:image/png;base64,$image' id='user-image'/>";
                 echo $action;
                 ?>
             </div>
@@ -68,24 +72,16 @@
 
     <div class="topbar-column" id="search-container">
         <div class="search">
-            <input type="text" class="inputArticles"name="search" placeholder="Search articles"/>
-            <button type="button" class="searchbtn" name="search-button">Search</button>
-            <script type="text/javascript">
-                $(".searchbtn").click(function () {
-                    alert('true');
-                    var userData = $(".inputArticles").val();
-                    $.ajax({
-                        type:"POST",
-                        url:'../app/model/home.php',
-                        data: {post: userData, functionName: 'action'},
-                        cache:false,
-                        success:function(response){
-                            alert(response);
-                        }
+            <form method="POST" action="<?php echo $config['MODEL_PATH'] . "articles.php"?>">
+                <input type="text" class="inputArticles"name="search" placeholder="Search articles"/>
+                <button type="submit" class="searchbtn" name="search-button" onclick="document.location.href = 'index.php?page=articles'">Search</button>
+                <script type="text/javascript">
+                    $(".searchbtn").click(function () {
+                        alert('test');
+                        document.location.href = ("index.php?page=articles");
                     });
-                    alert(userData);
-                });
-            </script>
+                </script>
+            </form>
         </div>
     </div>
     <div class="topbar-column" id="user-account-buttons">
