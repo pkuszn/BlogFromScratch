@@ -102,15 +102,12 @@ function filter()
             echo "<h4 style='text-align:left;margin: 20px;' >Comments</h4>";
             echo "<div class='commentbtn-container'>";
                 echo "<div class='commentbtn'>";
-                    echo "<form method='POST'>";
                         echo "<div class='commentary'>";
                         require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/model/comment.php');
                         showComments($PostID);
                         require($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/comment.phtml');
-                    echo "</div>";
-                echo "</form>";
-
-            echo "</div>";
+                        echo "</div>";
+                 echo "</div>";
             echo "<div class='edit-container'>";
                 require($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/edit.phtml');
             echo "</div>";

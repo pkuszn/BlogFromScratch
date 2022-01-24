@@ -123,7 +123,7 @@ function selectPosts()
                         echo "</div>";
                     echo "</div>";
             echo "<div class='edit-container'>";
-            require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/editor.phtml');
+            require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/edsitor.phtml');
             echo "</div>";
                  echo "</div>";
              echo "</div>";

@@ -1,10 +1,9 @@
-
-    <div>
+<div>
         <hr>
         <h2>Edit a post</h2>
         <p>Title</p>
     </div>
-    <form method="post"><div class="edit-post-container">
+<div class="edit-post-container">
             <input type="text" name="edit-title" id="title" required/>
             <p>Post message</p>
             <div class>
@@ -20,20 +19,21 @@
                     });
                 </script>
             </div>
-    </form>
-        <button type="submit" class="edit">Edit post</button>
+
+        <button type="button" name="edit-button" class="edit">Edit post</button>
         <button type="button" class="cancel-edit">Cancel</button>
 <script type="text/javascript">
     $('.cancel-edit').on('click', function () {
         $(this).parent('div').parent('div').hide();
     });
     $('.edit').one('click', function () {
-        var postID = $(this).parent('div').parent('div').parent('div').parent('div').parent('div').find('.edit-tool').css('background-color', 'blue');
-        alert(postID);
+        var postID = $(this).parent('div').parent('div').parent('div').parent('div').parent('div').find('.edit-tool').attr("alt");
+        var input = $(this).parent('div').children('input').val();
+        var textarea = $(this).parent('div').children('div').children('textarea').val();
         $.ajax({
             type: "POST",
             url: '../app/model/edit.php',
-            data: {post: postID, functionEdit: 'edit'},
+            data: {post: postID, title: input, message: textarea, functionEdit: 'edit'},
             cache: false,
             success: function (response) {
                 setInterval(refresh(), 5000);
