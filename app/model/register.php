@@ -65,7 +65,6 @@ function registerProcess()
             } else {
                 echo "";
             }
-
             $query = "INSERT INTO user (User_name, User_email, User_password, User_birthdate, User_city, User_first_name, User_last_name)
                             VALUES (?, ?, ?, ?, ?, ?, ?);";
             $stmt = mysqli_stmt_init($conn);
