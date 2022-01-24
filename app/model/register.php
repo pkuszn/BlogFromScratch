@@ -14,7 +14,6 @@ if (empty($_POST['code'])) {
     }
 }
 
-
 $_SESSION['captcha'] = mt_rand(10000, 99999);
 
 function checkCaptcha($param)
