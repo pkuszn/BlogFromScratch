@@ -1,57 +1,34 @@
 <?php
 $_SESSION['pageNow'] = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
 require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/connection.php');
-//
-//if (isset($_POST['functionName']) == "action") {
-//    $input = json_decode($_POST['post']);
-//    echo "<script>alert(" . $input . ")</script>";
-//    $conn = establishConnection();
-//    echo "<meta http-equiv='refresh' content='1;url=index.php?page=articles'>";
-//    $sql = "select * from posts WHERE Post_title = ? OR Post_message = ? OR Post_author = ?;";
-//    $stmt = mysqli_stmt_init($conn);
-//    if (!mysqli_stmt_prepare($stmt, $sql)) {
-//        echo "<script type='text/javascript'>alert('SQL error')</script>";
-//    } else {
-//        mysqli_stmt_bind_param($stmt, "s", $input);
-//        mysqli_stmt_execute($stmt);
-//        $result = mysqli_stmt_get_result($stmt);
-//        while ($row = mysqli_fetch_assoc($result)) {
-//            $PostsTitle = $row['Post_title'];
-//            $PostsText = $row['Post_message'];
-//            $PostsCreatedDate = $row['Post_created_date'];
-//            $PostAuthor = $row['Post_Author'];
-//            echo "<div class='card'>";
-//            echo "<h2 class='post-header'>" . $PostsTitle . "</h2>";
-//            echo "<hr>";
-//            echo "</hr>";
-//            echo "<p class='post-text'>" . $PostsText . "</p>";
-//            echo "<div class='author-info'>";
-//            echo "<p class='post-author'>" . $PostAuthor . "</p>";
-//            echo "</hr>";
-//            echo "<p class='post-date'>" . $PostsCreatedDate . "</p>";
-//            echo "</div>";
-//            echo "<div class='commentary'>";
-//
-//            echo "</div>";
-//            echo "</div>";
-//
-//        }
-//    }
-//    mysqli_stmt_close($stmt);
-//    mysqli_close($conn);
-//}
 
 
-$result = "";
-if (isset($_POST['functionName']) == 'equation')  {
-        echo ("<script>alert('test')</script>");
 
-        $A = intval(json_decode($_POST['a']));
-        $B = intval(json_decode($_POST['b']));
-        $C = intval(json_decode($_POST['c']));
-        var_dump($C);
-        echo ($a .  $b . $c);
-        echo ("<script>alert('test')</script>");
+function displayLastEightArticles(){
+    $conn = establishConnection();
+    $query = "Select Post_ID, Post_title from posts ORDER BY Post_created_date LIMIT 0,8";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $query)){
+        echo "<script type='text/javascript'>alert('SQL statement failed!)</script>";
+    }
+    else{
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        while($row = mysqli_fetch_assoc($result)){
+            echo "<div class='title-post'>";
+            $image = displayImage($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/icons/click.png', true);
+            $Post_ID = $row['Post_ID'];
+            echo "<img src = 'data:image/png;base64,$image' class='image-title' alt='$Post_ID'/>" ."<p class='title'>" . $row['Post_title'] . "</p>";
+            echo "</div>";
+        }
+    }
+}
+
+
+if (isset($_POST['equation']) == 'equation')  {
+        $A = isset($_POST['A']) ? intval(json_decode($_POST['A'])) : null;
+        $B = isset($_POST['B']) ? intval(json_decode($_POST['B'])) : null;
+        $C = isset($_POST['C']) ? intval(json_decode($_POST['C'])) : null;
         // a*x^2 + b * x + c
         $x1 = 0;
         $x2 = 0;
@@ -77,14 +54,18 @@ if (isset($_POST['functionName']) == 'insertComments'){
     $CommentText = isset($_POST['message']) ? $_POST['message'] : null;
     $PostID = isset($_POST['postID']) ? json_decode($_POST['postID']) : null;
     echo $PostID . "<br>" . $CommentAuthor . "<br>" . $CommentText;
-    $query = "INSERT INTO comment (Comment_text, Comment_author, Post_ID) VALUES (?,?,?)";
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $query)) {
-        echo "<script type='text/javascript'>alert('SQL statement failed!)</script>";
-    } else {
-        mysqli_stmt_bind_param($stmt, "ssi", $CommentText, $CommentAuthor, $PostID);
-        mysqli_stmt_execute($stmt);
-        echo "podwojnie";
+    if($CommentAuthor == null OR $CommentText == null){
+        echo "<script type='text/javascript'>alert('Input cannot be empty!)</script>";
+    }
+    else{
+        $query = "INSERT INTO comment (Comment_text, Comment_author, Post_ID) VALUES (?,?,?)";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $query)) {
+            echo "<script type='text/javascript'>alert('SQL statement failed!)</script>";
+        } else {
+            mysqli_stmt_bind_param($stmt, "ssi", $CommentText, $CommentAuthor, $PostID);
+            mysqli_stmt_execute($stmt);
+        }
     }
 }
 
@@ -134,8 +115,8 @@ function selectPosts()
                         echo "<div class='commentbtn'>";
                             echo "<form method='POST'>";
                                 echo "<div class='commentary'>";
-                                      require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/model/comment.php');
-                                      showComments($PostID);
+                                    require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/model/comment.php');
+                                    showComments($PostID);
                                     require($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/comment.phtml');
                                  echo "</div>";
                             echo "</form>";
@@ -143,7 +124,6 @@ function selectPosts()
                     echo "</div>";
                  echo "</div>";
              echo "</div>";
-
         }
     }
     mysqli_stmt_close($stmt);

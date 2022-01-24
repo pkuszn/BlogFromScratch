@@ -102,14 +102,35 @@
         <div class="right-card">
             <h2 class="article-headers">Last posts</h2>
             <hr>
-            <li class="TWI-list"><a href="../BlogFromScratch/TIWP_LAB/Canvas/Canvas.php">Canvas</a></li>
-            <li class="TWI-list"><a href="../BlogFromScratchTIWP_LAB/AudioVideo/VideoAudio.php">Audio & Video</a></li>
-            <li class="TWI-list"><a href="../BlogFromScratchTIWP_LAB/FormHTML4/FormHTML4.php">Form HTML4</a></li>
-            <li class="TWI-list"><a href="../BlogFromScratchTIWP_LAB/FormHTML5/FormHTML5.php">Form HTML5</a></li>
-            <li class="TWI-list"><a href="../BlogFromScratchTIWP_LAB/AJAX-XML/Ajax-XML.php">AJAX-XML</a></li>
-            <li class="TWI-list">jQuery</li>
-            <li class="TWI-list">Snake jQuery</li>
-            <li class="TWI-list">Project</li>
+            <?php
+            displayLastEightArticles();
+            ?>
+            <script type="text/javascript">
+                function sleep(ms) {
+                    return new Promise(resolve => setTimeout(resolve, ms));
+                }
+                    $('.title').one("click", function () {
+                        var postID = $(this).siblings('img').attr("alt");
+                            $.ajax({
+                                type: "POST",
+                                url: '../app/model/articleone.php',
+                                data: {postID: postID, functionDesc: 'selectPost'},
+                                cache: false,
+                                success: function (response) {
+                                        if(response.redirect){
+                                            window.location.href = response.redirect;
+                                        }
+                                        else{
+                                            sleep(2000).then(() => {
+                                                $("div").replaceWith(response).append();
+                                            });
+                                            console.log('testresponse')
+                                        }
+                                }
+                            });
+                    });
+
+            </script>
         </div>
         <div class="right-card">
             <h2 class="article-headers">Quadratic Equations</h2>
@@ -120,26 +141,23 @@
                 <button type="button" class="quadraticbtn">Solve</button>
             <script type="text/javascript">
                 $(".quadraticbtn").on("click", function () {
-                    var a = $(".inputA").val();
-                    var b = $(".inputB").val();
-                    var c = $(".inputC").val();
-                    alert(a+b+c);
+                    var inputA = $(".inputA").val();
+                    var inputB = $(".inputB").val();
+                    var inputC = $(".inputC").val();
                     $.ajax({
                         type: "POST",
                         url: '../app/model/home.php',
-                        data: {A: a, B: b, C: c, functionName: 'equation'},
+                        data: {A: inputA, B: inputB, C: inputC, equation: 'equation'},
                         cache: false,
                         success: function (response) {
-                            alert(response);
+                            $('.response').text(response);
                         }
                     });
                 });
             </script>
             </hr>
+            <p class="response"></p>
             <?php
-            if(isset($_POST['quadraticbtn'])){
-                echo $result;
-            }
             ?>
         </div>
         <div class="right-card">

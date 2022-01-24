@@ -39,19 +39,4 @@ function drawCards($array)
     return $output;
 }
 
-
-$_SESSION['userScore'] = drawCards($_SESSION['cards']) + drawCards($_SESSION['cards']);
-if (isset($_POST['draw-card'])) {
-    $_SESSION['newCard'] = drawCards($_SESSION['cards']);
-    $_SESSION['userScore'] += $_SESSION['newCard'];
-} else if (isset($_POST['pass'])) {
-    if ($_SESSION['userScore'] <= 21 and $_SESSION['userScore'] > $_SESSION['computerScore']) {
-        $_SESSION['Result'] = "User won";
-        $_SESSION['userScore'] = 0;
-    } else if ($_SESSION['computerScore'] <= 21 and $_SESSION['computerScore'] > $_SESSION['userScore']) {
-        $_SESSION['Result'] = "Computer won";
-        $_SESSION['computerScore'] = 0;
-    }
-}
-
 ?>

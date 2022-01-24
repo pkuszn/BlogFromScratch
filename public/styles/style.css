@@ -124,7 +124,6 @@ body{
 
 #user-name {
     color: white;
-    text-align: center;
     font-size: 10px;
     position: relative;
     top: 50%;
@@ -350,6 +349,23 @@ Buttons account
     height: auto;
 
 }
+.title-post{
+    font-size:13px;
+    display: table;
+    content:"";
+    clear:both;
+    padding: 0px;
+    width:100%;
+}
+
+.title-post img{
+    float:left;
+}
+
+.title:hover{
+    color: darkgray;
+}
+
 
 .article-headers {
     text-align: left;
@@ -427,6 +443,10 @@ Buttons account
 
 .inputs{
     border-radius: 1px;
+}
+
+.inputArticles{
+    margin-left:5px;
 }
 
 
@@ -554,6 +574,12 @@ Buttons account
 .add-comment-button{
   display: inline-block;
 
+}
+
+.edit-container{
+    width:100%;
+    display: none;
+    margin-left:10px;
 }
 
 
@@ -933,7 +959,7 @@ ARTICLES PART
 /* CSS */
 .button-16 {
     background-color: #f8f9fa;
-    border: 1px solid #f8f9fa;
+    border: 2px solid grey;
     border-radius: 4px;
     color: #3c4043;
     cursor: pointer;
@@ -966,6 +992,8 @@ hr{
 
     height:2px;
 }
+
+
 
 
 

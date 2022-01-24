@@ -13,14 +13,6 @@
             <button name=date" class="active button-16"><?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false)?>Date</button>
             <button name="year" class="active button-16"><?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false)?>Year</button>
             <button name="alphabetic" class="active button-16"><?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false)?>Alphabetic</button>
-            <button name="specific-year" class="active button-16">Choose year:
-                <select class="active off">
-                    <option value="2022">2022</option>
-                    <option value="2021">2021</option>
-                    <option value="2020">2020</option>
-                    <option value="2019">2019</option>
-                </select>
-            </button>
         </div>
         <div class="right-filter filter-col">
             <div class='articles-add-post articles-button' id="newarticle">Add post</div>
@@ -47,32 +39,10 @@
                     $(".edit-tool").on("click", function(){
                         var postData = $(this).attr("alt");
                         if(confirm("Are you sure you want to edit a post?")){
-                            $.ajax({
-                                type: "POST",
-                                url: '../app/model/post.php',
-                                data: {post: postData, functionEdit: 'edit'},
-                                cache: false,
-                                success: function (response) {
-                                    alert(response);
-                                    var array = [];
-                                    for (var i = 0; i < response.length; i++) {
-                                        array = response[i];
-                                        console.log(response[i]);
-                                    }
-                                    setInterval(redirect(), 5000);
-                                }
-                            });
+                           $(this).parent('div').children('div').children('div').children('div').children('div').parent('div').show();
                         }
-                    })
+                    });
                 });
-
-                var full_list = "";
-                for(var i=0; i<array.length; ++i){
-                    full_list = full_list + array[i]+ "<br>";
-                }
-
-                $("#filter-desc").html(full_list);
-
                 function refresh(){
                     location.reload(true);
                 }
