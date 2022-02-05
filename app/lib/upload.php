@@ -58,8 +58,8 @@ function getFilename($UserID){
         $result = mysqli_stmt_get_result($stmt);
         while($row = mysqli_fetch_assoc($result)){
             $imageURL =  $row['Images_filename'];
+            return $imageURL;
         }
-        return $imageURL;
     }
 }
 
