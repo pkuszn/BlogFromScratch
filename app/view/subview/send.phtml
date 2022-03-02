@@ -4,14 +4,12 @@
             var postID = $(this).attr("alt");
             var message = $(this).siblings('textarea').val();
             var author = $(this).siblings('input').val();
-            alert(message + author);
             $.ajax({
                 type: "POST",
                 url: '../app/model/home.php',
                 data: {postID: postID, message: message, author: author, functionName: 'insertComments'},
                 cache: false,
                 success: function (response) {
-                    alert(response)
                     setInterval(refreshPage(), 5000);
                 }
             });

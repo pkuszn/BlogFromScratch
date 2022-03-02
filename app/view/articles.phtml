@@ -30,7 +30,6 @@
                                 data: {post: postData, functionDelete: 'delete'},
                                 cache: false,
                                 success: function (response) {
-                                    alert(response);
                                     setInterval(refresh(), 5000);
                                 }
                             });
@@ -66,10 +65,8 @@
                 data: {post: userData, functionName: 'action'},
                 cache:false,
                 success:function(response){
-                    alert(response);
                 }
             });
-            alert(userData);
         });
     </script>
     </script>
