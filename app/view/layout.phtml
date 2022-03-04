@@ -59,7 +59,8 @@
                 <?php
                 include $config['LIB_PATH']  .  "upload.php";
                 if(isset($_SESSION['user'])){
-                    $userURL = $_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/lib/uploads/'.getFilename($_SESSION['id']);
+                    $URL = (getFilename($_SESSION['id']) != null) ? getFilename($_SESSION['id']) : "user-light.png";
+                    $userURL = $_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/lib/uploads/'.$URL;
                     $userImage = displayImage($userURL, true);
                     echo "<a href='index.php?page=user'><img src = 'data:image/png;base64,$userImage' id='user-image'/></a>" ;
                 }
@@ -96,7 +97,6 @@
                                     sleep(2000).then(() => {
                                         $("div").replaceWith(response).append();
                                     });
-                                    console.log('testresponse')
                                 }
                             }
                         });

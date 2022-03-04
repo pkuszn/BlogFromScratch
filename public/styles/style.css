@@ -393,6 +393,11 @@ Buttons account
     }
 }
 
+.TWI-list a{
+    text-decoration: none;
+}
+
+
 /* New post popUp */
 
 .popup-header{
