@@ -1,2 +1,2 @@
 # BlogFromScratch
-A simple blog written to pass the university course
+A simple blog written to pass a university course
