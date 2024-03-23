@@ -1,7 +1,6 @@
 <?php
 
-if(session_status() === PHP_SESSION_NONE)
-{
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
@@ -12,14 +11,14 @@ require APPLICATION_PATH . DS . 'config' . DS . 'config.php';
 
 //index.php?page=products
 $page = get('page', 'home');
-$model = $config['MODEL_PATH'] . $page .  '.php';
+$model = $config['MODEL_PATH'] . $page . '.php';
 $view = $config['VIEW_PATH'] . $page . '.phtml';
 $_404 = $config['VIEW_PATH'] . '404.phtml';
-if(file_exists($model)){
+if (file_exists($model)) {
     require $model;
 }
 $main_content = $_404;
-if(file_exists($view)){
+if (file_exists($view)) {
     $main_content = $view;
 }
 

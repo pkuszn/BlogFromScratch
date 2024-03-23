@@ -1,88 +1,92 @@
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" type="text/css" media="screen" href="styles/style-blackjack.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/style-blackjack.css" />
 </head>
+
 <body>
-<header class="top">
-</header>
-<h2 id="header">BlackJack</h2>
-<div class="column">
-    <div class="card">
-        <form method="POST">
-            <div class="card-column">
-                <table>
-                    <tr>
-                        <th></th>
-                        <th><img src="../app/icons/user.png"</th>
-                        <th><img src="../app/icons/imac.png"</th>
-                    </tr>
-                    <tr>
-                        <td>Cards</td>
-                        <td>
-                            <?php
-                            $_SESSION['userScore'] = drawCards($_SESSION['cards']) + drawCards($_SESSION['cards']);
-                            if (isset($_POST['draw-card'])) {
-                                $_SESSION['newCard'] = drawCards($_SESSION['cards']);
-                                $_SESSION['userScore'] += $_SESSION['newCard'];
-                            } else if (isset($_POST['pass'])) {
-                                if ($_SESSION['userScore'] <= 21 and $_SESSION['userScore'] > $_SESSION['computerScore']) {
-                                    $_SESSION['Result'] = "User won";
-                                    $_SESSION['userScore'] = 0;
-                                } else if ($_SESSION['computerScore'] <= 21 and $_SESSION['computerScore'] > $_SESSION['userScore']) {
-                                    $_SESSION['Result'] = "Computer won";
-                                    $_SESSION['computerScore'] = 0;
+    <header class="top">
+    </header>
+    <h2 id="header">BlackJack</h2>
+    <div class="column">
+        <div class="card">
+            <form method="POST">
+                <div class="card-column">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th><img src="../app/icons/user.png" </th>
+                            <th><img src="../app/icons/imac.png" </th>
+                        </tr>
+                        <tr>
+                            <td>Cards</td>
+                            <td>
+                                <?php
+                                $_SESSION['userScore'] = drawCards($_SESSION['cards']) + drawCards($_SESSION['cards']);
+                                if (isset ($_POST['draw-card'])) {
+                                    $_SESSION['newCard'] = drawCards($_SESSION['cards']);
+                                    $_SESSION['userScore'] += $_SESSION['newCard'];
+                                } else if (isset ($_POST['pass'])) {
+                                    if ($_SESSION['userScore'] <= 21 and $_SESSION['userScore'] > $_SESSION['computerScore']) {
+                                        $_SESSION['Result'] = "User won";
+                                        $_SESSION['userScore'] = 0;
+                                    } else if ($_SESSION['computerScore'] <= 21 and $_SESSION['computerScore'] > $_SESSION['userScore']) {
+                                        $_SESSION['Result'] = "Computer won";
+                                        $_SESSION['computerScore'] = 0;
+                                    }
                                 }
-                            }
 
-                            ?>
-                            <?php
-                            $_SESSION['userScore'] = drawCards($_SESSION['cards']) + drawCards($_SESSION['cards']);
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                            $_SESSION['computerScore'] = drawCards($_SESSION['cards']) + drawCards($_SESSION['cards']);;
-                            ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Sum of cards</td>
-                        <td>
-                            <?php
-                            echo $_SESSION['userScore'];
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                            echo $_SESSION['computerScore'];
-                            ?></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="output">
-                <?php
-                if(empty($_POST['pass']) AND empty($_POST['pass2']) AND empty($_POST))
-                if(isset($_POST['pass'])){
-                    echo "Results: " . $_SESSION['Result'];
-                }
-                else {
-                    echo "Results: ";
-                }
-                ?>
-            </div>
+                                ?>
+                                <?php
+                                $_SESSION['userScore'] = drawCards($_SESSION['cards']) + drawCards($_SESSION['cards']);
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                $_SESSION['computerScore'] = drawCards($_SESSION['cards']) + drawCards($_SESSION['cards']);
+                                ;
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sum of cards</td>
+                            <td>
+                                <?php
+                                echo $_SESSION['userScore'];
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                echo $_SESSION['computerScore'];
+                                ?>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="output">
+                    <?php
+                    if (empty ($_POST['pass']) and empty ($_POST['pass2']) and empty ($_POST))
+                        if (isset ($_POST['pass'])) {
+                            echo "Results: " . $_SESSION['Result'];
+                        } else {
+                            echo "Results: ";
+                        }
+                    ?>
+                </div>
 
-    </div>
-    <div class="button-div">
-        <button name="draw-card" id="drawn" class=buttons">Draw a card</button>
-        <input type="submit" class=buttons" id="pass" name="pass" value="Pass">
+        </div>
+        <div class="button-div">
+            <button name="draw-card" id="drawn" class=buttons">Draw a card</button>
+            <input type="submit" class=buttons" id="pass" name="pass" value="Pass">
 
-    </div>
-    <!--
+        </div>
+        <!--
     <button type="start" name="start" value="Start"/>
     -->
-    </form>
+        </form>
 
-</div>
+    </div>
 
 </body>
+
 </html>

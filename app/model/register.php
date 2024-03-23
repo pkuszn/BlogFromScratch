@@ -27,7 +27,6 @@ function checkCaptcha($param)
     $_SESSION['captcha'] = mt_rand(10000, 99999);
 }
 
-
 function registerProcess()
 {
     $conn = establishConnection();
@@ -89,12 +88,3 @@ function registerProcess()
         }
     }
 }
-
-
-
-
-
-
-
-
-

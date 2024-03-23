@@ -18,7 +18,6 @@ if (isset($_POST['functionEdit']) == "edit") {
     }
 }
 
-
 function addNewPost()
 {
     if (isset($_POST['submit'])) {
@@ -41,7 +40,4 @@ function addNewPost()
         }
     }
 }
-
 ?>
-
-

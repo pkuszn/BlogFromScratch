@@ -1,7 +1,7 @@
 <?php
 function get($name, $def = '')
 {
-    return isset($_REQUEST[$name]) ? $_REQUEST[$name] : $def;
+    return isset ($_REQUEST[$name]) ? $_REQUEST[$name] : $def;
 }
 
 function displayImage($image, $haveStyle)
@@ -16,5 +16,4 @@ function displayImage($image, $haveStyle)
         }
     }
 }
-
 ?>

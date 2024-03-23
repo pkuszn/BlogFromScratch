@@ -33,11 +33,9 @@ function calculateArticlesPerPage($entries, $perPage)
     return $totalPages;
 }
 
-function Offset($pageNow, $perPage){
+function Offset($pageNow, $perPage)
+{
     $offset = ($pageNow - 1) * $perPage;
     return $offset;
 }
-
-
-
 ?>

@@ -36,40 +36,6 @@ function filter()
     } else if (isset($_POST['date'])) {
         $sql = "select * from posts ORDER BY Post_created_date ASC;";
     }
-//    }
-//    else if($param == 1){
-//        $sql = "select * from posts ORDER BY Post_created_date ASC LIMIT ?, ?;";
-//    }
-//    else if($param == 2){
-//    }
-//    else if($param == 3){
-//        $sql = "select * from posts ORDER BY Post_title ASC LIMIT ?, ?;";
-//    }
-//    else if($param == 4){
-//        $sql = "select * from posts ORDER BY Post_message DESC LIMIT ?, ?;";
-//    }
-//    else if($param == 5){
-//        $sql = "select * from posts ORDER BY Post_message ASC LIMIT ?, ?;";
-//    }
-//    else if($param == 6){
-//        $sql = "select * from posts ORDER BY Post_created_date ASC LIMIT ?, ?;";
-//    }
-//    else if($param == 7){
-//        $sql = "select * from posts ORDER BY Post_created_date ASC LIMIT ?, ?;";
-//    }
-//    else if($param == 8){
-//        $sql = "select * from posts ORDER BY Post_created_date ASC LIMIT ?, ?;";
-//    }
-//    else if($param == 9){
-//        $sql = "select * from posts ORDER BY Post_created_date ASC LIMIT ?, ?;";
-//    }
-//    else if($param == 10){
-//        $sql = "select * from posts ORDER BY Post_created_date ASC LIMIT ?, ?;";
-//    }
-//    else if($param == 11){
-//        $sql = "select * from posts ORDER BY Post_created_date ASC LIMIT ?, ?;";
-//    }
-
 
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -120,7 +86,3 @@ function filter()
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
 }
-
-
-
-

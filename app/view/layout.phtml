@@ -1,84 +1,84 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles/style.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/style.css" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>PK Blog</title>
 </head>
+
 <body>
-<div id="container">
-    <div id="logo-container" class="nav">
-        <div  class="logo-column" id="logo">
-            <?php displayImage($config['ICONS_PATH'] . 'connection.png', false);
-            ?>
-        </div>
-    </div>
-    <nav id="topnav" class="nav">
-        <ul id="topnav">
-            <li>
-                <a href="?page=home">Home</a>
-            </li>
-            <li>
-                <a href="?page=test">Debug</a>
-            </li>
-            <li>
-                <a href="?page=articles">Articles</a>
-            </li>
-            <li>
-                <a href="?page=blackjack">Blackjack</a>
-            </li>
-            <li>
-                <?php
-                $action = (isset($_SESSION['user']) AND $_SESSION['access'] == "admin") ? '<a href="?page=admin">Admin panel</a>' : '<a>Admin panel</a>';
-                echo $action;
+    <div id="container">
+        <div id="logo-container" class="nav">
+            <div class="logo-column" id="logo">
+                <?php displayImage($config['ICONS_PATH'] . 'connection.png', false);
                 ?>
-            </li>
-            <li>
-                <a href="?page=about">About author</a>
-            </li>
-            <li>
-                <a href="?page=about">About author</a>
-            </li>
-        </ul>
-    </nav>
-    <div id="logo-and-user-profile" class="nav">
-        <div class="user-profile-container">
-            <div class="user-profile-rows">
-                <p id="user-name">User:
+            </div>
+        </div>
+        <nav id="topnav" class="nav">
+            <ul id="topnav">
+                <li>
+                    <a href="?page=home">Home</a>
+                </li>
+                <li>
+                    <a href="?page=test">Debug</a>
+                </li>
+                <li>
+                    <a href="?page=articles">Articles</a>
+                </li>
+                <li>
+                    <a href="?page=blackjack">Blackjack</a>
+                </li>
+                <li>
                     <?php
-                    $action = !isset($_SESSION['user']) ? " not logged in" :  $_SESSION['user'];
+                    $action = (isset ($_SESSION['user']) and $_SESSION['access'] == "admin") ? '<a href="?page=admin">Admin panel</a>' : '<a>Admin panel</a>';
                     echo $action;
                     ?>
-                </p>
-            </div>
-            <div class="user-profile-rows">
-                <?php
-                include $config['LIB_PATH']  .  "upload.php";
-                if(isset($_SESSION['user'])){
-                    $URL = (getFilename($_SESSION['id']) != null) ? getFilename($_SESSION['id']) : "user-light.png";
-                    $userURL = $_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/lib/uploads/'.$URL;
-                    $userImage = displayImage($userURL, true);
-                    echo "<a href='index.php?page=user'><img src = 'data:image/png;base64,$userImage' id='user-image'/></a>" ;
-                }
-                else{
-                    $image = displayImage($config['ICONS_PATH'] . 'user-light.png', true);
-                    echo "<img src = 'data:image/png;base64,$image' id='user-image'/>";
-                }
-                ?>
+                </li>
+                <li>
+                    <a href="?page=about">About author</a>
+                </li>
+                <li>
+                    <a href="?page=about">About author</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="logo-and-user-profile" class="nav">
+            <div class="user-profile-container">
+                <div class="user-profile-rows">
+                    <p id="user-name">User:
+                        <?php
+                        $action = !isset ($_SESSION['user']) ? " not logged in" : $_SESSION['user'];
+                        echo $action;
+                        ?>
+                    </p>
+                </div>
+                <div class="user-profile-rows">
+                    <?php
+                    include $config['LIB_PATH'] . "upload.php";
+                    if (isset ($_SESSION['user'])) {
+                        $URL = (getFilename($_SESSION['id']) != null) ? getFilename($_SESSION['id']) : "user-light.png";
+                        $userURL = $_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/uploads/' . $URL;
+                        $userImage = displayImage($userURL, true);
+                        echo "<a href='index.php?page=user'><img src = 'data:image/png;base64,$userImage' id='user-image'/></a>";
+                    } else {
+                        $image = displayImage($config['ICONS_PATH'] . 'user-light.png', true);
+                        echo "<img src = 'data:image/png;base64,$image' id='user-image'/>";
+                    }
+                    ?>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="topbar">
-
-    <div class="topbar-column" id="search-container">
-        <div class="search">
-                <input type="text" class="inputArticles"name="search" placeholder="Search articles"/>
-                <button type="submit" class="searchbtn" name="search-button" >Search</button>
+    <div class="topbar">
+        <div class="topbar-column" id="search-container">
+            <div class="search">
+                <input type="text" class="inputArticles" name="search" placeholder="Search articles" />
+                <button type="submit" class="searchbtn" name="search-button">Search</button>
                 <script type="text/javascript">
                     function sleep(ms) {
                         return new Promise(resolve => setTimeout(resolve, ms));
@@ -88,7 +88,7 @@
                         $.ajax({
                             type: "POST",
                             url: '../app/model/articleone.php',
-                            data: {searchInput: searchInput, functionDesc: 'searchPost'},
+                            data: { searchInput: searchInput, functionDesc: 'searchPost' },
                             cache: false,
                             success: function (response) {
                                 if (response.redirect) {
@@ -102,41 +102,39 @@
                         });
                     });
                 </script>
+            </div>
+        </div>
+        <div class="topbar-column" id="user-account-buttons">
+            <span id="span-user-account">
+                <a href="<?php $action = !isset ($_SESSION['user']) ? "index.php?page=login" : "index.php?page=logout";
+                echo $action; ?>" id="login"">
+            <p class=" user-account-labels">
+                    <?php
+                    $action = !isset ($_SESSION['user']) ? "Log in" : "Logout";
+                    echo $action;
+                    ?>
+                    </p>
+                </a>
+                <div id="signup" typeof="button">
+                    <a href="?page=register" id="register">
+                        <p class="user-account-labels">
+                            Sign up
+                        </p>
+                    </a>
+                </div>
+            </span>
+        </div>
+        <div class="work-status">
+            <?php
+            $image = displayImage($config['ICONS_PATH'] . 'work-in-progress.png', true);
+            echo "<img src = 'data:image/png;base64,$image' id='work-in-progress-image'/>";
+            ?>
         </div>
     </div>
-    <div class="topbar-column" id="user-account-buttons">
-    <span id="span-user-account">
-        <a href="<?php $action = !isset($_SESSION['user']) ? "index.php?page=login" : "index.php?page=logout";
-        echo $action; ?>" id="login"">
-            <p class="user-account-labels">
-                       <?php
-                       $action = !isset($_SESSION['user']) ? "Log in" : "Logout";
-                       echo $action;
-                       ?>
-            </p>
-        </a>
-        <div id="signup" typeof="button">
-            <a href="?page=register" id="register">
-                 <p class="user-account-labels">
-                Sign up
-            </p>
-            </a>
-        </div>
-    </span>
-    </div>
-    <div class="work-status">
-        <?php
-        $image = displayImage($config['ICONS_PATH'] . 'work-in-progress.png', true);
-        echo "<img src = 'data:image/png;base64,$image' id='work-in-progress-image'/>";
-        ?>
-    </div>
-</div>
-
-<section id="main-section"">
+    <section id="main-section">
     <?php
     include $main_content;
     ?>
 </section>
-
 </body>
 </html>

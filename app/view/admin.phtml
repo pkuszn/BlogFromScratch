@@ -1,45 +1,54 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" media="screen" href="../public/styles/style-admin.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="../public/styles/style-admin.css" />
     <title>Admin Panel</title>
     <?php
     ?>
 </head>
+
 <body>
-
-<div class="container">
-    <div class="red" id="left-column">
-        <h1 id="admin-header">Admin panel</h1>
-        <div class="settings">
-            <form method="post">
-                <button type="submit" class="settings"name="user" style=""><img name="user" id="user" class="settings" src="../app/icons/profile-user.png"/></button>
-                <button type="submit" class="settings" name="admin" style=""><img name="admin" id="admin" class="settings" src="../app/icons/admin.png"/></button>
-                <button type="submit" class="settings"name="priviliges" style=""><img name="priviliges" id="priviliges" class="settings" src="../app/icons/key.png"/></button>
-                <button type="submit" class="settings" name="avatar" style=""><img name="avatar" id="avatar" class="settings" src="../app/icons/gear.png"/></button>
-                <button type="submit" class="settings"name="trends" style=""><img name="admin" id="admin" class="settings" src="../app/icons/trend.png"/></button>
-            </form>
+    <div class="container">
+        <div class="red" id="left-column">
+            <h1 id="admin-header">Admin panel</h1>
+            <div class="settings">
+                <form method="post">
+                    <button type="submit" class="settings" name="user" style=""><img name="user" id="user"
+                            class="settings" src="../app/icons/profile-user.png" /></button>
+                    <button type="submit" class="settings" name="admin" style=""><img name="admin" id="admin"
+                            class="settings" src="../app/icons/admin.png" /></button>
+                    <button type="submit" class="settings" name="priviliges" style=""><img name="priviliges"
+                            id="priviliges" class="settings" src="../app/icons/key.png" /></button>
+                    <button type="submit" class="settings" name="avatar" style=""><img name="avatar" id="avatar"
+                            class="settings" src="../app/icons/gear.png" /></button>
+                    <button type="submit" class="settings" name="trends" style=""><img name="admin" id="admin"
+                            class="settings" src="../app/icons/trend.png" /></button>
+                </form>
+            </div>
         </div>
-    </div>
-    <div class="green" id="right-column">
+        <div class="green" id="right-column">
+            <?php
+            include $main_subview;
+            ?>
+        </div>
         <?php
-        include $main_subview;
         ?>
-    </div>
-    <?php
-    ?>
 </body>
+
 </html>
 
 </body>
+
 </html>
 
-    </div>
+</div>
 </div>
 
 </body>
+
 </html>

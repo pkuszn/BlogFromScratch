@@ -1,157 +1,167 @@
 <html>
+
 <head>
-    <link rel="stylesheet" href="/styles/style.css"/>
-    <link rel="stylesheet" href="/styles/style-articles.css"/>
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/styles/style-articles.css" />
 </head>
+
 <body>
-<p id="filter-desc">Filter options</p>
-<div class="filter">
-    <form method="POST">
-    <div class="navbar">
-        <div class="left-filter filter-col">
-            <button name="name" class="active button-16"><?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false)?>Name</button>
-            <button name=date" class="active button-16"><?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false)?>Date</button>
-            <button name="year" class="active button-16"><?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false)?>Year</button>
-            <button name="alphabetic" class="active button-16"><?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false)?>Alphabetic</button>
-        </div>
-        <div class="right-filter filter-col">
-            <div class='articles-add-post articles-button' id="newarticle">Add post</div>
-            <script>
-                $(".articles-add-post").click(function () {
-                    window.location.replace("index.php?page=editor");
-                });
-                $(document).ready(function(){
-                    $(".delete-tool").click(function () {
-                       var postData = $(this).attr("alt");
-                        if (confirm("Are you sure you want to delete a post?") == true) {
-                            $.ajax({
-                                type: "POST",
-                                url: '../app/model/articles.php',
-                                data: {post: postData, functionDelete: 'delete'},
-                                cache: false,
-                                success: function (response) {
-                                    setInterval(refresh(), 5000);
+    <p id="filter-desc">Filter options</p>
+    <div class="filter">
+        <form method="POST">
+            <div class="navbar">
+                <div class="left-filter filter-col">
+                    <button name="name" class="active button-16">
+                        <?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false) ?>Name
+                    </button>
+                    <button name=date" class="active button-16">
+                        <?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false) ?>Date
+                    </button>
+                    <button name="year" class="active button-16">
+                        <?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false) ?>Year
+                    </button>
+                    <button name="alphabetic" class="active button-16">
+                        <?php displayImage($config['ICONS_PATH'] . 'up-arrow.png', false) ?>Alphabetic
+                    </button>
+                </div>
+                <div class="right-filter filter-col">
+                    <div class='articles-add-post articles-button' id="newarticle">Add post</div>
+                    <script>
+                        $(".articles-add-post").click(function () {
+                            window.location.replace("index.php?page=editor");
+                        });
+                        $(document).ready(function () {
+                            $(".delete-tool").click(function () {
+                                var postData = $(this).attr("alt");
+                                if (confirm("Are you sure you want to delete a post?") == true) {
+                                    $.ajax({
+                                        type: "POST",
+                                        url: '../app/model/articles.php',
+                                        data: { post: postData, functionDelete: 'delete' },
+                                        cache: false,
+                                        success: function (response) {
+                                            setInterval(refresh(), 5000);
+                                        }
+                                    });
                                 }
                             });
+                            $(".edit-tool").on("click", function () {
+                                var postData = $(this).attr("alt");
+                                if (confirm("Are you sure you want to edit a post?")) {
+                                    $(this).parent('div').children('div').children('div').children('div').children('div').parent('div').show();
+                                }
+                            });
+                        });
+                        function refresh() {
+                            location.reload(true);
                         }
-                    });
-                    $(".edit-tool").on("click", function(){
-                        var postData = $(this).attr("alt");
-                        if(confirm("Are you sure you want to edit a post?")){
-                           $(this).parent('div').children('div').children('div').children('div').children('div').parent('div').show();
+                        function redirect() {
+                            window.location.replace("index.php?page=editor");
                         }
-                    });
-                });
-                function refresh(){
-                    location.reload(true);
-                }
-                function redirect(){
-                    window.location.replace("index.php?page=editor");
-                }
-
-            </script>
-
-        </div>
-    </div>
-    </form>
-    </ul>
-    <script type="text/javascript">
-        $(".searchbtn").click(function () {
-            alert('true');
-            var userData = $(".inputArticles").val();
-            $.ajax({
-                type:"POST",
-                url:'../app/model/home.php',
-                data: {post: userData, functionName: 'action'},
-                cache:false,
-                success:function(response){
-                }
-            });
-        });
-    </script>
-    </script>
-</div>
-<div class="row articles">
-    <div class="left-column articles">
-        <?php
-        filter();
-        ?>
-        <div id="post-popup">
-            <div class="popup-header">
-                <p class="popup-header">Create a new post</p>
-                <?php
-                $image = displayImage($config['ICONS_PATH'] . 'remove-button.png', true);
-                echo "<img src = 'data:image/png;base64,$image' id='commentary-hidden-button' onclick='closeForm()'/>";
-                ?>
+                    </script>
+                </div>
             </div>
-            <form method="POST">
-                <?php
-                $action = isset($_SESSION['user']) ? "" : "<div class='popup-cards'>
+        </form>
+        </ul>
+        <script type="text/javascript">
+            $(".searchbtn").click(function () {
+                alert('true');
+                var userData = $(".inputArticles").val();
+                $.ajax({
+                    type: "POST",
+                    url: '../app/model/home.php',
+                    data: { post: userData, functionName: 'action' },
+                    cache: false,
+                    success: function (response) {
+                    }
+                });
+            });
+        </script>
+        </script>
+    </div>
+    <div class="row articles">
+        <div class="left-column articles">
+            <?php
+            filter();
+            ?>
+            <div id="post-popup">
+                <div class="popup-header">
+                    <p class="popup-header">Create a new post</p>
+                    <?php
+                    $image = displayImage($config['ICONS_PATH'] . 'remove-button.png', true);
+                    echo "<img src = 'data:image/png;base64,$image' id='commentary-hidden-button' onclick='closeForm()'/>";
+                    ?>
+                </div>
+                <form method="POST">
+                    <?php
+                    $action = isset ($_SESSION['user']) ? "" : "<div class='popup-cards'>
                 <p>Author</p>
                 <input type='text' name='author' id='author' class='inputs' required/>
             </div>";
-                echo $action;
-                ?>
-                <div class="popup-cards">
-                    <p>Title</p>
-                    <input type="text" name="title" id="title" class="inputs" required/>
-                </div>
-                <div class="popup-cards">
-                    <p>Post message</p>
-                    <textarea id="post" class="inputs" name="post" cols="1000" rows="10" required></textarea>
-                </div>
-                <div class="popup-cards">
-                    <input type="submit" value="add" id="post-button" name="add"/>
-                </div>
-                <div class="popup-cards">
-                    <?php
-                    addNewPost();
+                    echo $action;
                     ?>
-                </div>
+                    <div class="popup-cards">
+                        <p>Title</p>
+                        <input type="text" name="title" id="title" class="inputs" required />
+                    </div>
+                    <div class="popup-cards">
+                        <p>Post message</p>
+                        <textarea id="post" class="inputs" name="post" cols="1000" rows="10" required></textarea>
+                    </div>
+                    <div class="popup-cards">
+                        <input type="submit" value="add" id="post-button" name="add" />
+                    </div>
+                    <div class="popup-cards">
+                        <?php
+                        addNewPost();
+                        ?>
+                    </div>
 
-            </form>
-        </div>
-        <input type="button" value="Add a new post" id="add-new-post" onclick="openForm()"/>
-        <script type="text/javascript">
-            function openForm() {
-                document.getElementById("post-popup").style.display = "block";
-            }
+                </form>
+            </div>
+            <input type="button" value="Add a new post" id="add-new-post" onclick="openForm()" />
+            <script type="text/javascript">
+                function openForm() {
+                    document.getElementById("post-popup").style.display = "block";
+                }
 
-            function closeForm() {
-                document.getElementById("post-popup").style.display = "none";
-            }
-        </script>
+                function closeForm() {
+                    document.getElementById("post-popup").style.display = "none";
+                }
+            </script>
 
-        <div class="pagination">
-            <table class="next-page">
-                <?php
-                $image = displayImage($config['ICONS_PATH'] . 'left-arrow.png', true);
-                if($_SESSION['pageNow'] != 1){
-                    $var = "?pagination=" . ($_SESSION['pageNow'] - 1);
-                }
-                else{
-                    $var = "?pagination=" . ($_SESSION['pageNow']);
-                }
-                echo "<a href='$var'><img src = 'data:image/png;base64,$image' class='pag-rows' id='left-arrow-pag'/></a>"; ?>
-                <?php
-                for ($i = 1; $i <= $_SESSION['amountOfPages']; $i++) {
-                    printf("<a href='?pagination=%u' class='pag-rows'>%u</a>",
-                        $i, $i);
-                }
-                ?>
-                <?php
-                $image = displayImage($config['ICONS_PATH'] . 'right-arrow.png', true);
-                $var = "?pagination=" . ($_SESSION['pageNow'] + 1);
-                if($_SESSION['pageNow'] != $_SESSION['amountOfPages']){
+            <div class="pagination">
+                <table class="next-page">
+                    <?php
+                    $image = displayImage($config['ICONS_PATH'] . 'left-arrow.png', true);
+                    if ($_SESSION['pageNow'] != 1) {
+                        $var = "?pagination=" . ($_SESSION['pageNow'] - 1);
+                    } else {
+                        $var = "?pagination=" . ($_SESSION['pageNow']);
+                    }
+                    echo "<a href='$var'><img src = 'data:image/png;base64,$image' class='pag-rows' id='left-arrow-pag'/></a>"; ?>
+                    <?php
+                    for ($i = 1; $i <= $_SESSION['amountOfPages']; $i++) {
+                        printf(
+                            "<a href='?pagination=%u' class='pag-rows'>%u</a>",
+                            $i,
+                            $i
+                        );
+                    }
+                    ?>
+                    <?php
+                    $image = displayImage($config['ICONS_PATH'] . 'right-arrow.png', true);
                     $var = "?pagination=" . ($_SESSION['pageNow'] + 1);
-                }
-                else{
-                    $var = "?pagination=" . ($_SESSION['pageNow']);
-                }
-                echo "<a href='$var'><img src = 'data:image/png;base64,$image' class='pag-rows' id='right-arrow-pag'/></a>"; ?>
-            </table>
+                    if ($_SESSION['pageNow'] != $_SESSION['amountOfPages']) {
+                        $var = "?pagination=" . ($_SESSION['pageNow'] + 1);
+                    } else {
+                        $var = "?pagination=" . ($_SESSION['pageNow']);
+                    }
+                    echo "<a href='$var'><img src = 'data:image/png;base64,$image' class='pag-rows' id='right-arrow-pag'/></a>"; ?>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 </body>
+
 </html>

@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <?php
@@ -11,196 +12,195 @@
     $conn = establishConnection();
     ?>
 </head>
+
 <body>
-<div class="row">
-    <div class="left-column">
-        <?php
-        echo selectPosts();
-        ?>
-        <div id="post-popup">
-            <div class="popup-header">
-                <p class="popup-header">Create a new post</p>
-                <?php
-                $image = displayImage($config['ICONS_PATH'] . 'remove-button.png', true);
-                echo "<img src = 'data:image/png;base64,$image' id='commentary-hidden-button' onclick='closeForm()'/>";
-                ?>
-            </div>
-            <form method="POST">
-                <?php
-                $action = isset($_SESSION['user']) ? "" : "<div class='popup-cards'>
+    <div class="row">
+        <div class="left-column">
+            <?php
+            echo selectPosts();
+            ?>
+            <div id="post-popup">
+                <div class="popup-header">
+                    <p class="popup-header">Create a new post</p>
+                    <?php
+                    $image = displayImage($config['ICONS_PATH'] . 'remove-button.png', true);
+                    echo "<img src = 'data:image/png;base64,$image' id='commentary-hidden-button' onclick='closeForm()'/>";
+                    ?>
+                </div>
+                <form method="POST">
+                    <?php
+                    $action = isset ($_SESSION['user']) ? "" : "<div class='popup-cards'>
                 <p>Author</p>
                 <input type='text' name='author' id='author' class='inputs' required/>
             </div>";
-                echo $action;
-                ?>
-                <div class="popup-cards">
-                    <p>Title</p>
-                    <input type="text" name="title" id="title" class="inputs" required/>
-                </div>
-                <div class="popup-cards">
-                    <p>Post message</p>
-                    <textarea id="post" class="inputs" name="post" cols="1000" rows="10" required></textarea>
-                </div>
-                <div class="popup-cards">
-                    <input type="submit" value="add" id="post-button" name="add"/>
-                </div>
-                <div class="popup-cards">
-                    <?php
-                    addNewPost();
+                    echo $action;
                     ?>
-                </div>
-
-            </form>
-        </div>
-        <input type="button" value="Add a new post" id="add-new-post" onclick="openForm()"/>
-        <script type="text/javascript">
-            function openForm() {
-                document.getElementById("post-popup").style.display = "block";
-            }
-
-            function closeForm() {
-                document.getElementById("post-popup").style.display = "none";
-            }
-        </script>
-
-        <div class="pagination">
-            <table class="next-page">
-                <?php
-                $image = displayImage($config['ICONS_PATH'] . 'left-arrow.png', true);
-                if($_SESSION['pageNow'] != 1){
-                    $var = "?pagination=" . ($_SESSION['pageNow'] - 1);
-                }
-                else{
-                    $var = "?pagination=" . ($_SESSION['pageNow']);
-                }
-                echo "<a href='$var'><img src = 'data:image/png;base64,$image' class='pag-rows' id='left-arrow-pag'/></a>"; ?>
-                <?php
-                for ($i = 1; $i <= $_SESSION['amountOfPages']; $i++) {
-                    printf("<a href='?pagination=%u' class='pag-rows'>%u</a>",
-                    $i, $i);
-                }
-                ?>
-                <?php
-                $image = displayImage($config['ICONS_PATH'] . 'right-arrow.png', true);
-                $var = "?pagination=" . ($_SESSION['pageNow'] + 1);
-                if($_SESSION['pageNow'] != $_SESSION['amountOfPages']){
-                    $var = "?pagination=" . ($_SESSION['pageNow'] + 1);
-                }
-                else{
-                    $var = "?pagination=" . ($_SESSION['pageNow']);
-                }
-                echo "<a href='$var'><img src = 'data:image/png;base64,$image' class='pag-rows' id='right-arrow-pag'/></a>"; ?>
-            </table>
-        </div>
-    </div>
-    <div class="right-column">
-        <div class="right-card">
-            <h2 class="article-headers">About me</h2>
-            <hr>
-            <p class="about-author-description">I am a student of Computer Science at the University of Silesia</p>
-        </div>
-        <div class="right-card">
-            <h2 class="article-headers">Last posts</h2>
-            <hr>
-            <?php
-            displayLastEightArticles();
-            ?>
+                    <div class="popup-cards">
+                        <p>Title</p>
+                        <input type="text" name="title" id="title" class="inputs" required />
+                    </div>
+                    <div class="popup-cards">
+                        <p>Post message</p>
+                        <textarea id="post" class="inputs" name="post" cols="1000" rows="10" required></textarea>
+                    </div>
+                    <div class="popup-cards">
+                        <input type="submit" value="add" id="post-button" name="add" />
+                    </div>
+                    <div class="popup-cards">
+                        <?php
+                        addNewPost();
+                        ?>
+                    </div>
+                </form>
+            </div>
+            <input type="button" value="Add a new post" id="add-new-post" onclick="openForm()" />
             <script type="text/javascript">
-                function sleep(ms) {
-                    return new Promise(resolve => setTimeout(resolve, ms));
+                function openForm() {
+                    document.getElementById("post-popup").style.display = "block";
                 }
+
+                function closeForm() {
+                    document.getElementById("post-popup").style.display = "none";
+                }
+            </script>
+            <div class="pagination">
+                <table class="next-page">
+                    <?php
+                    $image = displayImage($config['ICONS_PATH'] . 'left-arrow.png', true);
+                    if ($_SESSION['pageNow'] != 1) {
+                        $var = "?pagination=" . ($_SESSION['pageNow'] - 1);
+                    } else {
+                        $var = "?pagination=" . ($_SESSION['pageNow']);
+                    }
+                    echo "<a href='$var'><img src = 'data:image/png;base64,$image' class='pag-rows' id='left-arrow-pag'/></a>"; ?>
+                    <?php
+                    for ($i = 1; $i <= $_SESSION['amountOfPages']; $i++) {
+                        printf(
+                            "<a href='?pagination=%u' class='pag-rows'>%u</a>",
+                            $i,
+                            $i
+                        );
+                    }
+                    ?>
+                    <?php
+                    $image = displayImage($config['ICONS_PATH'] . 'right-arrow.png', true);
+                    $var = "?pagination=" . ($_SESSION['pageNow'] + 1);
+                    if ($_SESSION['pageNow'] != $_SESSION['amountOfPages']) {
+                        $var = "?pagination=" . ($_SESSION['pageNow'] + 1);
+                    } else {
+                        $var = "?pagination=" . ($_SESSION['pageNow']);
+                    }
+                    echo "<a href='$var'><img src = 'data:image/png;base64,$image' class='pag-rows' id='right-arrow-pag'/></a>"; ?>
+                </table>
+            </div>
+        </div>
+        <div class="right-column">
+            <div class="right-card">
+                <h2 class="article-headers">About me</h2>
+                <hr>
+                <p class="about-author-description">I am a student of Computer Science at the University of Silesia</p>
+            </div>
+            <div class="right-card">
+                <h2 class="article-headers">Last posts</h2>
+                <hr>
+                <?php
+                displayLastEightArticles();
+                ?>
+                <script type="text/javascript">
+                    function sleep(ms) {
+                        return new Promise(resolve => setTimeout(resolve, ms));
+                    }
                     $('.title').one("click", function () {
                         var postID = $(this).siblings('img').attr("alt");
-                            $.ajax({
-                                type: "POST",
-                                url: '../app/model/articleone.php',
-                                data: {postID: postID, functionDesc: 'selectPost'},
-                                cache: false,
-                                success: function (response) {
-                                        if(response.redirect){
-                                            window.location.href = response.redirect;
-                                        }
-                                        else{
-                                            sleep(2000).then(() => {
-                                                $("div").replaceWith(response).append();
-                                            });
-                                        }
+                        $.ajax({
+                            type: "POST",
+                            url: '../app/model/articleone.php',
+                            data: { postID: postID, functionDesc: 'selectPost' },
+                            cache: false,
+                            success: function (response) {
+                                if (response.redirect) {
+                                    window.location.href = response.redirect;
                                 }
-                            });
+                                else {
+                                    sleep(2000).then(() => {
+                                        $("div").replaceWith(response).append();
+                                    });
+                                }
+                            }
+                        });
                     });
 
-            </script>
-        </div>
-        <div class="right-card">
-            <h2 class="article-headers">Quadratic Equations</h2>
-            <hr>
-                <p>A: <input type="text" class="inputA" id="quadratic-equ-input"/></p>
-                <p>B: <input type="text" class="inputB" id="quadratic-equ-input"/></p>
-                <p>C: <input type="text" class="inputC" id="quadratic-equ-input"/></p>
+                </script>
+            </div>
+            <div class="right-card">
+                <h2 class="article-headers">Quadratic Equations</h2>
+                <hr>
+                <p>A: <input type="text" class="inputA" id="quadratic-equ-input" /></p>
+                <p>B: <input type="text" class="inputB" id="quadratic-equ-input" /></p>
+                <p>C: <input type="text" class="inputC" id="quadratic-equ-input" /></p>
                 <button type="button" class="quadraticbtn">Solve</button>
-            <script type="text/javascript">
-                $(".quadraticbtn").on("click", function () {
-                    var inputA = $(".inputA").val();
-                    var inputB = $(".inputB").val();
-                    var inputC = $(".inputC").val();
-                    $.ajax({
-                        type: "POST",
-                        url: '../app/model/home.php',
-                        data: {A: inputA, B: inputB, C: inputC, equation: 'equation'},
-                        cache: false,
-                        success: function (response) {
-                            $('.response').text(response);
-                        }
+                <script type="text/javascript">
+                    $(".quadraticbtn").on("click", function () {
+                        var inputA = $(".inputA").val();
+                        var inputB = $(".inputB").val();
+                        var inputC = $(".inputC").val();
+                        $.ajax({
+                            type: "POST",
+                            url: '../app/model/home.php',
+                            data: { A: inputA, B: inputB, C: inputC, equation: 'equation' },
+                            cache: false,
+                            success: function (response) {
+                                $('.response').text(response);
+                            }
+                        });
                     });
-                });
-            </script>
-            </hr>
-            <p class="response"></p>
-            <?php
-            ?>
-        </div>
-        <div class="right-card">
-            <h2 class="article-headers">TIWP lab exercises</h2>
-            <hr>
-            <li class="TWI-list"><a href="TIWP_LAB/Canvas/Canvas.php">Canvas</a></li>
-            <li class="TWI-list"><a href="TIWP_LAB/AudioVideo/VideoAudio.php">Audio & Video</a></li>
-            <li class="TWI-list"><a href="TIWP_LAB/FormHTML4/FormHTML4.php">Form HTML4</a></li>
-            <li class="TWI-list"><a href="TIWP_LAB/FormHTML5/FormHTML5.php">Form HTML5</a></li>
-            <li class="TWI-list"><a href="TIWP_LAB/AJAX-XML/Ajax-XML.php">AJAX-XML</a></li>
-            <li class="TWI-list">jQuery</li>
-            <li class="TWI-list">Snake jQuery</li>
-            <li class="TWI-list">Project</li>
+                </script>
+                </hr>
+                <p class="response"></p>
+                <?php
+                ?>
+            </div>
+            <div class="right-card">
+                <h2 class="article-headers">TIWP lab exercises</h2>
+                <hr>
+                <li class="TWI-list"><a href="TIWP_LAB/Canvas/Canvas.php">Canvas</a></li>
+                <li class="TWI-list"><a href="TIWP_LAB/AudioVideo/VideoAudio.php">Audio & Video</a></li>
+                <li class="TWI-list"><a href="TIWP_LAB/FormHTML4/FormHTML4.php">Form HTML4</a></li>
+                <li class="TWI-list"><a href="TIWP_LAB/FormHTML5/FormHTML5.php">Form HTML5</a></li>
+                <li class="TWI-list"><a href="TIWP_LAB/AJAX-XML/Ajax-XML.php">AJAX-XML</a></li>
+                <li class="TWI-list">jQuery</li>
+                <li class="TWI-list">Snake jQuery</li>
+                <li class="TWI-list">Project</li>
+            </div>
         </div>
     </div>
-</div>
-
-<footer class="footer">
-    <p id="footer-author">Created by Patryk Kuszneruk. spec ISI</p>
-
-    <?php
-    $image = displayImage($config['ICONS_PATH'] . 'chat.png', true);
-    echo "<a href='index.php?page=form' class='link-chat'>";
-    echo "Contact me";
-    echo "<img src = 'data:image/png;base64,$image'class='chat'/>";
-    echo "</a>";
-    ?>
-    <div class="footer-icons">
+    <footer class="footer">
+        <p id="footer-author">Created by Patryk Kuszneruk. spec ISI</p>
         <?php
-        $image = displayImage($config['ICONS_PATH'] . 'facebook.png', true);
-        echo "<a href='https://www.facebook.com/patryk.kuszneruk'>";
-        echo "<img src = 'data:image/png;base64,$image'class='footer-icons'/>";
-        echo "</a>";
-        $image = displayImage($config['ICONS_PATH'] . 'github.png', true);
-        echo "<a href='https://github.com/pkuszn'>";
-        echo "<img src = 'data:image/png;base64,$image'class='footer-icons'/>";
-        echo "</a>";
-        $image = displayImage($config['ICONS_PATH'] . 'linkedin.png', true);
-        echo "<a href='https://www.linkedin.com/in/patryk-kuszneruk-521b7a1bb/'>";
-        echo "<img src = 'data:image/png;base64,$image' class='footer-icons' />";
+        $image = displayImage($config['ICONS_PATH'] . 'chat.png', true);
+        echo "<a href='index.php?page=form' class='link-chat'>";
+        echo "Contact me";
+        echo "<img src = 'data:image/png;base64,$image'class='chat'/>";
         echo "</a>";
         ?>
-    </div>
-</footer>
+        <div class="footer-icons">
+            <?php
+            $image = displayImage($config['ICONS_PATH'] . 'facebook.png', true);
+            echo "<a href='https://www.facebook.com/patryk.kuszneruk'>";
+            echo "<img src = 'data:image/png;base64,$image'class='footer-icons'/>";
+            echo "</a>";
+            $image = displayImage($config['ICONS_PATH'] . 'github.png', true);
+            echo "<a href='https://github.com/pkuszn'>";
+            echo "<img src = 'data:image/png;base64,$image'class='footer-icons'/>";
+            echo "</a>";
+            $image = displayImage($config['ICONS_PATH'] . 'linkedin.png', true);
+            echo "<a href='https://www.linkedin.com/in/patryk-kuszneruk-521b7a1bb/'>";
+            echo "<img src = 'data:image/png;base64,$image' class='footer-icons' />";
+            echo "</a>";
+            ?>
+        </div>
+    </footer>
 
 </body>
+
 </html>

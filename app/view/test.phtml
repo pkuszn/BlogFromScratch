@@ -1,31 +1,17 @@
-
 <div>
     <button style="margin: 0 auto; display: block;" id="test-button" type="button">Test</button>
     <h1 id="test-p"></h1>
     <script type="text/javascript">
-        $('button').click(function(){
-            $.get('../app/model/test.php', function(data){
+        $('button').click(function () {
+            $.get('../app/model/test.php', function (data) {
                 $('#test-p').html(data);
-<<<<<<< HEAD
-
-=======
->>>>>>> 25082152b385e588d467c45382d7036de4a52827
             });
         });
-
-
     </script>
 </div>
-
-
 <div>
     <?php
     print_r($_SESSION);
     ?>
 
 </div>
-
-
-
-
-

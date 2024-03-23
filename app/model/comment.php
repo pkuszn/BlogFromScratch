@@ -1,10 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/lib/connection.php');
 
-
-
-
-
 function showComments($PostID){
     $conn = establishConnection();
     $query = "Select * from comment where Post_ID = ?";

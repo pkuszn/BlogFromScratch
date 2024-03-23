@@ -1,115 +1,113 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" media="screen" href="styles/style-registeruser.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/style-registeruser.css" />
 </head>
+
 <body>
-<h1>Sign up</h1>
+    <h1>Sign up</h1>
+    <div class="register-container">
+        <form action="<?php $config['MODEL_PATH'] . 'register.php' ?>" method="POST" id="form-container" name="form">
+            <div class="register-sections">
+                <h4>Obligatory</h4>
+                <div class="input-container">
+                    <label for="nickname">Nickname</label>
+                    <input type="text" name="nickname" required />
+                </div>
+                <div class="input-container">
+                    <label for="email">E-mail address</label>
+                    <input type="text" name="email" required />
+                </div>
+                <div class="input-container">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" required />
+                </div>
+                <div class="input-container">
+                    <label for="confirmpassword">Confirm Password</label>
+                    <input type="password" name="confirmpassword" required />
+                </div>
+                <div class="input-container" id="terms">
+                    <label for="privacypolicy" class="terms-block"><a href="https://www.lipsum.com/privacy.pdf">Accept
+                            terms</a></label>
+                    <input type="checkbox" class="terms-block" name="privacypolicy" />
+                </div>
+            </div>
+            <h4>Optional</h4>
+            <div class="register-sections">
+                <div class="input-container">
+                    <label for="firstname">First Name</label>
+                    <input type="text" name="firstname" />
+                </div>
+                <div class="input-container">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" name="lastname" />
+                </div>
+                <div class="input-container">
+                    <label for="birthday">Birthday</label>
+                    <input type="date" name="birthday" id="birth" />
+                </div>
+                <div class="input-container">
+                    <label for="City">City</label>
+                    <input type="text" name="city" />
+                </div>
+            </div>
 
+            <div id="form-captcha">
+                <div id="input-container">
+                    <p id="captcha-message">Enter this number
+                        <?php echo "<p id='session-captcha'> " . $_SESSION['captcha'] . "</p>" ?>
+                    </p>
+                    <p><input type="text" name="code" id="send-data" required /></p>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $('button[name="send-data"]').on('click', function () {
+                                sendCaptchaInput();
+                            });
+                        })
 
-<div class="register-container">
-    <form action="<?php $config['MODEL_PATH'] . 'register.php' ?>" method="POST" id="form-container" name="form">
-        <div class="register-sections">
-            <h4>Obligatory</h4>
-            <div class="input-container">
-                <label for="nickname">Nickname</label>
-                <input type="text" name="nickname" required/>
+                        function sendCaptchaInput() {
+                            var dataString = document.getElementsByName("code");
+                            var jsonString = JSON.stringify(dataString);
+                            $.ajax({
+                                type: "POST",
+                                url: '../app/model/register.php',
+                                data: {
+                                    data: jsonString
+                                },
+                                cache: false,
+                                success: function () {
+                                }
+                            });
+                        }
+                    </script>
+                </div>
             </div>
-            <div class="input-container">
-                <label for="email">E-mail address</label>
-                <input type="text" name="email" required/>
+            <?php
+            echo boolval($statement);
+            $result = ($statement) ? "true" : "false";
+            if ($result == 'false' and isset ($_POST['code'])) {
+                unset($result);
+                echo "<script>alert('Captcha is invalid')</script>";
+            } else if (isset ($_POST['code'])) {
+                registerProcess();
+                echo "<script>alert('User became registered')</script>";
+                unset($result);
+            }
+            ?>
+            <div class="buttons-container">
+                <div>
+                    <button type="submit" value="Register" name='submit' id="register-button">Register</button>
+                    <button type="button" value="Cancel" id="cancel" name="cancel">Cancel</button>
+                </div>
             </div>
-            <div class="input-container">
-                <label for="password">Password</label>
-                <input type="password" name="password" required/>
-            </div>
-            <div class="input-container">
-                <label for="confirmpassword">Confirm Password</label>
-                <input type="password" name="confirmpassword" required/>
-            </div>
-            <div class="input-container" id="terms">
-                <label for="privacypolicy" class="terms-block"><a href="https://www.lipsum.com/privacy.pdf">Accept terms</a></label>
-                <input type="checkbox"  class="terms-block" name="privacypolicy" />
-            </div>
-        </div>
-        <h4>Optional</h4>
-        <div class="register-sections">
-            <div class="input-container">
-                <label for="firstname">First Name</label>
-                <input type="text" name="firstname" />
-            </div>
-            <div class="input-container">
-                <label for="lastname">Last Name</label>
-                <input type="text" name="lastname" />
-            </div>
-            <div class="input-container">
-                <label for="birthday">Birthday</label>
-                <input type="date" name="birthday" id="birth"/>
-            </div>
-            <div class="input-container">
-                <label for="City">City</label>
-                <input type="text" name="city"/>
-            </div>
-        </div>
-
-        <div id="form-captcha">
-            <div id="input-container">
-                <p id="captcha-message">Enter this number
-                    <?php echo "<p id='session-captcha'> " . $_SESSION['captcha'] . "</p>" ?>
-                </p>
-                <p><input type="text" name="code" id="send-data" required/></p>
-                <script type="text/javascript">
-                    $(document).ready(function(){
-                        $('button[name="send-data"]').on('click', function(){
-                            sendCaptchaInput();
-                        });
-                    })
-
-                    function sendCaptchaInput(){
-                        var dataString = document.getElementsByName("code");
-                        var jsonString = JSON.stringify(dataString);
-                        $.ajax({
-                            type: "POST",
-                            url: '../app/model/register.php',
-                            data: {
-                                data: jsonString
-                            },
-                            cache: false,
-                            success: function () {
-                            }
-                        });
-                    }
-                </script>
-            </div>
-        </div>
-        <?php
-        echo boolval($statement);
-        $result = ($statement) ? "true" : "false";
-        if($result == 'false' and isset($_POST['code'])){
-            unset($result);
-            echo "<script>alert('Captcha is invalid')</script>";
-        }
-        else if(isset($_POST['code'])){
-            registerProcess();
-            echo "<script>alert('User became registered')</script>";
-            unset($result);
-        }
-        ?>
-        <div class="buttons-container">
-            <div>
-                <button type="submit" value="Register" name='submit' id="register-button">Register</button>
-                <button type="button" value="Cancel" id="cancel" name="cancel">Cancel</button>
-            </div>
-        </div>
-        <?php
-        /*
-        if(IsEmailExists() == 1){
-            registerProcess();
-        } else{
-            echo "Email is already exists";
-        }
-        */
-        ?>
-    </form>
-</div>
+            <?php
+            /*
+            if(IsEmailExists() == 1){
+                registerProcess();
+            } else{
+                echo "Email is already exists";
+            }
+            */
+            ?>
+        </form>
+    </div>
 </body>
-

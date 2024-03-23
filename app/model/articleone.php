@@ -1,7 +1,7 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/connection.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/connection.php');
 
-if (isset($_POST['functionDesc']) == 'selectPost' and isset($_POST['postID'])) {
+if (isset ($_POST['functionDesc']) == 'selectPost' and isset ($_POST['postID'])) {
     $conn = establishConnection();
     $Post_ID = json_decode($_POST['postID']);
     $query = "Select * from posts where Post_ID = ?";
@@ -31,8 +31,7 @@ if (isset($_POST['functionDesc']) == 'selectPost' and isset($_POST['postID'])) {
     }
 }
 
-
-if (isset($_POST['functioDesc']) == "searchPost") {
+if (isset ($_POST['functioDesc']) == "searchPost") {
     $input = json_decode($_POST['searchInput']);
     echo "<script>alert(" . $input . ")</script>";
     $conn = establishConnection();

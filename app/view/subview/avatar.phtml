@@ -1,17 +1,17 @@
 <h1 id="avatar-desc">Avatar</h1>
 <div class="avatar-main-container">
     <form action="/blog/BlogFromScratch/app/lib/upload.php" method="post" enctype="multipart/form-data">
-    <div class="add-avatar-container">
-        <p><b>Click and select image</b></p>
-        <br>
-        <p><i>Limit: 32x32</i></p>
-        <input type="submit" name="submit" value="Upload">
-        <input type="file" name="file" id="avatar-button">
-    </div>
+        <div class="add-avatar-container">
+            <p><b>Click and select image</b></p>
+            <br>
+            <p><i>Limit: 32x32</i></p>
+            <input type="submit" name="submit" value="Upload">
+            <input type="file" name="file" id="avatar-button">
+        </div>
     </form>
     <div class="avatar-test">
         <p>test</p>
-        <?phprequire_once($_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/lib/upload.php');
+        <? phprequire_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/upload.php');
         $id = $_SESSION['id'];
         uploadFile($id);
         getFilename($id);

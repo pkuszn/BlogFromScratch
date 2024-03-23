@@ -2,7 +2,6 @@
 require_once($_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/lib/connection.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/model/edit.php');
 
-
 if (isset($_POST['functionEdit']) == "edit") {
     $conn = establishConnection();
     $postData = json_decode($_POST['post']);

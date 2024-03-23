@@ -1,8 +1,5 @@
 <?php
 require  $config['MODEL_PATH'] . "admin.php";
-
-
-
 //User_ID	User_name	User_email	User_password	User_amount_of_posts	User_created_date_account	User_birthdate	User_city	User_avatar	User_first_name	User_last_name	Images_Images_ID	Statistics_Statistics_ID
 function LoginProcess()
 {
