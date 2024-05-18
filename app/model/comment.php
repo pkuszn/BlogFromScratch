@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/lib/connection.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/app/lib/connection.php');
 
 function showComments($PostID){
     $conn = establishConnection();
@@ -15,7 +15,7 @@ function showComments($PostID){
         while($row = mysqli_fetch_assoc($result)){
             echo "<div class='user-comment-container'>";
                 echo "<div class='user-avatar-container'>";
-                    displayImage($_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/icons/user-comment.png', false);
+                    displayImage($_SERVER['DOCUMENT_ROOT'].'/app/icons/user-comment.png', false);
                 echo "</div>";
                 echo "<div class='user-text-container'>";
                      echo $row['Comment_date_created'] . "\t" . "<b>" . $row['Comment_author'] . "</b>" . "\t" . ' says: ';

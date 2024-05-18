@@ -13,11 +13,11 @@
 </head>
 <body style="background-color: white" onafterprint="">
 <div id="img">
-    <img src="/blog/BlogFromScratch/Icons/previous.png" id="prev" class="top" onclick="backToMain()"/>
+    <img src="/Icons/previous.png" id="prev" class="top" onclick="backToMain()"/>
 </div>
 <script>
     function backToMain() {
-        window.location.replace("/blog/BlogFromScratch/index.php");
+        window.location.replace("/index.php");
     }
 </script>
 

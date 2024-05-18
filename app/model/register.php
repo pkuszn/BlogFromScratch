@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/connection.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/app/lib/connection.php');
 
 // SQL Statements
 //Link this statement with AJAX execute

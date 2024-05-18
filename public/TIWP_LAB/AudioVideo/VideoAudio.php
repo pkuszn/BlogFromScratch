@@ -8,18 +8,18 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" media="screen" href="/blog/BlogFromScratch/Blackjack/style-blackjack.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="/Blackjack/style-blackjack.css"/>
     <title>Document</title>
 </head>
 <body style="background-color: white"onafterprint="" >
-<img src="/blog/BlogFromScratch/Icons/previous.png" id="prev" class="top" onclick="backToMain()" />
+<img src="/Icons/previous.png" id="prev" class="top" onclick="backToMain()" />
 <button type="button" onclick="redirectToVideo()">Video</button>
 <script>
     function backToMain(){
-        window.location.replace("/blog/BlogFromScratch/index.php");
+        window.location.replace("/index.php");
     }
     function redirectToVideo(){
-        window.location.replace("/blog/BlogFromScratch/TWI_lab/AudioVideo/Video.php");
+        window.location.replace("/TWI_lab/AudioVideo/Video.php");
     }
 </script>
 <header>
