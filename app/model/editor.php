@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/lib/connection.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/app/lib/connection.php');
 
 if (isset($_POST['functionEdit']) == "edit") {
     $postData = json_decode($_POST['post']);

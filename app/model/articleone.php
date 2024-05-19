@@ -1,5 +1,5 @@
 <?php
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/connection.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/app/lib/connection.php');
 
 if (isset ($_POST['functionDesc']) == 'selectPost' and isset ($_POST['postID'])) {
     $conn = establishConnection();
@@ -17,7 +17,7 @@ if (isset ($_POST['functionDesc']) == 'selectPost' and isset ($_POST['postID']))
         $PostsTitle = $row['Post_title'];
         $PostsText = $row['Post_message'];
         $PostsCreatedDate = $row['Post_created_date'];
-        $PostAuthor = $row['Post_Author'];
+        $PostAuthor = $row['Post_author'];
         echo "<div class='card'>";
         echo "<h2 class='post-header'>" . $PostsTitle . "</h2>";
         echo "<hr>";
@@ -47,7 +47,7 @@ if (isset ($_POST['functioDesc']) == "searchPost") {
             $PostsTitle = $row['Post_title'];
             $PostsText = $row['Post_message'];
             $PostsCreatedDate = $row['Post_created_date'];
-            $PostAuthor = $row['Post_Author'];
+            $PostAuthor = $row['Post_author'];
             echo "<div class='card'>";
             echo "<h2 class='post-header'>" . $PostsTitle . "</h2>";
             echo "<hr>";

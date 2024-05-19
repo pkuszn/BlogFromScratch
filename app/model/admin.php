@@ -1,22 +1,22 @@
 <?php
 
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/connection.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/app/lib/connection.php');
 
-$main_subview = $_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/subview/info.phtml';
+$main_subview = $_SERVER['DOCUMENT_ROOT'] . '/app/view/subview/info.phtml';
 if (isset ($_POST['admin'])) {
-    $main_subview = $_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/subview/users.phtml';
+    $main_subview = $_SERVER['DOCUMENT_ROOT'] . '/app/view/subview/users.phtml';
 }
 if (isset ($_POST['user'])) {
-    $main_subview = $_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/subview/info.phtml';
+    $main_subview = $_SERVER['DOCUMENT_ROOT'] . '/app/view/subview/info.phtml';
 }
 if (isset ($_POST['priviliges'])) {
-    $main_subview = $_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/subview/privileges.phtml';
+    $main_subview = $_SERVER['DOCUMENT_ROOT'] . '/app/view/subview/privileges.phtml';
 }
 if (isset ($_POST['avatar'])) {
-    $main_subview = $_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/subview/avatar.phtml';
+    $main_subview = $_SERVER['DOCUMENT_ROOT'] . '/app/view/subview/avatar.phtml';
 }
 if (isset ($_POST['admin'])) {
-    $main_subview = $_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/subview/users.phtml';
+    $main_subview = $_SERVER['DOCUMENT_ROOT'] . '/app/view/subview/users.phtml';
 }
 
 
@@ -85,7 +85,7 @@ function displayUsers()
     } else {
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
-        $image = displayImage($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/icons/rubbish.png', true);
+        $image = displayImage($_SERVER['DOCUMENT_ROOT'] . '/app/icons/rubbish.png', true);
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<img src = 'data:image/png;base64,$image' alt='" . $row['User_ID'] . "' class='userID' '/>" . "\t" . $row['User_name'] . "\t" . $row['User_email'] . "\t" . $row['User_access'] . "\t" . $row['User_amount_of_posts'] . "\t" . $row['User_created_date_account'] . "\t" . $row['User_birthdate'] . "\t" . $row['User_first_name'] . "\t" . $row['User_last_name'] . "<br>";
             echo "<hr>";
@@ -103,7 +103,7 @@ function displayUsersWithUnknownAccess()
     } else {
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
-        $image = displayImage($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/icons/key-user.png', true);
+        $image = displayImage($_SERVER['DOCUMENT_ROOT'] . '/app/icons/key-user.png', true);
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<img src = 'data:image/png;base64,$image' alt='" . $row['User_ID'] . "' class='userID' '/>" . "\t" . $row['User_name'] . "\t" . $row['User_email'] . "\t" . $row['User_access'] . "\t" . $row['User_amount_of_posts'] . "\t" . $row['User_created_date_account'] . "\t" . $row['User_birthdate'] . "\t" . $row['User_first_name'] . "\t" . $row['User_last_name'] . "<br>";
             echo "<hr>";

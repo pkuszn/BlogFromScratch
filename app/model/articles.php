@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/connection.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/app/lib/connection.php');
 
 if(isset($_POST['functionDelete']) == "delete"){
     $conn = establishConnection();
@@ -48,10 +48,10 @@ function filter()
             $PostsTitle = $row['Post_title'];
             $PostsText = $row['Post_message'];
             $PostsCreatedDate = $row['Post_created_date'];
-            $PostAuthor = $row['Post_Author'];
+            $PostAuthor = $row['Post_author'];
             echo "<div class='card'>";
-            $imageDelete = displayImage($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/icons/delete.png', true);
-            $imageEdit = displayImage($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/icons/edit.png', true);
+            $imageDelete = displayImage($_SERVER['DOCUMENT_ROOT'] . '/app/icons/delete.png', true);
+            $imageEdit = displayImage($_SERVER['DOCUMENT_ROOT'] . '/app/icons/edit.png', true);
             $action = (isset($_SESSION['access']) == "admin") ? "<img src = 'data:image/png;base64,$imageDelete' alt='$PostID' id='post-tools' class='delete-tool'/>" : "";
             $action2 =  (isset($_SESSION['access']) == "admin") ? "<img src = 'data:image/png;base64,$imageEdit' alt='$PostID' id='post-tools' name='edit-button' class='edit-tool'/>" : "";
             echo $action;
@@ -69,13 +69,13 @@ function filter()
             echo "<div class='commentbtn-container'>";
                 echo "<div class='commentbtn'>";
                         echo "<div class='commentary'>";
-                        require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/model/comment.php');
+                        require_once($_SERVER['DOCUMENT_ROOT'] . '/app/model/comment.php');
                         showComments($PostID);
-                        require($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/comment.phtml');
+                        require($_SERVER['DOCUMENT_ROOT'] . '/app/view/comment.phtml');
                         echo "</div>";
                  echo "</div>";
             echo "<div class='edit-container'>";
-                require($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/edit.phtml');
+                require($_SERVER['DOCUMENT_ROOT'] . '/app/view/edit.phtml');
             echo "</div>";
             echo "</div>";
 

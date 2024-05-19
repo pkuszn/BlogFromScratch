@@ -1,6 +1,6 @@
 <?php
 $_SESSION['pageNow'] = isset ($_GET['pagination']) ? $_GET['pagination'] : 1;
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/connection.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/app/lib/connection.php');
 
 function displayLastEightArticles()
 {
@@ -14,7 +14,7 @@ function displayLastEightArticles()
         $result = mysqli_stmt_get_result($stmt);
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<div class='title-post'>";
-            $image = displayImage($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/icons/click.png', true);
+            $image = displayImage($_SERVER['DOCUMENT_ROOT'] . '/app/icons/click.png', true);
             $Post_ID = $row['Post_ID'];
             echo "<img src = 'data:image/png;base64,$image' class='image-title' alt='$Post_ID'/>" . "<p class='title'>" . $row['Post_title'] . "</p>";
             echo "</div>";
@@ -88,7 +88,7 @@ function selectPosts()
             $PostsTitle = $row['Post_title'];
             $PostsText = $row['Post_message'];
             $PostsCreatedDate = $row['Post_created_date'];
-            $PostAuthor = $row['Post_Author'];
+            $PostAuthor = $row['Post_author'];
             echo "<div class='card'>";
             echo "<h2 class='post-header'>" . $PostsTitle . "</h2>";
             echo "<hr>";
@@ -104,9 +104,9 @@ function selectPosts()
             echo "<div class='commentbtn'>";
             echo "<form method='POST'>";
             echo "<div class='commentary'>";
-            require_once ($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/model/comment.php');
+            require_once ($_SERVER['DOCUMENT_ROOT'] . '/app/model/comment.php');
             showComments($PostID);
-            require ($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/comment.phtml');
+            require ($_SERVER['DOCUMENT_ROOT'] . '/app/view/comment.phtml');
             echo "</div>";
             echo "</form>";
             echo "</div>";

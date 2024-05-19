@@ -1,6 +1,6 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/lib/connection.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/blog/BlogFromScratch/app/model/edit.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/app/lib/connection.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/app/model/edit.php');
 
 if (isset($_POST['functionEdit']) == "edit") {
     $conn = establishConnection();

@@ -2,7 +2,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="styles/style.css"/>
 </head>
 <body>
-<h1 id="user-panel-label"">Account settings</h1>
+<h1 id="user-panel-label">Account settings</h1>
 <div class="green" id="right-column">
     <div class="user-settings">
         <li class="user-data-template">
@@ -39,8 +39,8 @@
     <div class="user-settings right-side">
         <li class="user-data-template">
             <?php
-            require_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/upload.php');
-            $img = $_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/uploads/' . getFilename($_SESSION['id']);
+            require_once($_SERVER['DOCUMENT_ROOT'] . '/app/lib/upload.php');
+            $img = $_SERVER['DOCUMENT_ROOT'] . '/app/lib/uploads/' . getFilename($_SESSION['id']);
             $image = displayImage($img, true);
             $action = ($_SESSION['id'] == null) ? '-' : "<img src = 'data:image/png;base64,$image' id='avatar-user-panel'/>";
             echo $action;

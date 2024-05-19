@@ -3,7 +3,7 @@
 </head>
 <div class="comment-input-section">
     <?php
-    $image = displayImage($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/icons/remove-button.png', true);
+    $image = displayImage($_SERVER['DOCUMENT_ROOT'] . '/app/icons/remove-button.png', true);
     echo "<img src = 'data:image/png;base64,$image' class='commentbtn-2' id='commentary-hidden-button'  onclick='closeForm()'/>";
     ?>
     <p>Author</p>
@@ -11,9 +11,9 @@
     <p>Post message</p>
     <textarea name="text" class="text-message" cols="60" rows="5"></textarea>
     <?php
-    $image = displayImage($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/icons/add-message.png', true);
+    $image = displayImage($_SERVER['DOCUMENT_ROOT'] . '/app/icons/add-message.png', true);
     echo "<img src = 'data:image/png;base64,$image' class='add-comment-button' alt='$PostID' onclick='closeForm()'/>";
-    include_once $_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/view/subview/send.phtml';
+    include_once $_SERVER['DOCUMENT_ROOT'] . '/app/view/subview/send.phtml';
     ?>
 </div>
 <button type='button' name='commbtn' class='commbtn button-16' value='Add comment'>Add Comment</button>

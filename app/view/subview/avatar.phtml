@@ -1,6 +1,6 @@
 <h1 id="avatar-desc">Avatar</h1>
 <div class="avatar-main-container">
-    <form action="/blog/BlogFromScratch/app/lib/upload.php" method="post" enctype="multipart/form-data">
+    <form action="/app/lib/upload.php" method="post" enctype="multipart/form-data">
         <div class="add-avatar-container">
             <p><b>Click and select image</b></p>
             <br>
@@ -11,7 +11,7 @@
     </form>
     <div class="avatar-test">
         <p>test</p>
-        <? phprequire_once($_SERVER['DOCUMENT_ROOT'] . '/blog/BlogFromScratch/app/lib/upload.php');
+        <? require_once($_SERVER['DOCUMENT_ROOT'] . '/app/lib/upload.php');
         $id = $_SESSION['id'];
         uploadFile($id);
         getFilename($id);
